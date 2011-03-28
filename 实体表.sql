@@ -1,7 +1,4 @@
-﻿create database if not exists studentPortal;
-use studentPortal;
-
-drop table if exists teacherInfo;
+﻿drop table if exists teacherInfo;
 create table teacherInfo
 (
     id varchar(10) not null,
