@@ -26,4 +26,5 @@
 
 
 Questions：
+	utf8？还是gbk？
 
