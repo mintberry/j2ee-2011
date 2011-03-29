@@ -1,7 +1,7 @@
 ﻿drop table if exists teacherInfo;
 create table teacherInfo
 (
-    id varchar(10) not null,
+    t_id char(10) not null,
     name char(10) not null,
     sex char(2) not null default '男',
     birthday Date not null,
@@ -10,13 +10,14 @@ create table teacherInfo
 	title char(10) not null default '讲师',
 	email char(50) not null,
 	address char(50),
-	phoneNumber char(25)
+	phoneNumber char(25),
+	primary key(t_id)
 )CHARSET=gbk;
 
 drop table if exists studentInfo;
 create table studentInfo
 (
-    id varchar(6) not null,
+    s_id char(6) not null,
     name  char(10) not null,
     sex   char(2) not null default '男',
     birthday   Date not null,
@@ -24,34 +25,38 @@ create table studentInfo
 	pinCode char(18) not null,
 	email char(50) not null,
 	address char(50),
-	phoneNumber char(25)
+	phoneNumber char(25),
+	primary key(s_id)
 )CHARSET=gbk;
 
-drop table if exists course;
-create table course
+drop table if exists courses;
+create table courses
 (
-    id      char(10) not null,
-    name    char(20) not null,
-    credit  int
+    course_id char(10) not null,
+    name char(20) not null,
+    credit int,
 	#上课的时间不知道怎么弄
+	primary key(course_id)
 )CHARSET=gbk;
 
-drop table if exists document;
-create table document   #感觉不对，文件夹怎么弄？
+drop table if exists files;
+create table files  #感觉不对，文件夹怎么弄？
 (
-	id	char(32) not null,
-	name varchar(200) not null,
-	filesize	int,
-	location	varchar(200),
-	createDate	Date,
-	updateDate	Date
+	f_id char(32) not null,
+	name varchar(255) not null,
+	filesize int,
+	location varchar(255),
+	createDate Date,
+	updateDate Date,
+	primary key(f_id)
 )CHARSET=gbk;
 
-drop table if exists commentary;
-create table commentary
+drop table if exists comments;
+create table comments
 (
-	id	char(32) not null,
+	comment_id char(32) not null,
 	content	Text,
-	createDate	Date,
-	updateDate	Date
+	createDate Date,
+	updateDate Date,
+	primary key(comment_id)
 )CHARSET=gbk;
