@@ -13,7 +13,7 @@ create table student_course
 )CHARSET=gbk;
 
 
-#ĞèÒª¸Ä½ø
+#éœ€è¦æ”¹è¿›
 drop table if exists teacher_course_file;
 create table teacher_course_file
 (
@@ -22,7 +22,7 @@ create table teacher_course_file
 	f_id char(32) not null
 )CHARSET=gbk;
 
-#ĞèÒª¸Ä½ø
+#éœ€è¦æ”¹è¿›
 drop table if exists student_course_file;
 create table student_course_file
 (
