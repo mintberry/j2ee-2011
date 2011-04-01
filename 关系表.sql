@@ -1,4 +1,4 @@
-drop table if exists teacher_course;
+﻿drop table if exists teacher_course;
 create table teacher_course
 (
     t_id char(10) not null,
