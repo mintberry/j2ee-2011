@@ -2,6 +2,7 @@
 create table teacherInfo
 (
     t_id char(10) not null,
+	password char(20) not null,
     name char(10) not null,
     sex char(2) not null default '男',
     birthday Date not null,
@@ -18,6 +19,7 @@ drop table if exists studentInfo;
 create table studentInfo
 (
     s_id char(6) not null,
+	password char(20) not null,
     name  char(10) not null,
     sex   char(2) not null default '男',
     birthday   Date not null,
