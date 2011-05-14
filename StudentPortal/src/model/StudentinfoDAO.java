@@ -10,31 +10,30 @@ import org.hibernate.criterion.Example;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * Teacherinfo entities. Transaction control of the save(), update() and
+ * Studentinfo entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see model.Teacherinfo
+ * @see model.Studentinfo
  * @author MyEclipse Persistence Tools
  */
 
-public class TeacherinfoDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(TeacherinfoDAO.class);
+public class StudentinfoDAO extends BaseHibernateDAO {
+	private static final Log log = LogFactory.getLog(StudentinfoDAO.class);
 	// property constants
 	public static final String PASSWORD = "password";
 	public static final String NAME = "name";
 	public static final String SEX = "sex";
 	public static final String NATION = "nation";
 	public static final String PIN_CODE = "pinCode";
-	public static final String TITLE = "title";
 	public static final String EMAIL = "email";
 	public static final String ADDRESS = "address";
 	public static final String PHONE_NUMBER = "phoneNumber";
 
-	public void save(Teacherinfo transientInstance) {
-		log.debug("saving Teacherinfo instance");
+	public void save(Studentinfo transientInstance) {
+		log.debug("saving Studentinfo instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -44,8 +43,8 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(Teacherinfo persistentInstance) {
-		log.debug("deleting Teacherinfo instance");
+	public void delete(Studentinfo persistentInstance) {
+		log.debug("deleting Studentinfo instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -55,11 +54,11 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Teacherinfo findById(java.lang.String id) {
-		log.debug("getting Teacherinfo instance with id: " + id);
+	public Studentinfo findById(java.lang.String id) {
+		log.debug("getting Studentinfo instance with id: " + id);
 		try {
-			Teacherinfo instance = (Teacherinfo) getSession().get(
-					"model.Teacherinfo", id);
+			Studentinfo instance = (Studentinfo) getSession().get(
+					"model.Studentinfo", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -67,10 +66,10 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Teacherinfo instance) {
-		log.debug("finding Teacherinfo instance by example");
+	public List findByExample(Studentinfo instance) {
+		log.debug("finding Studentinfo instance by example");
 		try {
-			List results = getSession().createCriteria("model.Teacherinfo")
+			List results = getSession().createCriteria("model.Studentinfo")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -82,10 +81,10 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Teacherinfo instance with property: " + propertyName
+		log.debug("finding Studentinfo instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Teacherinfo as model where model."
+			String queryString = "from Studentinfo as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -116,10 +115,6 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		return findByProperty(PIN_CODE, pinCode);
 	}
 
-	public List findByTitle(Object title) {
-		return findByProperty(TITLE, title);
-	}
-
 	public List findByEmail(Object email) {
 		return findByProperty(EMAIL, email);
 	}
@@ -133,9 +128,9 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 	}
 
 	public List findAll() {
-		log.debug("finding all Teacherinfo instances");
+		log.debug("finding all Studentinfo instances");
 		try {
-			String queryString = "from Teacherinfo";
+			String queryString = "from Studentinfo";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -144,10 +139,10 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Teacherinfo merge(Teacherinfo detachedInstance) {
-		log.debug("merging Teacherinfo instance");
+	public Studentinfo merge(Studentinfo detachedInstance) {
+		log.debug("merging Studentinfo instance");
 		try {
-			Teacherinfo result = (Teacherinfo) getSession().merge(
+			Studentinfo result = (Studentinfo) getSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -157,8 +152,8 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(Teacherinfo instance) {
-		log.debug("attaching dirty Teacherinfo instance");
+	public void attachDirty(Studentinfo instance) {
+		log.debug("attaching dirty Studentinfo instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -168,8 +163,8 @@ public class TeacherinfoDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(Teacherinfo instance) {
-		log.debug("attaching clean Teacherinfo instance");
+	public void attachClean(Studentinfo instance) {
+		log.debug("attaching clean Studentinfo instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

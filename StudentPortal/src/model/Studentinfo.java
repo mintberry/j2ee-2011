@@ -3,21 +3,20 @@ package model;
 import java.util.Date;
 
 /**
- * Teacherinfo entity. @author MyEclipse Persistence Tools
+ * Studentinfo entity. @author MyEclipse Persistence Tools
  */
 
-public class Teacherinfo implements java.io.Serializable {
+public class Studentinfo implements java.io.Serializable {
 
 	// Fields
 
-	private String TId;
+	private String SId;
 	private String password;
 	private String name;
 	private String sex;
 	private Date birthday;
 	private String nation;
 	private String pinCode;
-	private String title;
 	private String email;
 	private String address;
 	private String phoneNumber;
@@ -25,34 +24,32 @@ public class Teacherinfo implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public Teacherinfo() {
+	public Studentinfo() {
 	}
 
 	/** minimal constructor */
-	public Teacherinfo(String TId, String password, String name, String sex,
-			Date birthday, String pinCode, String title, String email) {
-		this.TId = TId;
+	public Studentinfo(String SId, String password, String name, String sex,
+			Date birthday, String pinCode, String email) {
+		this.SId = SId;
 		this.password = password;
 		this.name = name;
 		this.sex = sex;
 		this.birthday = birthday;
 		this.pinCode = pinCode;
-		this.title = title;
 		this.email = email;
 	}
 
 	/** full constructor */
-	public Teacherinfo(String TId, String password, String name, String sex,
-			Date birthday, String nation, String pinCode, String title,
-			String email, String address, String phoneNumber) {
-		this.TId = TId;
+	public Studentinfo(String SId, String password, String name, String sex,
+			Date birthday, String nation, String pinCode, String email,
+			String address, String phoneNumber) {
+		this.SId = SId;
 		this.password = password;
 		this.name = name;
 		this.sex = sex;
 		this.birthday = birthday;
 		this.nation = nation;
 		this.pinCode = pinCode;
-		this.title = title;
 		this.email = email;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
@@ -60,12 +57,12 @@ public class Teacherinfo implements java.io.Serializable {
 
 	// Property accessors
 
-	public String getTId() {
-		return this.TId;
+	public String getSId() {
+		return this.SId;
 	}
 
-	public void setTId(String TId) {
-		this.TId = TId;
+	public void setSId(String SId) {
+		this.SId = SId;
 	}
 
 	public String getPassword() {
@@ -114,14 +111,6 @@ public class Teacherinfo implements java.io.Serializable {
 
 	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
-	}
-
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getEmail() {
