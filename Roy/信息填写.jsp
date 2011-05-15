@@ -60,7 +60,7 @@ body {
   <blockquote>
     <blockquote>
       <blockquote>
-        <h1> <img src="../Documents/J2EEWEBSITE/Image/logo.png" width="341" height="56" /></h1>
+        <h1> <img src="logo.png" width="341" height="56" /></h1>
       </blockquote>
     </blockquote>
   </blockquote>
@@ -71,21 +71,53 @@ body {
         <blockquote>
           <blockquote>
             <blockquote>
-              <p>用户：
+              <p>学号：
                 <input name="textfield" type="text" id="textfield" size="24" />
               </p>
-              <p> 学号：
+              <p>密码：
                 <input type="text" name="textfield2" id="textfield2" />
               </p>
-              <p> 密码：
+              <p>姓名：
                 <input type="password" name="textfield3" id="textfield3" />
               </p>
-              <p> 邮箱：
-                <input name="textfield4" type="text" id="textfield4" size="24" maxlength="50" />
+<p>性别：
+  <select name="Sex2" id="Sex2" accesskey="男" tabindex="0">
+    <option value="0">男</option>
+    <option value="1">女</option>
+  </select>
+</p>
+<p>生日：
+  <input name="textfield4" type="text" id="textfield4" size="5" maxlength="4" /> 
+  年
+  <input name="textfield5" type="text" id="textfield5" size="5" maxlength="4" /> 
+  月
+  <input name="textfield6" type="text" id="textfield6" size="5" maxlength="4" />
+  日
+</p>
+              <p>国籍：
+                <input type="password" name="textfield7" id="textfield7" />
+              </p>
+              <p>职称：
+                <select name="Sex" id="Sex" accesskey="男" tabindex="0">
+                  <option value="0">讲师</option>
+                  <option value="1">副教授</option>
+                  <option value="2">教授</option>
+                </select>
+              </p>
+              <p>邮箱：
+                <input type="password" name="textfield8" id="textfield8" />
+              </p>
+              <p>地址：
+                <input type="password" name="textfield9" id="textfield9" />
+              </p>
+              <p>电话： 
+                <input type="password" name="textfield10" id="textfield10" />
               </p>
               <blockquote>
                 <blockquote>
-                  <p><img src="../Documents/J2EEWEBSITE/Image/Registe.png" width="85" height="47" /></p>
+                  <p>
+                    <input name="RegistButton" type="submit" class="oneColElsCtrHdr" id="RegistButton" value="注册" />
+                  </p>
                 </blockquote>
               </blockquote>
             </blockquote>

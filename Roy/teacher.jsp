@@ -87,7 +87,7 @@ body  {
             <blockquote>
               <blockquote>
                 <blockquote>
-                  <h1><img src="../Documents/J2EEWEBSITE/Image/logo.png" width="341" height="56" /></h1>
+                  <h1><img src="logo.png" width="341" height="56" /></h1>
                 </blockquote>
               </blockquote>
             </blockquote>
