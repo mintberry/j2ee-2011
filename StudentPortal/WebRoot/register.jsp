@@ -1,10 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"
-	import="java.sql.*" errorPage=""%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.util.*" import="model.Studentinfo" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
 	<head>
 
-		<title>StudentPortal</title>
+		<title>Sign up email</title>
 
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
@@ -13,36 +20,36 @@
 
 		<meta name="keywords" content="Gurudigger" />
 
-		<link href="/imgs/c1.jpg" rel="shortcut icon"
-			type="image/x-icon" />
+		<link href="imgs/c1.jpg" rel="shortcut icon" type="image/x-icon" />
 
 		<link href="http://res.gurudigger.com/css/core.css" rel="stylesheet"
 			type="text/css" />
 
-		<script src="http://res.gurudigger.com/js/jquery-1.4.2.min.js"
+		<%--script src="http://res.gurudigger.com/js/jquery-1.4.2.min.js"
 			type="text/javascript">
-</script>
+		
+</script--%>
 
-		<script src="http://res.gurudigger.com/jsware.package.js"
+		<!--script src="http://res.gurudigger.com/jsware.package.js"
 			type="text/javascript">
-</script>
+</script-->
 
 
 
-		<link href="http://res.gurudigger.com/css/home.tpl.css"
-			rel="stylesheet" type="text/css" />
+		<link href="http://res.gurudigger.com/css/home.css" rel="stylesheet"
+			type="text/css" />
 
 		<link
-			href="http://res.gurudigger.com/globalization/en-us/css/home.tpl.css"
+			href="http://res.gurudigger.com/globalization/en-us/css/home.css"
 			rel="stylesheet" type="text/css" />
 
 		<!--[if IE ]><link href="http://res.gurudigger.com/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
 
-		<link media="only screen and (max-device-width: 480px)"
-			href="http://res.gurudigger.com/css/iphone.css" type="text/css"
-			rel="stylesheet" />
-
 		<script src="http://res.gurudigger.com/js/main.js"
+			type="text/javascript">
+</script>
+
+		<script src="http://res.gurudigger.com/js/gd.home.js"
 			type="text/javascript">
 </script>
 
@@ -50,89 +57,95 @@
 			type="text/javascript">
 </script>
 
-
-
-
-
-
-
+		<!--link media="only screen and (max-device-width: 480px)"
+			href="http://res.gurudigger.com/css/iphone.css" type="text/css"
+			rel="stylesheet" /-->
 	</head>
-
-
 
 	<body>
 
-
-
-
-
 		<div id="mn">
 
+			<div id="home">
 
+				<div id="acc-apply" class="block">
 
-
-
-			<div id="panel" class="block">
-
-				<div class="logo">
-					<a href="http://sse.tongji.edu.cn"><img src="imgs/sse.png"
-							alt="S" title="StudentPortal" /> </a>
-				</div>
-
-				<div class="doc">
-
-					<div class="doc-title clearfix">
-
-						<h3 class="doc-caption">
-							登录
-						</h3>
-
+					<div id="acc-apply-logo" class="logo">
+						<img src="imgs/sse.png" alt="Tongji SSE" title="GuruDigger" />
 					</div>
 
-					<div class="doc-content clearfix">
+					<div id="acc-apply-mn" class="clearfix">
 
-						<div id="login-form" class="form">
-							<form action="/StudentPortal/LoginServlet" method = "post">
+						<div id="app-apply-c-wrapper" class="ly-m clearfix">
 
-								<div id="row-email" class="row clearfix">
+							<div id="app-apply-c" class="ly-m-inner">
 
-									<div class="clearfix">
+							</div>
+						</div>
 
-										<label for="acc_email" class="label">
-											用户:
-										</label>
+						<div id="acc-apply-l" class="ly-l">
+
+							<div id="slogan"> 
+								第一次登录请注册邮箱 
+							</div>
+
+							<div id="acc-form">
+								<form action="/StudentPortal/RegMailServlet" method="post">
+
+									<div id="row-email" class="row clearfix">
+
+										<div class="clearfix">
+
+											<div class="row-l">
+												邮箱地址:
+											</div>
+
+										</div>
+
+										<div class="row-c bd">
+											<input id="acc-email" type="text" class="text" name="email1"
+												maxlength="200" />
+										</div>
+
+
 
 									</div>
 
-									<input id="acc_email" name="userID" type="text" class="text bd"
-										tabindex="1" />
+									<div id="row-blog" class="row clearfix">
+
+										<div class="clearfix">
+
+											<div class="row-l">
+												验证邮箱地址:
+											</div>
+
+										</div>
+
+										<div class="row-c bd">
+											<input id="acc-blog" type="text" class="text" maxlength="500"
+												name="email2" />
+										</div>
 
 
-
-								</div>
-
-								<div id="row-pass" class="row clearfix">
-
-									<div class="clearfix">
-
-										<label for="acc_pass" class="label">
-											密码:
-										</label>
-										<input type="password" id="acc_pass" name="password"
-											class="text bd" tabindex="2" />
-
-										<a id="link_forgot" class="fn-s" href="/forgetpassword"
-											tabindex="5">忘记密码?</a>
 
 									</div>
-								</div><div id="row-summary" class="row clearfix">
+
+									<div id="row-submit" class="row clearfix">
+									</div>
+									<input type="image" alt="提交" src="imgs/login.png"
+										onclick="submit()" />
+								</form>
+							</div>
 
 
 
-								</div>
-								<input type="image" alt="提交" src="imgs/login.png"
-									onclick="submit()" />
-							</form>
+						</div>
+
+						<div id="acc-apply-r" class="ly-r">
+
+
+
+
 
 						</div>
 
@@ -140,31 +153,39 @@
 
 				</div>
 
-				<script type="text/javascript">
+				<div id="acc-info" class="block">
 
-var LoginInfo = {
+					<div class="logo">
+						<img src="http://res.gurudigger.com/img/home.logo.gif"
+							alt="GuruDigger" title="GuruDigger" />
+					</div>
 
-	WarnEmailNotValid : "Please input a valid email address",
+					<h1>
+						Thanks for your interest in Gurudigger!
+					</h1>
 
-	WarnPasswordError : "Incorrect email or password",
+					<p>
+						<p>
+							If you haven't received our email yet in a few hours, please
+							check the "
+							<span class="fn-b">Spam</span>" or "
+							<span class="fn-b">Junk Mail</span>" folder, as your confirmation
+							email might have tragically been redirected.
+						</p>
+					<p>
+						Any questions or suggestions feel free to
+						<a href="#contact" class="do-contact">contact us</a>.
+						<br />
 
-	WarnNotActived : "Your account has not been actived. Please be patient.",
+						We look forward to making a perfect work for you.
+					</p>
+					</p>
 
-	WarnEmailEmpty : "Please specify your email address",
-
-	WarnPasswordEmpty : "Please specify your password"
-
-};
-</script>
-
-				<script type="text/javascript">
-CF.Package.Include("GD.Login", true, "en-US");</script>
-
-
+				</div>
 
 			</div>
 
-			<div id="hm-foot" style="top: 561px; left: -3px;">
+			<div id="hm-foot" style="top: 640px; left: 2px;">
 
 				<div id="link">
 
@@ -173,11 +194,39 @@ CF.Package.Include("GD.Login", true, "en-US");</script>
 
 				</div>
 
+
 			</div>
 
-			<div id="home-contact" class="do-contact"></div>
+			<script type="text/javascript">
 
-			<div id="mn-pop"></div>
+var Register = {
+
+	PostURL : "/account/preregister",
+
+	WarnEmailEmpty : "请输入邮箱地址",
+
+	WarnEmailNotValid : "请输入合法的邮箱地址"
+
+};
+
+var ContactInfo = {
+
+	PostURL : "/support/feedback",
+
+	WarnFieldsEmpty : "You miss some fields.",
+
+	WarnEmailNotValid : "Please enter a valid email address.",
+
+	MaskName : "Name",
+
+	MaskEmail : "Email",
+
+	MaskDescription : "Description"
+
+};
+</script>
+
+
 
 
 
@@ -189,7 +238,7 @@ CF.Package.Include("GD.Login", true, "en-US");</script>
 
 				<div id="ct-form">
 
-					<div id="ct-btn" class="ct-close"></div>
+
 
 					<div id="ct-content">
 
@@ -237,8 +286,7 @@ CF.Package.Include("GD.Login", true, "en-US");</script>
 
 						<div class="ct-pop-row clearfix">
 
-							<div id="ct-warn"></div>
-							<a id="ct-submit"></a>
+
 
 						</div>
 
@@ -256,7 +304,7 @@ CF.Package.Include("GD.Login", true, "en-US");</script>
 							We will respond to you as soon as possible.
 						</p>
 
-						<a id="ct-close"></a>
+
 
 					</div>
 
@@ -586,9 +634,11 @@ $(function() {
 });
 </script>
 
+		</div>
 
 
-			<script type="text/javascript">
+
+		<script type="text/javascript">
 
 var _gaq = _gaq || [];
 
@@ -610,6 +660,7 @@ _gaq.push( [ '_trackPageview' ]);
 
 })();
 </script>
+
 	</body>
 
 </html>

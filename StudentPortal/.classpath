@@ -39,7 +39,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/swarmcache-1.0rc2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xerces-2.6.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xml-apis.jar"/>
-	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.cross.easystruts.eclipse.STRUTS12_CONTAINER"/>
 	<classpathentry kind="lib" path="E:/Program Files Ex/Genuitec/MyEclipse-8.6/configuration/org.eclipse.osgi/bundles/89/1/.cp/myeclipse-data/3.3/lib/required/slf4j-api-1.5.8.jar">
 		<attributes>
 			<attribute name="deploy-excludes" value=""/>

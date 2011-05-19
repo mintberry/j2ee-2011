@@ -36,9 +36,11 @@ public class StudentinfoDAO extends BaseHibernateDAO {
 		log.debug("saving Studentinfo instance");
 		try {
 			getSession().save(transientInstance);
+			System.out.println("success");
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
+			System.out.println("fail");
 			throw re;
 		}
 	}
@@ -58,7 +60,7 @@ public class StudentinfoDAO extends BaseHibernateDAO {
 		log.debug("getting Studentinfo instance with id: " + id);
 		try {
 			Studentinfo instance = (Studentinfo) getSession().get(
-					"model.Studentinfo", id);
+					model.Studentinfo.class, id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
