@@ -135,7 +135,12 @@
 							</form>
 
 						</div>
-
+						
+					<%if(request.getAttribute("errorInformation")!=null){
+						String information = request.getAttribute("errorInformation").toString();
+						out.println(information);
+					}
+					 %>	
 					</div>
 
 				</div>
