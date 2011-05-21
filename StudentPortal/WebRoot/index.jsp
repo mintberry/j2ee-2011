@@ -131,18 +131,10 @@
 
 								</div>
 								<input type="image" alt="提交" src="imgs/login.png"
-									onclick="submit()" />
-							</form>
+									onclick="submit()" /><br /></form>
 
-						</div>
-						
-					<%if(request.getAttribute("errorInformation")!=null){
-						String information = request.getAttribute("errorInformation").toString();
-						out.println(information);
-					}
-					 %>	
-					</div>
-
+						</div></div>
+					<div align="center"><strong><font color="#ff0000">${requestScope.errorInformation}</font></strong><h4><strong></strong></h4><strong><font color="#ff0000"><br /></font></strong></div>
 				</div>
 
 				<script type="text/javascript">

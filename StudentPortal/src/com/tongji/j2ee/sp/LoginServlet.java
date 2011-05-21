@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession hs = request.getSession();
 		current = siset.findById(request.getParameter("userID"));
 		if(current == null){
-			request.setAttribute("errorInformation", "no such user!");
+			request.setAttribute("errorInformation", "The user does not exist!");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 		hs.setAttribute("user", current);
