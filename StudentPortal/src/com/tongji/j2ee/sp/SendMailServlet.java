@@ -45,6 +45,7 @@ public class SendMailServlet extends HttpServlet {
 			Session sess = Session.getInstance(prop);
 			sess.setDebug(true);
 			MimeMessage message = new MimeMessage(sess);
+			
 			// 给消息对象设置收件人、发件人、主题、发信时间
 			InternetAddress mail_from = new InternetAddress(from);
 			message.setFrom(mail_from);

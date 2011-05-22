@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 		if(id.length()==6){
 			studentinfo = studentinfoDAO.findById(id);
 			if(studentinfo == null){
-				request.setAttribute("errorInformation", "The user does not exist!");
+				request.setAttribute("errorInformation", "用户名不存在！");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 				return;
 			}else{
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 					//TODO: replace by student.jsp
 					request.getRequestDispatcher("teacher.jsp").forward(request, response);
 				}else{
-					request.setAttribute("errorInformation", "The password is not right!");
+					request.setAttribute("errorInformation", "密码不正确！");
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				}
 			}
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 		if(id.length()==10){
 			teacherinfo = teacherinfoDAO.findById(id);
 			if(teacherinfo == null){
-				request.setAttribute("errorInformation", "The user does not exist!");
+				request.setAttribute("errorInformation", "用户名不存在！");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 				return;
 			}else{
@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 					}
 					request.getRequestDispatcher("teacher.jsp").forward(request, response);
 				}else{
-					request.setAttribute("errorInformation", "The password is not right!");
+					request.setAttribute("errorInformation", "密码不正确！");
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				}
 			}
