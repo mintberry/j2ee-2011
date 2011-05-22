@@ -29,12 +29,16 @@ public class SendMailServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		sendMail("luffywuliao@gmail.com", "test", "如题");
 	}
 
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		sendMail("luffywuliao@gmail.com", "test", "如题");
+	}
+	
 	public void sendMail(String to, String subject, String content){
 		try {
-			String messageText = content;
 			Properties prop = new Properties();
 			prop.put("mail.smtp.host", mailserver);
 			prop.put("mail.smtp.auth", "true");
@@ -51,18 +55,17 @@ public class SendMailServlet extends HttpServlet {
 
 			Multipart mul = new MimeMultipart(); // 新建一个MimeMultipart对象来存放多个BodyPart对象
 			BodyPart mdp = new MimeBodyPart(); // 新建一个存放信件内容的BodyPart对象
-			mdp.setContent(messageText, "text/html;charset=gb2312");
+			mdp.setContent(content, "text/html;charset=gb2312");
 			mul.addBodyPart(mdp); // 将含有信件内容的BodyPart加入到MimeMulitipart对象中
 			message.setContent(mul); // 把mul作为消息对象的内容
 			message.saveChanges();
-			Transport transport = sess.getTransport("smtp");
+			Transport transport = sess.getTransport("smtps");
 			// 以smtp方式登陆邮箱，第1个参数是发送邮件用的邮件服务器SMTP地址，第2个参数为用户名，第3个参数为密码
 			transport.connect(mailserver, from, password);
 			transport.sendMessage(message, message.getAllRecipients());
 			transport.close();
 		} catch (Exception e) {
 			System.out.println("发送邮件产生的错误：" + e.getMessage());
-
 		}
 	}
 	
