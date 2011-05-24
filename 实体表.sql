@@ -37,7 +37,13 @@ create table courses
     course_id char(10) not null,
     name char(20) not null,
     credit int,
-	#上课的时间不知道怎么弄
+	schedule_0 int default 0, #(1-70 represent the possible time)
+	schedule_1 int default 0, #(1-70 represent the possible time)
+	schedule_2 int default 0, #(1-70 represent the possible time)
+	t_id char(10),
+	t_name char(20),
+	maxstudent int,
+	place varchar(255),
 	primary key(course_id)
 )CHARSET=gbk;
 
