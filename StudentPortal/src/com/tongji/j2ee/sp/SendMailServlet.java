@@ -23,18 +23,18 @@ import javax.servlet.http.HttpServletResponse;
 public class SendMailServlet extends HttpServlet {
 
 	//TODO: create an email account to send email
-	String from = "";
-	String password = "";
-	String mailserver = "";
+	String from = "notifysse@gmail.com";
+	String password = "wanghaozhu";
+	String mailserver = "smtp.gmail.com";
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		sendMail("luffywuliao@gmail.com", "test", "如题");
+		sendMail("luffywuliao@gmail.com", "test", "濡傞");
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		sendMail("luffywuliao@gmail.com", "test", "如题");
+		sendMail("luffywuliao@gmail.com", "test", "濡傞");
 	}
 	
 	public void sendMail(String to, String subject, String content){
@@ -46,7 +46,6 @@ public class SendMailServlet extends HttpServlet {
 			sess.setDebug(true);
 			MimeMessage message = new MimeMessage(sess);
 			
-			// 给消息对象设置收件人、发件人、主题、发信时间
 			InternetAddress mail_from = new InternetAddress(from);
 			message.setFrom(mail_from);
 			InternetAddress mail_to = new InternetAddress(to);
@@ -54,19 +53,18 @@ public class SendMailServlet extends HttpServlet {
 			message.setSubject(subject);
 			message.setSentDate(new Date());
 
-			Multipart mul = new MimeMultipart(); // 新建一个MimeMultipart对象来存放多个BodyPart对象
-			BodyPart mdp = new MimeBodyPart(); // 新建一个存放信件内容的BodyPart对象
+			Multipart mul = new MimeMultipart(); 
+			BodyPart mdp = new MimeBodyPart(); 
 			mdp.setContent(content, "text/html;charset=gb2312");
-			mul.addBodyPart(mdp); // 将含有信件内容的BodyPart加入到MimeMulitipart对象中
-			message.setContent(mul); // 把mul作为消息对象的内容
+			mul.addBodyPart(mdp); 
+			message.setContent(mul);
 			message.saveChanges();
 			Transport transport = sess.getTransport("smtps");
-			// 以smtp方式登陆邮箱，第1个参数是发送邮件用的邮件服务器SMTP地址，第2个参数为用户名，第3个参数为密码
 			transport.connect(mailserver, from, password);
 			transport.sendMessage(message, message.getAllRecipients());
 			transport.close();
 		} catch (Exception e) {
-			System.out.println("发送邮件产生的错误：" + e.getMessage());
+			System.out.println("Email sending error:" + e.getMessage());
 		}
 	}
 	
@@ -74,7 +72,7 @@ public class SendMailServlet extends HttpServlet {
 		try {
 			
 		} catch (Exception e) {
-			System.out.println("发送邮件产生的错误：" + e.getMessage());
+			System.out.println("Email sending error:" + e.getMessage());
 		}
 	}
 	
