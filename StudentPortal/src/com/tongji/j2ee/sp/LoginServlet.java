@@ -24,6 +24,8 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		HttpSession hs = request.getSession();
+		
 		String id = request.getParameter("userID");
 		String password = request.getParameter("password");
 		
@@ -31,12 +33,14 @@ public class LoginServlet extends HttpServlet {
 		if(id.length()==6){
 			studentinfo = studentinfoDAO.findById(id);
 			if(studentinfo == null){
+
 				request.setAttribute("errorInformation", "用户名不存在");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 				return;
 			}else{
 				if(password.equals(studentinfo.getPassword())){
 					if(studentinfo.getEmail().equals("")){
+						hs.setAttribute("user", studentinfo);
 						request.getRequestDispatcher("register.jsp").forward(request, response);
 						return;
 					}
@@ -53,22 +57,27 @@ public class LoginServlet extends HttpServlet {
 		if(id.length()==10){
 			teacherinfo = teacherinfoDAO.findById(id);
 			if(teacherinfo == null){
+
 				request.setAttribute("errorInformation", "用户名不存在");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 				return;
 			}else{
 				if(password.equals(teacherinfo.getPassword())){
 					if(teacherinfo.getEmail().equals("")){
+						hs.setAttribute("user", teacherinfo);
 						request.getRequestDispatcher("register.jsp").forward(request, response);
+						
 						return;
 					}
 					request.getRequestDispatcher("teacher.jsp").forward(request, response);
 				}else{
+
 					request.setAttribute("errorInformation", "密码错误");
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 				}
 			}
 		}
+		
 		
 		//TODO:for admin_id
 	}
