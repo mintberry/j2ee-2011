@@ -24,9 +24,9 @@ public class RegMailServlet extends HttpServlet {
 		HttpSession hs = request.getSession();
 		Studentinfo current = (Studentinfo) hs.getAttribute("user");
 		StudentinfoDAO sDAO = new StudentinfoDAO();
-		
+
 		String sAddress = (String) request.getParameter("email1");
-		
+
 		System.out.println("session:" + current.getSId() + sAddress);
 		Session s = (Session) HibernateSessionFactory.getSession();
 		current.setEmail(sAddress);
@@ -34,10 +34,11 @@ public class RegMailServlet extends HttpServlet {
 		try {
 			Transaction ts = s.beginTransaction();
 			ts.commit();
-		}catch(Exception e){
-			
-		}finally{
+		} catch (Exception e) {
+
+		} finally {
 			s.close();
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	}
 }

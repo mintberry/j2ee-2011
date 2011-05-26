@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
 public class SendMailServlet extends HttpServlet {
 
 	//TODO: create an email account to send email
@@ -29,15 +30,17 @@ public class SendMailServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Vector<String> to = (Vector<String>)request.getAttribute("to");
+		String content = (String)request.getAttribute("content");
+		String subject = (String)request.getAttribute("subject");
+		sendMails(to, subject, content);
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//sendMail("luffywuliao@gmail.com, notifysse@gmail.com", "test", "如题");
-		Vector<String> to = new Vector<String>();
-		to.add("notifysse@gmail.com");
-		to.add("luffywuliao@gmail.com");
-		sendMails(to, "grouptest", "RT");
+		//String to = request.getParameter("email1");
+		//String content = "localhost:8080//StudentPortal/RegMail?email=" + to;
+		//sendMail(to, "邮箱地址确认", content);
 	}
 	
 	public void sendMail(String to, String subject, String content){

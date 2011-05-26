@@ -90,7 +90,7 @@
 							</div>
 
 							<div id="acc-form">
-								<form action="/StudentPortal/RegMailServlet" method="post">
+								<form action="/StudentPortal/CheckMailAddrServlet" method="post">
 
 									<div id="row-email" class="row clearfix">
 
