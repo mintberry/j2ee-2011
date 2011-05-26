@@ -18,19 +18,18 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class RegMailServlet extends HttpServlet {
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession hs = request.getSession();
-		Studentinfo current = (Studentinfo) hs.getAttribute("user");
-		StudentinfoDAO sDAO = new StudentinfoDAO();
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		
+		StudentinfoDAO studentinfoDAO = new StudentinfoDAO();
+		Studentinfo current = studentinfoDAO.findById(id);
 
-		String sAddress = (String) request.getParameter("email1");
-
-		System.out.println("session:" + current.getSId() + sAddress);
 		Session s = (Session) HibernateSessionFactory.getSession();
-		current.setEmail(sAddress);
-		sDAO.save(current);
+		current.setEmail(email);
+		studentinfoDAO.save(current);
 		try {
 			Transaction ts = s.beginTransaction();
 			ts.commit();

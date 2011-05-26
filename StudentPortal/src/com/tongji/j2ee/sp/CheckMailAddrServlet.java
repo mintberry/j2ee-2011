@@ -21,26 +21,16 @@ public class CheckMailAddrServlet extends HttpServlet {
 		Object infoObject = hs.getAttribute("user");
 
 		if (infoObject instanceof Studentinfo) {
-			System.out.println("OK");
 			Studentinfo studentinfo = (Studentinfo) infoObject;
 			String id = studentinfo.getSId();
 			String password = studentinfo.getPassword();
-			String email = request.getParameter("email1");
-			Vector<String> to =  new Vector<String>();
-			to.add(email);
+			String to = request.getParameter("email1");
 			String subject = "邮箱地址确认";
 			String content = "http://localhost:8080/StudentPortal/RegMailServlet"
-					+ "?id=" + id + "&password=" + password + "&email=" + email;
-			
-			request.setAttribute("to", to);
-			request.setAttribute("subject", subject);
-			request.setAttribute("content", content);
+					+ "?id=" + id + "&password=" + password + "&email=" + to;
 			SendMailServlet sendMailServlet = new SendMailServlet();
-			sendMailServlet.doPost(request, response);
-			return;
-		} else {
-			System.out.println("Fuck");
-			return;
+			sendMailServlet.sendMail(to, subject, content);
+			request.getRequestDispatcher("EmailSuccess.html");
 		}
 	}
 }

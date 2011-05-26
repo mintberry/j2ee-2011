@@ -41,7 +41,6 @@ public class LoginServlet extends HttpServlet {
 						hs.setAttribute("user", studentinfo);
 						request.getRequestDispatcher("register.jsp").forward(request, response);
 					}
-					//TODO: replace by student.jsp
 					request.getRequestDispatcher("student.jsp").forward(request, response);
 				}else{
 					request.setAttribute("errorInformation", "密码错误");
