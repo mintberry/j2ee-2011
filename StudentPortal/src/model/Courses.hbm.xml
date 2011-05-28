@@ -16,5 +16,29 @@
         <property name="credit" type="java.lang.Integer">
             <column name="credit" />
         </property>
+        <property name="schedule0" type="java.lang.Integer">
+            <column name="schedule_0" />
+        </property>
+        <property name="schedule1" type="java.lang.Integer">
+            <column name="schedule_1" />
+        </property>
+        <property name="schedule2" type="java.lang.Integer">
+            <column name="schedule_2" />
+        </property>
+        <property name="schedule3" type="java.lang.Integer">
+            <column name="schedule_3" />
+        </property>
+        <property name="TId" type="java.lang.String">
+            <column name="t_id" length="10" />
+        </property>
+        <property name="TName" type="java.lang.String">
+            <column name="t_name" length="20" />
+        </property>
+        <property name="maxstudent" type="java.lang.Integer">
+            <column name="maxstudent" />
+        </property>
+        <property name="place" type="java.lang.String">
+            <column name="place" />
+        </property>
     </class>
 </hibernate-mapping>

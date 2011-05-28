@@ -24,6 +24,14 @@ public class CoursesDAO extends BaseHibernateDAO {
 	// property constants
 	public static final String NAME = "name";
 	public static final String CREDIT = "credit";
+	public static final String SCHEDULE0 = "schedule0";
+	public static final String SCHEDULE1 = "schedule1";
+	public static final String SCHEDULE2 = "schedule2";
+	public static final String SCHEDULE3 = "schedule3";
+	public static final String _TID = "TId";
+	public static final String _TNAME = "TName";
+	public static final String MAXSTUDENT = "maxstudent";
+	public static final String PLACE = "place";
 
 	public void save(Courses transientInstance) {
 		log.debug("saving Courses instance");
@@ -93,6 +101,38 @@ public class CoursesDAO extends BaseHibernateDAO {
 
 	public List findByCredit(Object credit) {
 		return findByProperty(CREDIT, credit);
+	}
+
+	public List findBySchedule0(Object schedule0) {
+		return findByProperty(SCHEDULE0, schedule0);
+	}
+
+	public List findBySchedule1(Object schedule1) {
+		return findByProperty(SCHEDULE1, schedule1);
+	}
+
+	public List findBySchedule2(Object schedule2) {
+		return findByProperty(SCHEDULE2, schedule2);
+	}
+
+	public List findBySchedule3(Object schedule3) {
+		return findByProperty(SCHEDULE3, schedule3);
+	}
+
+	public List findByTId(Object TId) {
+		return findByProperty(_TID, TId);
+	}
+
+	public List findByTName(Object TName) {
+		return findByProperty(_TNAME, TName);
+	}
+
+	public List findByMaxstudent(Object maxstudent) {
+		return findByProperty(MAXSTUDENT, maxstudent);
+	}
+
+	public List findByPlace(Object place) {
+		return findByProperty(PLACE, place);
 	}
 
 	public List findAll() {

@@ -40,6 +40,7 @@ create table courses
 	schedule_0 int default 0, #(1-70 represent the possible time)
 	schedule_1 int default 0, #(1-70 represent the possible time)
 	schedule_2 int default 0, #(1-70 represent the possible time)
+	schedule_3 int default 0, #(1-70 represent the possible time)
 	t_id char(10),
 	t_name char(20),
 	maxstudent int,
