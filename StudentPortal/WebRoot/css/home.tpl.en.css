@@ -1,0 +1,8 @@
+﻿body,input,textarea{ font-size:15px;}
+body,input,textarea,select{ font-family:/*"Myriad Pro",tahoma*/arial,\5fae\8f6f\96c5\9ed1,\5b8b\4f53,sans-serif;}
+#acc-submit{ background-image:url(../Img/Home.Buttons.png); background-repeat:no-repeat}
+#do_register,#do_forget,#do_openid_login,#do_login,#do_reset{background-image:url(../Img/Register.Button.png);}
+
+#ct-submit,#ct-btn,#ct-close,#home-contact{ background-image:url(../Img/Home.Buttons.png); background-repeat:no-repeat}
+#ct-pop-row-cate .ct-pop-row-l{ width:85px;}
+#ct-category{width:365px;}

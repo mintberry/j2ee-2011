@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 		
 		HttpSession hs = request.getSession();
 		
+		
 		String id = request.getParameter("userID");
 		String password = request.getParameter("password");
 		
