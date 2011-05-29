@@ -38,8 +38,9 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else{
 				if(password.equals(studentinfo.getPassword())){
+					hs.setAttribute("user", studentinfo);
 					if(studentinfo.getEmail().equals("")){
-						hs.setAttribute("user", studentinfo);
+						//hs.setAttribute("user", studentinfo);
 						request.getRequestDispatcher("register.jsp").forward(request, response);
 					}
 					request.getRequestDispatcher("student.jsp").forward(request, response);
@@ -59,8 +60,9 @@ public class LoginServlet extends HttpServlet {
 				return;
 			}else{
 				if(password.equals(teacherinfo.getPassword())){
+					hs.setAttribute("user", teacherinfo);
 					if(teacherinfo.getEmail().equals("")){
-						hs.setAttribute("user", teacherinfo);
+						
 						request.getRequestDispatcher("register.jsp").forward(request, response);
 					}
 					request.getRequestDispatcher("teacher.jsp").forward(request, response);

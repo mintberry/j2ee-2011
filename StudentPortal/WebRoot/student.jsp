@@ -156,7 +156,7 @@
 	border: solid #999;
 	border-width: 1px 0;
 	background: #f7f7f7;
-	height: 167px;
+	height: 367px;
 }  /* 设置内容高度[height]、背景颜色[background]、上下分割线[border] */ /*TAB1效果[ol/li]*/
 #tab ul li #oDIV1 ol {
 	margin: 8px;
@@ -445,78 +445,232 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 								</div-->
 								<div id="tab">
-								<ul>
-									<li id="tab1" class="up">
-										<h3>
-											<a href="####" onclick="javascript:toggleTo(1)">支付</a>
-										</h3>
-										<!-- onclick鼠标释放，onmousemove鼠标经过。 -->
-										<div id="oDIV1">
-											<ol>
-												<li>
-													<a href="http://www.ijavascript.cn"><span>使该元素在FireFox下获得高度从而显示背景</span>
-													</a>
-												</li>
-												<li>
-													<a href="http://www.ijavascript.cn"><span>为了保证浏览器的兼容性</span>
-													</a>
-												</li>
-												<li>
-													<a href="http://www.ijavascript.cn"><span>文本对齐方式改回默认left</span>
-													</a>
-												</li>
-												<li>
-													<a href="http://www.ijavascript.cn"><span>左右自适应[FireFox居中方式]</span>
-													</a>
-												</li>
-												<li>
-													<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
-													</a>
-												</li>
-												<li>
-													<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
-													</a>
-												</li>
-											</ol>
-										</div>
-									</li>
-									<li id="tab2">
-										<h3>
-											<a href="####" onclick="javascript:toggleTo(2)">软件下载</a>
-										</h3>
-										<div id="oDIV2" style="display: none;">
-											<a href="http://www.ijavascript.cn"><img
-													src="http://www.ijavascript.cn/templates/logo/logo.gif"
-													alt="播放软件下载" />
-											</a>
-											<a href="http://www.ijavascript.cn"><img
-													src="http://www.ijavascript.cn/templates/logo/logo.gif"
-													alt="播放软件下载" />
-											</a>
-										</div>
-									</li>
-									<li id="tab3">
-										<h3>
-											<a href="####" onclick="javascript:toggleTo(3)">问题答疑</a>
-										</h3>
-										<div id="oDIV3" style="display: none;">
-											<iframe frameborder="0" scrolling="auto"
-												src="http://www.ijavascript.cn"></iframe>
-										</div>
-									</li>
-									<li id="tab4">
-										<h3>
-											<a href="####" onclick="javascript:toggleTo(4)">客服</a>
-										</h3>
-										<div id="oDIV4" style="display: none;">
-											<a href="http://www.ijavascript.cn">JavaScript教程网</a>
-										</div>
-									</li>
-								</ul>
-							</div>
+									<ul>
+										<li id="tab1" class="up">
+											<h3>
+												<a href="####" onclick="javascript:toggleTo(1)">主页</a>
+											</h3>
+											<!-- onclick鼠标释放，onmousemove鼠标经过。 -->
+											<div id="oDIV1">
+												<ol>
+													<li>
+														<a href="http://www.ijavascript.cn"><span>使该元素在FireFox下获得高度从而显示背景</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.ijavascript.cn"><span>为了保证浏览器的兼容性</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.ijavascript.cn"><span>文本对齐方式改回默认left</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.ijavascript.cn"><span>左右自适应[FireFox居中方式]</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
+														</a>
+													</li>
+												</ol>
+											</div>
+										</li>
+										<li id="tab2">
+											<h3>
+												<a href="####" onclick="javascript:toggleTo(2)">课程表</a>
+											</h3>
+											<div id="oDIV2" style="display: none;">
+											<br/>
+												<table height="90%" width="90%" border="1"
+													bgcolor="#80ffff" align="center">
+													<tbody>
+														<tr>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+															<td>
+																&nbsp;
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</li>
+										<li id="tab3">
+											<h3>
+												<a href="####" onclick="javascript:toggleTo(3)">课程管理</a>
+											</h3>
+											<div id="oDIV3" style="display: none;">
+											<br/>
+												
+											</div>
+										</li>
+										<li id="tab4">
+											<h3>
+												<a href="####" onclick="javascript:toggleTo(4)">备用</a>
+											</h3>
+											<div id="oDIV4" style="display: none;">
+												<a href="http://www.ijavascript.cn">JavaScript教程网</a>
+											</div>
+										</li>
+									</ul>
+								</div>
 
 							</div>
-							
+
 
 						</div>
 

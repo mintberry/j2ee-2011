@@ -342,12 +342,13 @@ function validateForm(form) {
 	//		if (validateField(form.elements[i]))
 	//			valid = false;
 	//	}
-	var regID = /\d{6}|\d{10}/;
+	var regID = /^\d{6}$/;
+	var regID2 = /^\d{10}$/;
 
 	var userID = form.elements[0].value;
 	var passwd = form.elements[1].value;
 	alert(userID + ":" + passwd.length);
-	if (!regID.exec(userID)) {
+	if (!regID.exec(userID) && !regID2.exec(userID)) {
 		//alert("IDerror");
 		document.getElementById("NameError").style.display = "inline";
 		
