@@ -130,7 +130,8 @@
 	width: 945px;
 }  /* 设置总宽度[width] */
 #tab {
-	height: 50px;
+left:60px;
+	height: 300px;
 	background:#99FFFF;
 	overflow: hidden;
 }  /* 设置总高度[height]、标题背景颜色[background] */
@@ -155,7 +156,7 @@
 #tab ul li div {
 	border: solid #999;
 	border-width: 1px 0;
-	background: #CC66CC;
+	background: #FFFFFF;
 	height: 167px;
 }  /* 设置内容高度[height]、背景颜色[background]、上下分割线[border] */ /*TAB1效果[ol/li]*/
 #tab ul li #oDIV1 ol {
@@ -216,150 +217,45 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 
-	<body>
+	<body>&nbsp;&nbsp;
 
 
 
-		<div id="holder"></div>
-
-		<div id="mn">
-
-			<div id="mn-head" class="clearfix">
-
-				<div id="hd" class="clearfix">
-
-					<div id="hd-l">
-
-						<a id="hd-logo" href="/activity"> <img id="hd-logo-img"
-								src="imgs/sse.png" title="GuruDigger" alt="GuruDigger" /> </a>
-
-					</div>
-
-					<div id="hd-r">
-						&nbsp;
-
-						<br>
-						<div id="nav-prof">
-
-							<a class="nav-prof-itm" id="nav-prof-setting" href="/settings"
-								title="设置"><img src="imgs/setting.png"
-									style="left: 2px; width: 16px;" /> </a><a class="nav-prof-itm"
-								id="nav-prof-logout" title="退出" href="/logout"><img
-									src="imgs/exit.png" /> </a>
-
-
-
-						</div>
-
-					</div>
-
-				</div>
-			<div id="tab">
-								<ul>
-									<li id="tab1" class="up">
-										<h3> 
-											<a href="####" onclick="javascript:toggleTo(1)">主页</a> 
-										</h3>
-										<!-- onclick鼠标释放，onmousemove鼠标经过。 -->
-										
-									</li>
-									<li id="tab2">
-										<h3>
-											<a href="####" onclick="javascript:toggleTo(2)">课程表</a>
-										</h3>
-										<div id="oDIV2" style="display: none;">
-											<a href="http://www.ijavascript.cn"><img
-													src="http://www.ijavascript.cn/templates/logo/logo.gif"
-													alt="播放软件下载" />
-											</a>
-											<a href="http://www.ijavascript.cn"><img
-													src="http://www.ijavascript.cn/templates/logo/logo.gif"
-													alt="播放软件下载" />
-											</a>
-										</div>
-									</li>
-									<li id="tab3">
-										<h3>
-											<a href="####" onclick="javascript:toggleTo(3)">课程管理</a>
-										</h3>
-										<div id="oDIV3" style="display: none;">
-											<iframe frameborder="0" scrolling="auto"
-												src="http://www.ijavascript.cn"></iframe>
-										</div>
-									</li>
-									
-								</ul>
-							</div>
-
-							</div>
-							
-
-						</div>
-
-					</div>
-
-				</div>
-
-			
-								<ul></ul>
-							</div>
-
-							</div>
-							
-
-						</div>
-
-					</div>
-
-				</div>
-
-					</div>
-
-					<br>
-
-					<div id="nav-search">
-
-
-
-					</div>
-
-
-
-
-
-					<div id="nav-bd-l">
-
-					</div>
-					<br>
-
-			
-
-					<br>
-				</div>
-
-			</div>
-
-		
-
-
-
-				<div id="mn-c" class="ly-m">
-
-					<div id="mn-c-inner" class="ly-m-inner">
-
-
-
-						<div id="prof-pnl" class="mn-c-pnl">
-
-
-
-
-
-							<br>
-
-
-
-							<div id="prof-basic" class="block clearfix bd-round-blue-light" style="left:45; top:-70; width:945; height:500">
+		<div id="mn-head" class="clearfix">&nbsp;<br><div id="hd" class="clearfix"> 
+ 
+					<div id="hd-l" style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+ 
+						<a id="hd-logo" href="/activity"> <img id="hd-logo-img" src="imgs/sse.png" title="GuruDigger" alt="GuruDigger" style="left: 50px;"> </a> 
+ 
+					</div> 
+ 
+					<div id="hd-r"> 
+						&nbsp; 
+ 
+						<br> 
+						<div id="nav-prof"> 
+ 
+							<a class="nav-prof-itm" id="nav-prof-setting" href="/settings" title="设置"><img src="imgs/setting.png" style="left: 2px; width: 16px;"> </a><a class="nav-prof-itm" id="nav-prof-logout" title="退出" href="/logout"><img src="imgs/exit.png"> </a> 
+ 
+ 
+ 
+						</div> 
+ 
+					</div> 
+ 
+				</div> 
+			<div id="tab"> 
+								<ul> 
+									<li id="tab1" class="up"> 
+										<h3>  
+											<a href="####" onclick="javascript:toggleTo(1)">主页</a>  
+										</h3> 
+										<!-- onclick鼠标释放，onmousemove鼠标经过。 --> 
+										 
+										 
+										 
+										 <div id="oDIV1" style="height: 550px;">
+										 	<div id="prof-basic" class="block clearfix bd-round-blue-light"  style="top: 8px; left: 4px;">
 
 								<div id="prof-basic-l">
 
@@ -372,15 +268,14 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 								<div id="prof-basic-r" class="clearfix">
 
-									<div id="prof-info">
+									<div id="prof-info" style="top: 16px; height: 131px; left: 21px;">
 
-										<h1>
-											<span id="prof-name">littne</span>
+										<h1><span id="prof-name">littne</span>
 										</h1>
 
-										<div id="prof-desc">
+										<div id="prof-desc" style="top: 38px; left: 81px;">
 
-											<div>
+											<div style="top: -37px; left: -31px;">
 
 
 
@@ -399,11 +294,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 											</div>
 
-											<div id="latest-status" class="clearfix">
-
-
-
-											</div>
+									
 
 										</div>
 
@@ -412,6 +303,93 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 								</div>
+										 
+ 	 </div>
+ 	 </div>
+										 
+									</li> 
+									<li id="tab2"> 
+										<h3> 
+											<a href="####" onclick="javascript:toggleTo(2)">课程表</a> 
+										</h3> 
+ <div id="oDIV2" style="display: none;"> 											<br/> 												<table height="90%" width="90%" border="1" 													bgcolor="#80ffff" align="center"> 													<tbody> 														<tr> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 														</tr> 														<tr> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 														</tr> 														<tr> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 														</tr> 														<tr> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 														</tr> 														<tr> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 														</tr> 														<tr> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 															<td> 																&nbsp; 															</td> 														</tr> 													</tbody> 												</table> 											</div> 
+									</li> 
+									<li id="tab3"> 
+										<h3> 
+											<a href="####" onclick="javascript:toggleTo(3)" onmousemove="javascript:toggleTo(4)">课程管理</a> 
+										</h3> 
+									<div id="oDIV3" style="display: none;"> 
+									<br/> 											
+									</div>
+									
+								    <div id="oDIV4" style="display: none;"> 
+								    
+										<h3> 
+											<a href="####" onclick="javascript:toggleTo(3)" onmousemove="javascript:toggleTo(4)">abccd</a> 
+										</h3> 
+										<h3> 
+											<a href="####" onclick="javascript:toggleTo(3)" onmousemove="javascript:toggleTo(4)">bcdde</a> 										
+										</h3>
+									<br/> 	
+																		
+									</div>
+									 
+									</li> 
+									 
+								</ul> 
+							</div> 
+ 
+							</div>
+
+		
+
+
+					<br>
+
+					<div id="nav-search">
+
+
+
+					</div>
+
+
+
+
+
+				
+					<br>
+
+			
+
+					<br>
+					
+					
+				<div>
+				
+				</div>
+
+
+<div>
+			</div>
+
+		
+
+
+  			
+
+
+
+						<div id="prof-pnl" class="mn-c-pnl">
+
+
+
+
+
+							<br>
+
+
+
+						
 
 
 
@@ -546,12 +524,12 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 
-		<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://code.google.com/p/j2ee-2011/" target="_blank" >关于我们</a>
+	     	<h1>&nbsp;&nbsp;</h1><h1><br></h1><h1><br><a href="http://code.google.com/p/j2ee-2011/" target="_blank">关于我们</a> 
 							</h1>
 
 
 				
-			</div>
+	
 
 		
 
