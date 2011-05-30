@@ -1,6 +1,7 @@
 package com.tongji.j2ee.sp;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Courses;
+import model.StudentCourseDAO;
 import model.Studentinfo;
 import model.StudentinfoDAO;
 import model.Teacherinfo;
@@ -43,6 +46,9 @@ public class LoginServlet extends HttpServlet {
 						//hs.setAttribute("user", studentinfo);
 						request.getRequestDispatcher("register.jsp").forward(request, response);
 					}
+					StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
+					List myCourses = studentCourseDAO.findBySId(studentinfo.getSId());
+					request.setAttribute("myCourses", myCourses);
 					request.getRequestDispatcher("student.jsp").forward(request, response);
 				}else{
 					request.setAttribute("errorInformation", "密码错误");
@@ -62,7 +68,6 @@ public class LoginServlet extends HttpServlet {
 				if(password.equals(teacherinfo.getPassword())){
 					hs.setAttribute("user", teacherinfo);
 					if(teacherinfo.getEmail().equals("")){
-						
 						request.getRequestDispatcher("register.jsp").forward(request, response);
 					}
 					request.getRequestDispatcher("teacher.jsp").forward(request, response);

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="model.Courses" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -655,8 +656,17 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											</h3>
 											<div id="oDIV3" style="display: none;">
 											<br/>
-												
-											</div>
+												<%
+    	 											List myCourses = (List)request.getAttribute("myCourses");								
+    												for(int i=0;i<myCourses.size();i++){
+														Courses temp = (Courses)myCourses.get(i);
+														out.println(temp.getName());
+												%>
+    											<br/><%=temp.getName()%>
+    											<%
+												}
+												%>						
+    										</div>
 										</li>
 										<li id="tab4">
 											<h3>
