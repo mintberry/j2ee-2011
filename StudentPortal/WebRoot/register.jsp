@@ -1,10 +1,13 @@
-<%@ page language="java" import="java.util.*" import="model.Studentinfo" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" import="model.Studentinfo"
+	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+
+<%@page import="model.Studentinfo"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -22,8 +25,7 @@
 
 		<link href="imgs/c1.jpg" rel="shortcut icon" type="image/x-icon" />
 
-		<link href="http://res.gurudigger.com/css/core.css" rel="stylesheet"
-			type="text/css" />
+		<link href="css/core.css" rel="stylesheet" type="text/css" />
 
 		<%--script src="http://res.gurudigger.com/js/jquery-1.4.2.min.js"
 			type="text/javascript">
@@ -36,12 +38,9 @@
 
 
 
-		<link href="http://res.gurudigger.com/css/home.css" rel="stylesheet"
-			type="text/css" />
+		<link href="css/home.css" rel="stylesheet" type="text/css" />
 
-		<link
-			href="http://res.gurudigger.com/globalization/en-us/css/home.css"
-			rel="stylesheet" type="text/css" />
+		<link href="css/home1.css" rel="stylesheet" type="text/css" />
 
 		<!--[if IE ]><link href="http://res.gurudigger.com/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
 
@@ -79,18 +78,38 @@
 						<div id="app-apply-c-wrapper" class="ly-m clearfix">
 
 							<div id="app-apply-c" class="ly-m-inner">
+								<br />
+								<br />
+								<br />
+								<br />
+								<div align="center">
+									用户基本信息
+									<br>
+								</div>
+								<div align="center">
+									<div align="center">
+										<%
+											Studentinfo si;
+											HttpSession hs = request.getSession();
+											si = (Studentinfo) hs.getAttribute("user");
+										%><jsp:useBean id="si1" scope="page" class="model.Studentinfo"></jsp:useBean>
+										<br>
+										学号：<%=si.getSId()%>&nbsp; &nbsp;&nbsp;姓名：<%=si.getName()%><br>
+										性别：<%=si.getSex()%>
+									</div>
+								</div>
 
 							</div>
 						</div>
-
 						<div id="acc-apply-l" class="ly-l">
 
-							<div id="slogan"> 
-								第一次登录请注册邮箱 
+							<div id="slogan">
+								第一次登录请注册邮箱
 							</div>
 
 							<div id="acc-form">
-								<form action="/StudentPortal/CheckMailAddrServlet" method="post">
+								<form name="mailform"
+									action="/StudentPortal/CheckMailAddrServlet" method="post">
 
 									<div id="row-email" class="row clearfix">
 
@@ -99,7 +118,9 @@
 											<div class="row-l">
 												邮箱地址:
 											</div>
-
+											<span id="error1" style="display: none"
+												style="font-size:10px"><font color=red>请输入正确的邮箱地址</font>
+											</span>
 										</div>
 
 										<div class="row-c bd">
@@ -118,7 +139,9 @@
 											<div class="row-l">
 												验证邮箱地址:
 											</div>
-
+											<span id="error2" style="display: none"
+												style="font-size:10px"><font color=red>两次输入不一致，请再试一次</font>
+											</span>
 										</div>
 
 										<div class="row-c bd">
@@ -132,8 +155,11 @@
 
 									<div id="row-submit" class="row clearfix">
 									</div>
-									<input type="image" alt="提交" src="imgs/login.png"
-										onclick="submit()" />
+									<%--input type="image" alt="提交" src="imgs/login.png"
+										onclick="submit()" /--%>
+									<img alt="提交" src="imgs/login.png" class="submitbtn"
+										style="cursor: pointer"
+										onclick="validateForm(document.mailform)" />
 								</form>
 							</div>
 
@@ -172,13 +198,13 @@
 							<span class="fn-b">Junk Mail</span>" folder, as your confirmation
 							email might have tragically been redirected.
 						</p>
-					<p>
-						Any questions or suggestions feel free to
-						<a href="#contact" class="do-contact">contact us</a>.
-						<br />
+						<p>
+							Any questions or suggestions feel free to
+							<a href="#contact" class="do-contact">contact us</a>.
+							<br />
 
-						We look forward to making a perfect work for you.
-					</p>
+							We look forward to making a perfect work for you.
+						</p>
 					</p>
 
 				</div>
@@ -636,7 +662,40 @@ $(function() {
 
 		</div>
 
+		<script type="text/javascript">
+function validateForm(form) {
+	document.getElementById("error1").style.display = "none";
+	document.getElementById("error2").style.display = "none";
+	//alert(form.elements.length);
+	//form.submit();
+	var valid = true;
 
+	var reMail = /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/;
+
+	var firstMail = form.elements[0].value;
+	var secondMail = form.elements[1].value;
+	alert(firstMail + ":" + secondMail);
+	if (!reMail.exec(firstMail)) {
+		//alert("IDerror");
+		document.getElementById("error1").style.display = "inline";
+
+		valid = false;
+		return valid;
+	}
+	if (secondMail != firstMail) {
+		//alert("pwerror");
+		document.getElementById("error2").style.display = "inline";
+
+		valid = false;
+	}
+
+	if (valid) {
+		form.submit();
+	}
+	return valid;
+
+}
+</script>
 
 		<script type="text/javascript">
 
@@ -660,7 +719,6 @@ _gaq.push( [ '_trackPageview' ]);
 
 })();
 </script>
-
 	</body>
 
 </html>
