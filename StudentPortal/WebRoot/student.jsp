@@ -1,3 +1,8 @@
+<% 
+response.setHeader("Pragma","No-cache"); 
+response.setHeader("Cache-Control","no-cache"); 
+response.setDateHeader("Expires", 0); 
+%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="model.Courses" %>
 <%
@@ -6,6 +11,12 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+
+<%
+Object obj=session.getAttribute("user");
+if(obj==null)
+out.print("<script>window.location.href='index.jsp';</script>");//strange here
+%> 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -245,9 +256,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 							<a class="nav-prof-itm" id="nav-prof-setting" href="/settings"
 								title="设置"><img src="imgs/setting.png"
 									style="left: 2px; width: 16px;" /> </a><a class="nav-prof-itm"
-								id="nav-prof-logout" title="退出" href="/logout"><img
+								id="nav-prof-logout" title="退出" href="/StudentPortal/logout"><img
 									src="imgs/exit.png" /> </a>
-
 
 
 						</div>
@@ -364,25 +374,26 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 									<div id="prof-info">
 
 										<h1>
-											<span id="prof-name">littne</span>
+											<!--span id="prof-name">littne</span-->
+											<jsp:useBean id="user" scope="session" class="model.Studentinfo"></jsp:useBean>
 										</h1>
 
 										<div id="prof-desc">
 
 											<div>
+												<span id="prof-title" style="display: none">Shanghai, CN</span>
 
 
 
-												<span id="prof-title">Shanghai, CN</span>
-
-
-
-												<span id="prof-info-spl">|</span>
+												<span id="prof-info-spl"></span>
 
 
 
 												<a id="prof-blog" href="http://littne.wordpress.com"
-													target="_blank">littne.wordpress.com</a>
+													target="_blank" style="display: none">littne.wordpress.com</a><br>
+													<%=user.getSId()%> &nbsp;&nbsp; <%=user.getName()%><br>
+													
+													<%=user.getSex()%><br>
 
 
 
@@ -415,8 +426,6 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 							</div>
 
 							<br>
-
-
 
 							<div id="prof-pnl-act" class="bd-round-blue-light">
 
@@ -659,14 +668,15 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<%
     	 											List myCourses = (List)request.getAttribute("myCourses");								
     												for(int i=0;i<myCourses.size();i++){
-														Courses temp = (Courses) myCourses.get(i);
+														Courses temp = (Courses)myCourses.get(i);
 												%>
-												<!-- 似乎直接转到jsp比较好，因为没有数据库访问 -->
+    											<br/><%--=temp.getName()--%>
     											<br/><a href = "/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"><%=temp.getName()%></a>
     											<%
-												}
-												%>						
-    										</div>
+												}//先注释掉，因为会报错
+												%>
+																		
+    										--</div>
 										</li>
 										<li id="tab4">
 											<h3>

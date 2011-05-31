@@ -25,11 +25,17 @@
   <servlet-name>SendMailServlet</servlet-name>
   <servlet-class>com.tongji.j2ee.sp.SendMailServlet</servlet-class>
  </servlet>
+ <servlet>
+	    <description>This is the description of my J2EE component</description>
+	    <display-name>This is the display name of my J2EE component</display-name>
+	    <servlet-name>CourseInfo</servlet-name>
+	    <servlet-class>com.tongji.j2ee.sp.CourseInfo</servlet-class>
+	  </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>CourseInfo</servlet-name>
-    <servlet-class>com.tongji.j2ee.sp.CourseInfo</servlet-class>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.Logout</servlet-class>
   </servlet>
 
  <servlet-mapping>
@@ -48,9 +54,13 @@
   <servlet-name>SendMailServlet</servlet-name>
   <url-pattern>/SendMailServlet</url-pattern>
  </servlet-mapping>
+ <servlet-mapping>
+	    <servlet-name>CourseInfo</servlet-name>
+	    <url-pattern>/CourseInfo</url-pattern>
+	  </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>CourseInfo</servlet-name>
-    <url-pattern>/CourseInfo</url-pattern>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>
