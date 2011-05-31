@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Courses;
+import model.CoursesDAO;
+import model.StudentCourse;
 import model.StudentCourseDAO;
 import model.Studentinfo;
 import model.StudentinfoDAO;
@@ -47,10 +49,20 @@ public class LoginServlet extends HttpServlet {
 						request.getRequestDispatcher("register.jsp").forward(
 								request, response);
 					} else {
+						//find the course_id in the relation table
 						StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
-						List myCourses = studentCourseDAO.findBySId(studentinfo
+						List<StudentCourse> myCourses = studentCourseDAO.findBySId(studentinfo
 								.getSId());
-						request.setAttribute("myCourses", myCourses);
+						
+						//find the courses in the courses table
+						CoursesDAO coursesDAO = new CoursesDAO();
+						List myCoursesInfo = (List)new java.util.ArrayList();
+						for(int i=0;i<myCourses.size();i++){
+							Courses temp = coursesDAO.findById(myCourses.get(i).getCourseId());
+							myCoursesInfo.add(temp);
+						}
+						
+						request.setAttribute("myCourses", myCoursesInfo);
 						request.getRequestDispatcher("student.jsp").forward(
 								request, response);
 					}

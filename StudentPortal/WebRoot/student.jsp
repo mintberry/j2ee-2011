@@ -659,10 +659,10 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<%
     	 											List myCourses = (List)request.getAttribute("myCourses");								
     												for(int i=0;i<myCourses.size();i++){
-														Courses temp = (Courses)myCourses.get(i);
-														out.println(temp.getName());
+														Courses temp = (Courses) myCourses.get(i);
 												%>
-    											<br/><%=temp.getName()%>
+												<!-- 似乎直接转到jsp比较好，因为没有数据库访问 -->
+    											<br/><a href = "/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"><%=temp.getName()%></a>
     											<%
 												}
 												%>						
