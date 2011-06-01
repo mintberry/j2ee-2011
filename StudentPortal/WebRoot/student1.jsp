@@ -131,7 +131,7 @@
 }  /* 设置总宽度[width] */
 #tab {
 left:60px;
-	height: 300px;
+	height: 400px;
 	background:#99FFFF;
 	overflow: hidden;
 }  /* 设置总高度[height]、标题背景颜色[background] */
@@ -254,58 +254,91 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 										 
 										 
 										 
-										 <div id="oDIV1" style="height: 550px;">
-										 	<div id="prof-basic" class="block clearfix bd-round-blue-light"  style="top: 8px; left: 4px;">
-
-								<div id="prof-basic-l">
-
-									<a href="/profile?uid=24660"><img id="prof-photo"
-											class="photo"
-											src="http://www.gravatar.com/avatar/b2be14fe77d541e857248adc7ef2e52f?d=mm&s=87"
-											alt="littne" /> </a>
-
-								</div>
-
-								<div id="prof-basic-r" class="clearfix">
-
-									<div id="prof-info" style="top: 16px; height: 131px; left: 21px;">
-
-										<h1><span id="prof-name">littne</span>
-										</h1>
-
-										<div id="prof-desc" style="top: 38px; left: 81px;">
-
-											<div style="top: -37px; left: -31px;">
-
-
-
-												<span id="prof-title">Shanghai, CN</span>
-
-
-
-												<span id="prof-info-spl">|</span>
-
-
-
-												<a id="prof-blog" href="http://littne.wordpress.com"
-													target="_blank">littne.wordpress.com</a>
-
-
-
-											</div>
-
+									<div id="odiv1" style="top: 33px; height: 258px;">
 									
 
-										</div>
+			<a id="hd-Photo" href="/activity"> <img id="hd-logo-img" src="imgs/sse.png" title="GuruDigger" alt="GuruDigger" style="left: 50px;"> </a> 				
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              
+              <p>学号： 
+               
+               
+                <input type="text" name="textfield" id="textfield" size="24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 密码： 
+               
+               
+                <input type="text" name="textfield2" id="textfield2"> 
+              </p>
+              
+<p>姓名： 
+               
+               
+                <input type="password" name="textfield3" id="textfield3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 性别： 
+ 
+ 
+  <select name="Sex2" id="Sex2" accesskey="男" tabindex="0"> 
+    <option value="0">男</option> 
+    <option value="1">女</option> 
+  </select> 
+</p>
 
-									</div>
-
-
-
-								</div>
-										 
- 	 </div>
- 	 </div>
+              <p>生日： 
+ 
+ 
+  <input type="text" name="textfield4" id="textfield4" size="5" maxlength="4">  
+  年 
+  <input type="text" name="textfield5" id="textfield5" size="5" maxlength="4">  
+  月 
+  <input type="text" name="textfield6" id="textfield6" size="5" maxlength="4"> 
+  日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 国籍： 
+               
+               
+                <input type="password" name="textfield7" id="textfield7"> 
+              </p>
+              
+              
+              <p>邮箱： 
+               
+               
+                <input type="password" name="textfield8" id="textfield8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 地址： 
+               
+               
+                <input type="password" name="textfield9" id="textfield9"> 
+              </p>
+              <p>电话：  
+              
+              
+                <input type="password" name="textfield10" id="textfield10"></p><blockquote> 
+                <blockquote> 
+                  <p> 
+                    <input type="submit" name="RegistButton" class="oneColElsCtrHdr" id="RegistButton" value="修改"> 
+                  </p> 
+                </blockquote> 
+              </blockquote>
+<blockquote> 
+                <blockquote> 
+                  <p> 
+                     
+                  </p> 
+                </blockquote> 
+              </blockquote><p> 
+              </p>
+              <blockquote>
+                <blockquote>
+                  <p>
+                    
+                  </p>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+      <!-- end #mainContent -->
+    </blockquote></div>
 										 
 									</li> 
 									<li id="tab2"> 
