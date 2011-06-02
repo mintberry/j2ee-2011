@@ -1,10 +1,11 @@
-<% 
-response.setHeader("Pragma","No-cache"); 
-response.setHeader("Cache-Control","no-cache"); 
-response.setDateHeader("Expires", 0); 
+
+<%
+	response.setHeader("Pragma", "No-cache");
+	response.setHeader("Cache-Control", "no-cache");
+	response.setDateHeader("Expires", 0);
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="model.Courses" %>
+<%@page import="model.Courses"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -13,16 +14,16 @@ response.setDateHeader("Expires", 0);
 %>
 
 <%
-Object obj=session.getAttribute("user");
-if(obj==null)
-out.print("<script>window.location.href='index.jsp';</script>");//strange here
-%> 
+	Object obj = session.getAttribute("user");
+	if (obj == null)
+		out.print("<script>window.location.href='index.jsp';</script>");//strange here
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
 
-		<title>GuruDigger</title>
+		<title>学生主页</title>
 
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
@@ -375,13 +376,15 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 										<h1>
 											<!--span id="prof-name">littne</span-->
-											<jsp:useBean id="user" scope="session" class="model.Studentinfo"></jsp:useBean>
+											<jsp:useBean id="user" scope="session"
+												class="model.Studentinfo"></jsp:useBean>
 										</h1>
 
 										<div id="prof-desc">
 
 											<div>
-												<span id="prof-title" style="display: none">Shanghai, CN</span>
+												<span id="prof-title" style="display: none">Shanghai,
+													CN</span>
 
 
 
@@ -390,10 +393,13 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 												<a id="prof-blog" href="http://littne.wordpress.com"
-													target="_blank" style="display: none">littne.wordpress.com</a><br>
-													<%=user.getSId()%> &nbsp;&nbsp; <%=user.getName()%><br>
-													
-													<%=user.getSex()%><br>
+													target="_blank" style="display: none">littne.wordpress.com</a>
+												<br>
+												<%=user.getSId()%>
+												&nbsp;&nbsp;
+												<%=user.getName()%><br>
+
+												<%=user.getSex()%><br>
 
 
 
@@ -494,164 +500,175 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											<h3>
 												<a href="####" onclick="javascript:toggleTo(2)">课程表</a>
 											</h3>
+											<%
+												List myCourses1 = (List) request.getAttribute("myCourses");
+												for (int i = 0; i < myCourses1.size(); i++) {
+													Courses temp = (Courses) myCourses1.get(i);
+													int i1 = temp.getSchedule0();
+													int i2 = temp.getSchedule1();
+													int i3 = temp.getSchedule2();
+													int i4 = temp.getSchedule3();
+
+												}
+											%>
 											<div id="oDIV2" style="display: none;">
-											<br/>
-												<table height="90%" width="90%" border="1"
-													bgcolor="#80ffff" align="center">
+												<br />
+												<table height="90%" width="90%" border="1" bgcolor="#80ffff"
+													align="center">
 													<tbody>
-														<tr>
+														<tr class="tablerow" id="row1">
 															<td>
 																&nbsp;
 															</td>
-															<td>
+															<td align="center">
+																星期一&nbsp;
+															</td>
+															<td align="center">
+																星期二&nbsp;
+															</td>
+															<td align="center">
+																星期三&nbsp;
+															</td>
+															<td align="center">
+																星期四&nbsp;
+															</td>
+															<td align="center">
+																星期五&nbsp;
+															</td>
+															<td align="center">
+																星期六&nbsp;
+															</td>
+															<td align="center">
+																星期日&nbsp;
+															</td>
+														</tr>
+														<tr class="tablerow" id="row2">
+															<td align="center">
+																1,2&nbsp;
+															</td>
+															<td id="1">
 																&nbsp;
 															</td>
-															<td>
+															<td id="2">
 																&nbsp;
 															</td>
-															<td>
+															<td id="3">
 																&nbsp;
 															</td>
-															<td>
+															<td id="4">
 																&nbsp;
 															</td>
-															<td>
+															<td id="5">
 																&nbsp;
 															</td>
-															<td>
+															<td id="6">
 																&nbsp;
 															</td>
-															<td>
+															<td id="7">
 																&nbsp;
 															</td>
 														</tr>
-														<tr>
-															<td>
+														<tr class="tablerow" id="row3">
+															<td align="center">
+																3,4&nbsp;
+															</td>
+															<td id="8">
 																&nbsp;
 															</td>
-															<td>
+															<td id="9">
 																&nbsp;
 															</td>
-															<td>
+															<td id="10">
 																&nbsp;
 															</td>
-															<td>
+															<td id="11">
 																&nbsp;
 															</td>
-															<td>
+															<td id="12">
 																&nbsp;
 															</td>
-															<td>
+															<td id="13">
 																&nbsp;
 															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
+															<td id="14">
 																&nbsp;
 															</td>
 														</tr>
-														<tr>
-															<td>
+														<tr class="tablerow" id="row4">
+															<td align="center">
+																5,6&nbsp;
+															</td>
+															<td id="15">
 																&nbsp;
 															</td>
-															<td>
+															<td id="16">
 																&nbsp;
 															</td>
-															<td>
+															<td id="17">
 																&nbsp;
 															</td>
-															<td>
+															<td id="18">
 																&nbsp;
 															</td>
-															<td>
+															<td id="19">
 																&nbsp;
 															</td>
-															<td>
+															<td id="20">
 																&nbsp;
 															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
+															<td id="21">
 																&nbsp;
 															</td>
 														</tr>
-														<tr>
-															<td>
+														<tr class="tablerow" id="row5">
+															<td align="center">
+																7,8&nbsp;
+															</td>
+															<td id="22">
 																&nbsp;
 															</td>
-															<td>
+															<td id="23">
 																&nbsp;
 															</td>
-															<td>
+															<td id="24">
 																&nbsp;
 															</td>
-															<td>
+															<td id="25">
 																&nbsp;
 															</td>
-															<td>
+															<td id="26">
 																&nbsp;
 															</td>
-															<td>
+															<td id="27">
 																&nbsp;
 															</td>
-															<td>
+															<td id="28">
 																&nbsp;
 															</td>
-															<td>
+														</tr>
+														<tr class="tablerow" id="row6">
+															<td align="center">
+																9,10&nbsp;
+															</td>
+															<td id="29">
+																&nbsp;
+															</td>
+															<td id="30">
+																&nbsp;
+															</td>
+															<td id="31">
+																&nbsp;
+															</td>
+															<td id="32">
+																&nbsp;
+															</td>
+															<td id="33">
+																&nbsp;
+															</td>
+															<td id="34">
+																&nbsp;
+															</td>
+															<td id="35">
 																&nbsp;
 															</td>
 														</tr>
@@ -664,19 +681,23 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<a href="####" onclick="javascript:toggleTo(3)">课程管理</a>
 											</h3>
 											<div id="oDIV3" style="display: none;">
-											<br/>
+												<br />
 												<%
-    	 											List myCourses = (List)request.getAttribute("myCourses");								
-    												for(int i=0;i<myCourses.size();i++){
-														Courses temp = (Courses)myCourses.get(i);
+													List myCourses = (List) request.getAttribute("myCourses");
+													for (int i = 0; i < myCourses.size(); i++) {
+														Courses temp = (Courses) myCourses.get(i);
 												%>
-    											<br/><%--=temp.getName()--%>
-    											<br/><a href = "/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"><%=temp.getName()%></a>
-    											<%
-												}//先注释掉，因为会报错
+												<br />
+												<%--=temp.getName()--%>
+												<br />
+												<a
+													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"><%=temp.getName()%></a>
+												<%
+													}//先注释掉，因为会报错
 												%>
-																		
-    										--</div>
+
+												--
+											</div>
 										</li>
 										<li id="tab4">
 											<h3>
