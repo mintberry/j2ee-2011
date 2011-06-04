@@ -126,9 +126,9 @@ public class LoginServlet extends HttpServlet {
 			List<StudentCourse> mycourses, CoursesDAO coursesDAO) {
 		for (int i = 0; i < mycourses.size(); i++) {
 			Courses temp = coursesDAO.findById(mycourses.get(i).getCourseId());
-			if (temp.getSchedule0() == iTime || temp.getSchedule1() == iTime
-					|| temp.getSchedule2() == iTime
-					|| temp.getSchedule3() == iTime) {
+			if (((temp.getSchedule0() - 1)%35 + 1) == iTime || ((temp.getSchedule1() - 1)%35 + 1) == iTime
+					|| ((temp.getSchedule2() - 1)%35 + 1) == iTime
+					|| ((temp.getSchedule3() - 1)%35 + 1) == iTime) {
                 return temp;
 			}
 			// myCoursesInfo.add(temp);
