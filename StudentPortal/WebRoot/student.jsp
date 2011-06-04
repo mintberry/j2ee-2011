@@ -501,15 +501,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<a href="####" onclick="javascript:toggleTo(2)">课程表</a>
 											</h3>
 											<%
-												List myCourses1 = (List) request.getAttribute("myCourses");
-												for (int i = 0; i < myCourses1.size(); i++) {
-													Courses temp = (Courses) myCourses1.get(i);
-													int i1 = temp.getSchedule0();
-													int i2 = temp.getSchedule1();
-													int i3 = temp.getSchedule2();
-													int i4 = temp.getSchedule3();
-
-												}
+												ArrayList<Courses> courseSchedule = (ArrayList<Courses>)request.getAttribute("schedule");
+											    
 											%>
 											<div id="oDIV2" style="display: none;">
 												<br />
@@ -547,24 +540,25 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 																1,2&nbsp;
 															</td>
 															<td id="1">
+															<%=courseSchedule.get(0).getName()%>
 																&nbsp;
 															</td>
-															<td id="2">
+															<td id="6"><%=courseSchedule.get(5).getName()%>
 																&nbsp;
 															</td>
-															<td id="3">
+															<td id="11"><%=courseSchedule.get(10).getName()%>
 																&nbsp;
 															</td>
-															<td id="4">
+															<td id="16"><%=courseSchedule.get(15).getName()%>
 																&nbsp;
 															</td>
-															<td id="5">
+															<td id="21"><%=courseSchedule.get(20).getName()%>
 																&nbsp;
 															</td>
-															<td id="6">
+															<td id="26"><%=courseSchedule.get(25).getName()%>
 																&nbsp;
 															</td>
-															<td id="7">
+															<td id="31"><%=courseSchedule.get(30).getName()%>
 																&nbsp;
 															</td>
 														</tr>
@@ -572,25 +566,25 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															<td align="center">
 																3,4&nbsp;
 															</td>
-															<td id="8">
+															<td id="2"><%=courseSchedule.get(1).getName()%>
 																&nbsp;
 															</td>
-															<td id="9">
+															<td id="7"><%=courseSchedule.get(6).getName()%>
 																&nbsp;
 															</td>
-															<td id="10">
+															<td id="12"><%=courseSchedule.get(11).getName()%>
 																&nbsp;
 															</td>
-															<td id="11">
+															<td id="17"><%=courseSchedule.get(16).getName()%>
 																&nbsp;
 															</td>
-															<td id="12">
+															<td id="22"><%=courseSchedule.get(21).getName()%>
 																&nbsp;
 															</td>
-															<td id="13">
+															<td id="27"><%=courseSchedule.get(26).getName()%>
 																&nbsp;
 															</td>
-															<td id="14">
+															<td id="32"><%=courseSchedule.get(31).getName()%>
 																&nbsp;
 															</td>
 														</tr>
@@ -598,25 +592,25 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															<td align="center">
 																5,6&nbsp;
 															</td>
-															<td id="15">
+															<td id="3"><%=courseSchedule.get(2).getName()%>
 																&nbsp;
 															</td>
-															<td id="16">
+															<td id="8"><%=courseSchedule.get(7).getName()%>
 																&nbsp;
 															</td>
-															<td id="17">
+															<td id="13"><%=courseSchedule.get(12).getName()%>
 																&nbsp;
 															</td>
-															<td id="18">
+															<td id="18"><%=courseSchedule.get(17).getName()%>
 																&nbsp;
 															</td>
-															<td id="19">
+															<td id="23"><%=courseSchedule.get(22).getName()%>
 																&nbsp;
 															</td>
-															<td id="20">
+															<td id="28"><%=courseSchedule.get(27).getName()%>
 																&nbsp;
 															</td>
-															<td id="21">
+															<td id="33"><%=courseSchedule.get(32).getName()%>
 																&nbsp;
 															</td>
 														</tr>
@@ -624,25 +618,25 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															<td align="center">
 																7,8&nbsp;
 															</td>
-															<td id="22">
+															<td id="4"><%=courseSchedule.get(3).getName()%>
 																&nbsp;
 															</td>
-															<td id="23">
+															<td id="9"><%=courseSchedule.get(8).getName()%>
 																&nbsp;
 															</td>
-															<td id="24">
+															<td id="14"><%=courseSchedule.get(13).getName()%>
 																&nbsp;
 															</td>
-															<td id="25">
+															<td id="19"><%=courseSchedule.get(18).getName()%>
 																&nbsp;
 															</td>
-															<td id="26">
+															<td id="24"><%=courseSchedule.get(23).getName()%>
 																&nbsp;
 															</td>
-															<td id="27">
+															<td id="29"><%=courseSchedule.get(28).getName()%>
 																&nbsp;
 															</td>
-															<td id="28">
+															<td id="34"><%=courseSchedule.get(33).getName()%>
 																&nbsp;
 															</td>
 														</tr>
@@ -650,25 +644,25 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															<td align="center">
 																9,10&nbsp;
 															</td>
-															<td id="29">
+															<td id="5"><%=courseSchedule.get(4).getName()%>
 																&nbsp;
 															</td>
-															<td id="30">
+															<td id="10"><%=courseSchedule.get(9).getName()%>
 																&nbsp;
 															</td>
-															<td id="31">
+															<td id="15"><%=courseSchedule.get(14).getName()%>
 																&nbsp;
 															</td>
-															<td id="32">
+															<td id="20"><%=courseSchedule.get(19).getName()%>
 																&nbsp;
 															</td>
-															<td id="33">
+															<td id="25"><%=courseSchedule.get(24).getName()%>
 																&nbsp;
 															</td>
-															<td id="34">
+															<td id="30"><%=courseSchedule.get(29).getName()%>
 																&nbsp;
 															</td>
-															<td id="35">
+															<td id="35"><%=courseSchedule.get(34).getName()%>
 																&nbsp;
 															</td>
 														</tr>

@@ -1,6 +1,7 @@
 package com.tongji.j2ee.sp;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -49,20 +50,35 @@ public class LoginServlet extends HttpServlet {
 						request.getRequestDispatcher("register.jsp").forward(
 								request, response);
 					} else {
-						//find the course_id in the relation table
+						// find the course_id in the relation table
 						StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
-						List<StudentCourse> myCourses = studentCourseDAO.findBySId(studentinfo
-								.getSId());
-						
-						//find the courses in the courses table
+						List<StudentCourse> myCourses = studentCourseDAO
+								.findBySId(studentinfo.getSId());
+
+						// find the courses in the courses table
 						CoursesDAO coursesDAO = new CoursesDAO();
-						List myCoursesInfo = (List)new java.util.ArrayList();
-						for(int i=0;i<myCourses.size();i++){
-							Courses temp = coursesDAO.findById(myCourses.get(i).getCourseId());
+						List myCoursesInfo = (List) new java.util.ArrayList();
+						for (int i = 0; i < myCourses.size(); i++) {
+							Courses temp = coursesDAO.findById(myCourses.get(i)
+									.getCourseId());
 							myCoursesInfo.add(temp);
+						}
+
+						// to implement the course schedule
+						Courses emptyCourse = new Courses();
+						emptyCourse.setName("");
+						ArrayList<Courses> courseSchedule = new ArrayList();
+						for (int i = 0; i < 35; ++i) {
+                            Courses temp = findCourseByTime(i + 1, myCourses, coursesDAO);
+                            if(temp != null){
+                            	courseSchedule.add(temp);
+                            }else{
+                            	courseSchedule.add(emptyCourse);
+                            }
 						}
 						
 						request.setAttribute("myCourses", myCoursesInfo);
+						request.setAttribute("schedule", courseSchedule);
 						request.getRequestDispatcher("student.jsp").forward(
 								request, response);
 					}
@@ -104,5 +120,19 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		// TODO:for admin_id
+	}
+
+	private Courses findCourseByTime(int iTime,
+			List<StudentCourse> mycourses, CoursesDAO coursesDAO) {
+		for (int i = 0; i < mycourses.size(); i++) {
+			Courses temp = coursesDAO.findById(mycourses.get(i).getCourseId());
+			if (temp.getSchedule0() == iTime || temp.getSchedule1() == iTime
+					|| temp.getSchedule2() == iTime
+					|| temp.getSchedule3() == iTime) {
+                return temp;
+			}
+			// myCoursesInfo.add(temp);
+		}
+		return null;
 	}
 }
