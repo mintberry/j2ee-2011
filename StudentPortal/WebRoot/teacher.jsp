@@ -10,7 +10,7 @@
 <html>
 	<head>
 
-		<title>GuruDigger</title>
+		<title>教师主页</title>
 
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
