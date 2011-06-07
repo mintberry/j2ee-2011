@@ -53,12 +53,17 @@ public class Upload extends HttpServlet {
 		        	if(filesize==0)
 		        		message+="<li>文件 <b><font color='red'>"+file.getFilePathName()+"</font></b> 的大小为0！本系统不允许上传0字节的文件！</li><br>";
 		        	else{
-		        		String filename=file.getFileName();			//获取上传文件的名称
+		        		String filename=file.getFileName();				//获取上传文件的名称
 		        		//String filetype=file.getContentType().trim();
 		        		//String savename = StringHandler.getSerial(date,i)+"."+file.getFileExt();
 		        		String savename = "";
 		        		String fileinfo = myup.getRequest().getParameter("fileinfo"+(i+1));
 		        		Date updatetime = date;
+		        		
+		        		System.out.println(filename);
+		        		System.out.println(fileinfo);
+		        		System.out.println(filesize);
+		        		System.out.println(updatetime);
 		        		
 		        		model.Files filebean=new model.Files();
 		        		filebean.setName(filename);
@@ -101,9 +106,9 @@ public class Upload extends HttpServlet {
 		if(k<=0)
 			message+="<a href='javascript:window.history.go(-1)'>>> 返回重试</a><br>";
 		
-		request.setAttribute("message",message);		
-		RequestDispatcher rd=request.getRequestDispatcher("/message.jsp");
-		rd.forward(request,response);
+		//request.setAttribute("message",message);		
+		//RequestDispatcher rd=request.getRequestDispatcher("/message.jsp");
+		//rd.forward(request,response);
 	}
 
 	public void init() throws ServletException {
