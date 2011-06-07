@@ -30,7 +30,7 @@ public class Upload extends HttpServlet {
 			throws ServletException, IOException {
 		String message="";
 		long maxsize=1024*1024*20;			//设置允许上传文件的总长度为20兆
-		String filedir="/files/";			//设置存放文件的目录(该目录位于web应用根目录下)
+		String filedir="D:/file/";			//设置存放文件的目录(该目录位于web应用根目录下)
 		
 		int k=0;
 		try{			
@@ -56,11 +56,13 @@ public class Upload extends HttpServlet {
 		        		String filename=file.getFileName();				//获取上传文件的名称
 		        		//String filetype=file.getContentType().trim();
 		        		//String savename = StringHandler.getSerial(date,i)+"."+file.getFileExt();
-		        		String savename = "";
+		        		String savename = filename;
 		        		String fileinfo = myup.getRequest().getParameter("fileinfo"+(i+1));
 		        		Date updatetime = date;
 		        		
 		        		System.out.println(filename);
+		        		System.out.println(savename);
+		        		System.out.println(filedir+savename);
 		        		System.out.println(fileinfo);
 		        		System.out.println(filesize);
 		        		System.out.println(updatetime);
@@ -74,7 +76,7 @@ public class Upload extends HttpServlet {
 		        		filebean.setUpdateDate(updatetime);
 		        		
 		        		fileDao.save(filebean);													//保存文件信息到数据库中
-		        		file.saveAs(filedir+savename,File.SAVEAS_VIRTUAL);						//保存文件到磁盘的指定目录下
+		        		file.saveAs(filedir+savename,File.SAVEAS_PHYSICAL);						//保存文件到磁盘的指定目录下
 		        		message+="文件 <b><font color='red'>"+file.getFilePathName()+"</font></b> 上传成功！<br>";
 		        		
 		        		Session s = (Session) HibernateSessionFactory.getSession();
@@ -105,7 +107,7 @@ public class Upload extends HttpServlet {
 		}
 		if(k<=0)
 			message+="<a href='javascript:window.history.go(-1)'>>> 返回重试</a><br>";
-		
+		//TODO:跳转
 		//request.setAttribute("message",message);		
 		//RequestDispatcher rd=request.getRequestDispatcher("/message.jsp");
 		//rd.forward(request,response);
