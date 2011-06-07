@@ -77,6 +77,9 @@ public class LoginServlet extends HttpServlet {
                             }
 						}
 						
+						//TODO:可以考虑放到session里
+						//hs.setAttribute("myCourses", myCoursesInfo);
+						//hs.setAttribute("schedule", courseSchedule);
 						request.setAttribute("myCourses", myCoursesInfo);
 						request.setAttribute("schedule", courseSchedule);
 						request.getRequestDispatcher("student.jsp").forward(

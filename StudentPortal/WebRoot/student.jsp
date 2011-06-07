@@ -540,7 +540,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 																1,2&nbsp;
 															</td>
 															<td id="1">
-															<%=courseSchedule.get(0).getName()%>
+																<%=courseSchedule.get(0).getName()%>
 																&nbsp;
 															</td>
 															<td id="6"><%=courseSchedule.get(5).getName()%>
