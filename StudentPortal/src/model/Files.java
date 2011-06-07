@@ -10,11 +10,11 @@ public class Files implements java.io.Serializable {
 
 	// Fields
 
-	private String FId;
+	private Integer FId;
 	private String name;
 	private Integer filesize;
 	private String location;
-	private Date createDate;
+	private String description;
 	private Date updateDate;
 
 	// Constructors
@@ -24,29 +24,27 @@ public class Files implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Files(String FId, String name) {
-		this.FId = FId;
+	public Files(String name) {
 		this.name = name;
 	}
 
 	/** full constructor */
-	public Files(String FId, String name, Integer filesize, String location,
-			Date createDate, Date updateDate) {
-		this.FId = FId;
+	public Files(String name, Integer filesize, String location,
+			String description, Date updateDate) {
 		this.name = name;
 		this.filesize = filesize;
 		this.location = location;
-		this.createDate = createDate;
+		this.description = description;
 		this.updateDate = updateDate;
 	}
 
 	// Property accessors
 
-	public String getFId() {
+	public Integer getFId() {
 		return this.FId;
 	}
 
-	public void setFId(String FId) {
+	public void setFId(Integer FId) {
 		this.FId = FId;
 	}
 
@@ -74,12 +72,12 @@ public class Files implements java.io.Serializable {
 		this.location = location;
 	}
 
-	public Date getCreateDate() {
-		return this.createDate;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getUpdateDate() {

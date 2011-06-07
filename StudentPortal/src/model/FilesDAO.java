@@ -26,6 +26,7 @@ public class FilesDAO extends BaseHibernateDAO {
 	public static final String NAME = "name";
 	public static final String FILESIZE = "filesize";
 	public static final String LOCATION = "location";
+	public static final String DESCRIPTION = "description";
 
 	public void save(Files transientInstance) {
 		log.debug("saving Files instance");
@@ -49,7 +50,7 @@ public class FilesDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Files findById(java.lang.String id) {
+	public Files findById(java.lang.Integer id) {
 		log.debug("getting Files instance with id: " + id);
 		try {
 			Files instance = (Files) getSession().get("model.Files", id);
@@ -99,6 +100,10 @@ public class FilesDAO extends BaseHibernateDAO {
 
 	public List findByLocation(Object location) {
 		return findByProperty(LOCATION, location);
+	}
+
+	public List findByDescription(Object description) {
+		return findByProperty(DESCRIPTION, description);
 	}
 
 	public List findAll() {

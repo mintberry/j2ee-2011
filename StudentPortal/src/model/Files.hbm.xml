@@ -6,9 +6,9 @@
 -->
 <hibernate-mapping>
     <class name="model.Files" table="files" catalog="test">
-        <id name="FId" type="java.lang.String">
-            <column name="f_id" length="32" />
-            <generator class="assigned" />
+        <id name="FId" type="java.lang.Integer">
+            <column name="f_id" />
+            <generator class="identity" />
         </id>
         <property name="name" type="java.lang.String">
             <column name="name" not-null="true" />
@@ -19,8 +19,8 @@
         <property name="location" type="java.lang.String">
             <column name="location" />
         </property>
-        <property name="createDate" type="java.util.Date">
-            <column name="createDate" length="10" />
+        <property name="description" type="java.lang.String">
+            <column name="description" />
         </property>
         <property name="updateDate" type="java.util.Date">
             <column name="updateDate" length="10" />

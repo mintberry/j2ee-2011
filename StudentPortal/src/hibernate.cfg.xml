@@ -27,7 +27,8 @@
 		<mapping resource="model/Files.hbm.xml" />
 		<mapping resource="model/Comments.hbm.xml" />
 		<mapping resource="model/StudentCourse.hbm.xml" />
-		<mapping resource="model/TeacherCourse.hbm.xml" />
+		<mapping resource="model/CourseFile.hbm.xml" />
+		<mapping resource="model/StudentCourseFile.hbm.xml" />
 
 	</session-factory>
 
