@@ -49,23 +49,23 @@ create table courses
 )CHARSET=gbk;
 
 drop table if exists files;
-create table files  #感觉不对，文件夹怎么弄？
+create table files
 (
-	f_id char(32) not null,
+	f_id int auto_increment,
 	name varchar(255) not null,
 	filesize int,
 	location varchar(255),
-	createDate Date,
+	description varchar(255),
 	updateDate Date,
 	primary key(f_id)
 )CHARSET=gbk;
 
+
 drop table if exists comments;
 create table comments
 (
-	comment_id char(32) not null,
+	comment_id int auto_increment,
 	content	Text,
-	createDate Date,
 	updateDate Date,
 	primary key(comment_id)
 )CHARSET=gbk;
