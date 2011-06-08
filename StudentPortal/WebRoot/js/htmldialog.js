@@ -96,7 +96,7 @@ function myalert(str) {
 			+ "px; top:"
 			+ alertTop
 			+ "px; border:#999999 1px solid; width:350px; height:150px; z-index:1000;";//设定对话框容器的样式
-	obj.innerHTML = '<div style="border:0; height:20px; line-height:20px; width:100%; background-color:#0000ff; font-size:12px; color:#ffffff" onmousedown="javascript:MoveDiv.Move(\'myalertdiv\',event)">'
+	obj.innerHTML = '<div style="border:0; height:20px; line-height:20px; width:100%; background-color:#0000ff; font-size:12px; color:#ffffff">'
 			+ '定义对话框<div style="position:absolute;cursor:default; top:0px; left:340px;" onmouseover="this.style.color=\'#ff0000\';" onmouseout="this.style.color=\'#ffffff\'" onclick="removeAlert();">'
 			+ 'X'
 			+ '</div>'
@@ -112,3 +112,4 @@ function removeAlert() {//关闭对话框函数
 		document.body.removeChild(document.getElementById("myalertdiv"));
 	}
 }
+

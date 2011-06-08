@@ -18,6 +18,8 @@
 	if (obj == null)
 		out.print("<script>window.location.href='index.jsp';</script>");//strange here
 %>
+<%@page import="model.Courses" import="model.Notify"
+	import="model.NotifyDAO"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -58,8 +60,9 @@
 		<!--link href="http://res.gurudigger.com/css/layout.right.css"
 			rel="stylesheet" type="text/css" /-->
 
-		<script src="http://res.gurudigger.com/js/main.js"
-			type="text/javascript">
+		<!--script src="http://res.gurudigger.com/js/main.js"
+			type="text/javascript"-->
+		<script src="js/htmldialog.js" type="text/javascript">
 </script>
 
 
@@ -72,6 +75,14 @@
 
 		<script src="http://res.gurudigger.com/js/jquery.form.js"
 			type="text/javascript">
+</script>
+		<script type="text/javascript">
+function openwindow() {
+	window
+			.showModalDialog("editnote.jsp", window,
+					"status:no;scroll:no;dialogWidth:400px;dialogHeight:300px;resizable:yes");
+}
+
 </script>
 
 		<style type="text/css" media="all">
@@ -469,8 +480,31 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											<!-- onclick鼠标释放，onmousemove鼠标经过。 -->
 											<div id="oDIV1">
 												&nbsp;
+
+												<br />
+												当前通知 |
+												<br />
 												
-												<br />当前通知<br/></div>
+												<br />
+												<ul>
+													<%
+														NotifyDAO notifyDAO = new NotifyDAO();
+														List ln = notifyDAO.findAll();
+														for (int i = 0; i != ln.size(); ++i) {
+															Notify temp = (Notify) ln.get(i);
+															out.println("<li>" + temp.getTitle() + "</li>");
+														}
+													%>
+												</ul>
+												<form method="post" action="/StudentPortal/EditNote"
+													name="newnote">
+													<input type="button" value="添加通知" name="addnote"
+														onclick="openwindow();">
+														<input type="text" maxlength="45" name="title" style="visibility:hidden"/>
+														<input type="text" maxlength="1000" name="content" style="visibility:hidden"/>
+														<input type="text" maxlength="20" name="author" style="visibility:hidden"/>
+												</form>
+											</div>
 										</li>
 										<li id="tab2">
 											<h3>
@@ -478,7 +512,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											</h3>
 											<div id="oDIV2" style="display: none;">
 												<br />
-												
+
 											</div>
 										</li>
 										<li id="tab3">
@@ -487,7 +521,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											</h3>
 											<div id="oDIV3" style="display: none;">
 												<br />
-												
+
 											</div>
 										</li>
 										<li id="tab4">
@@ -495,7 +529,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<a href="####" onclick="javascript:toggleTo(4)">课程</a>
 											</h3>
 											<div id="oDIV4" style="display: none;">
-												
+
 											</div>
 										</li>
 									</ul>
@@ -636,6 +670,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 		<br>
+
 
 	</body>
 

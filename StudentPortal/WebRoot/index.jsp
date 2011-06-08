@@ -353,7 +353,7 @@ function validateForm(form) {
 
 	var userID = form.elements[0].value;
 	var passwd = form.elements[1].value;
-	alert(userID + ":" + passwd.length);
+	//alert(userID + ":" + passwd.length);
 	if (!regID.exec(userID) && !regID2.exec(userID)) {
 		//alert("IDerror");
 		document.getElementById("NameError").style.display = "inline";
