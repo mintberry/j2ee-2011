@@ -7,7 +7,7 @@
 			+ path + "/";
 %>
 
-<%@page import="model.Studentinfo"%>
+<%@page import="model.Studentinfo" import="model.Teacherinfo"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -89,13 +89,25 @@
 								<div align="center">
 									<div align="center">
 										<%
-											Studentinfo si;
-											HttpSession hs = request.getSession();
-											si = (Studentinfo) hs.getAttribute("user");
-										%><jsp:useBean id="si1" scope="page" class="model.Studentinfo"></jsp:useBean>
-										<br>
+										    HttpSession hs = request.getSession();
+										    Object inf = hs.getAttribute("user");
+										    if(inf instanceof Studentinfo){
+										    Studentinfo si = (Studentinfo)inf;%>
+										    <br>
 										学号：<%=si.getSId()%>&nbsp; &nbsp;&nbsp;姓名：<%=si.getName()%><br>
 										性别：<%=si.getSex()%>
+										    <%}else{
+										    Teacherinfo ti = (Teacherinfo)inf;
+										    %>
+										    <br>
+										工号：<%=ti.getTId()%>&nbsp; &nbsp;&nbsp;姓名：<%=ti.getName()%><br>
+										性别：<%=ti.getSex()%>
+										    <%}%>
+											    
+											
+											
+									<jsp:useBean id="si1" scope="page" class="model.Studentinfo"></jsp:useBean>
+										
 									</div>
 								</div>
 

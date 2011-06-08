@@ -377,7 +377,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 										<h1>
 											<!--span id="prof-name">littne</span-->
 											<jsp:useBean id="user" scope="session"
-												class="model.Studentinfo"></jsp:useBean>
+												class="model.Teacherinfo"></jsp:useBean>
 										</h1>
 
 										<div id="prof-desc">
@@ -395,7 +395,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<a id="prof-blog" href="http://littne.wordpress.com"
 													target="_blank" style="display: none">littne.wordpress.com</a>
 												<br>
-												<%=user.getSId()%>
+												<%=user.getTId()%>
 												&nbsp;&nbsp;
 												<%=user.getName()%><br>
 
@@ -470,7 +470,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											<div id="oDIV1">
 												&nbsp;
 												
-												<br />当前通知：<br/></div>
+												<br />当前通知<br/></div>
 										</li>
 										<li id="tab2">
 											<h3>

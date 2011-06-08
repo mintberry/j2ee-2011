@@ -103,8 +103,14 @@ public class LoginServlet extends HttpServlet {
 						response);
 				return;
 			} else {
+				
 				if (password.equals(teacherinfo.getPassword())) {
 					hs.setAttribute("user", teacherinfo);
+					if(teacherinfo.getTId().equals("0000000007")){
+						request.getRequestDispatcher("admin.jsp").forward(
+								request, response);
+						return;
+					}
 					if (teacherinfo.getEmail().equals("")) {
 						request.getRequestDispatcher("register.jsp").forward(
 								request, response);
