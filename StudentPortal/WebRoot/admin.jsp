@@ -79,10 +79,9 @@
 		<script type="text/javascript">
 function openwindow() {
 	window
-			.showModalDialog("editnote.jsp", window,
+			.showModalDialog("editnote.jsp", document,
 					"status:no;scroll:no;dialogWidth:400px;dialogHeight:300px;resizable:yes");
 }
-
 </script>
 
 		<style type="text/css" media="all">
@@ -484,7 +483,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<br />
 												当前通知 |
 												<br />
-												
+
 												<br />
 												<ul>
 													<%
@@ -500,9 +499,12 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 													name="newnote">
 													<input type="button" value="添加通知" name="addnote"
 														onclick="openwindow();">
-														<input type="text" maxlength="45" name="title" style="visibility:hidden"/>
-														<input type="text" maxlength="1000" name="content" style="visibility:hidden"/>
-														<input type="text" maxlength="20" name="author" style="visibility:hidden"/>
+													<input type="text" maxlength="45" name="title"
+														style="visibility: hidden" />
+													<input type="text" maxlength="1000" name="content"
+														style="visibility: hidden" />
+													<input type="text" maxlength="20" name="author"
+														style="visibility: hidden" />
 												</form>
 											</div>
 										</li>

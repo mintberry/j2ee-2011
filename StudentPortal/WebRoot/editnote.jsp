@@ -49,11 +49,11 @@ function opensub() {
 	document.editform.submit();
 }
 function bconfirm() {
-	dialogArguments.newnote.title.value = document.editform.title.value;
-	dialogArguments.newnote.content.value = document.editform.content.value;
-	dialogArguments.newnote.author.value = document.editform.author.value;
-	alert(dialogArguments.newnote.title.value);
-	dialogArguments.opensub();
+	window.dialogArguments.newnote.title.value = document.editform.title.value;
+	window.dialogArguments.newnote.content.value = document.editform.content.value;
+	window.dialogArguments.newnote.author.value = document.editform.author.value;
+	//alert(dialogArguments.newnote.title.value);
+	window.dialogArguments.newnote.submit();
 	window.close();
 }
 
