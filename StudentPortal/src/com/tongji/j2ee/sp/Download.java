@@ -16,14 +16,8 @@ public class Download extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 		
-		String filedir = (String)request.getAttribute("filedir");
-		int id = Integer.parseInt(request.getParameter("fileId"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		Files file = null;
 		
 		try{
@@ -33,7 +27,7 @@ public class Download extends HttpServlet {
 				SmartUpload mydown = new SmartUpload();
 				mydown.initialize(getServletConfig(),request,response);
 				mydown.setContentDisposition(null);
-				mydown.downloadFile(filedir + file.getLocation());
+				mydown.downloadFile(file.getLocation());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -43,6 +37,11 @@ public class Download extends HttpServlet {
 		    //RequestDispatcher rd=request.getRequestDispatcher("/message.jsp");
 		    //rd.forward(request,response);
 		}
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 	public void init() throws ServletException {

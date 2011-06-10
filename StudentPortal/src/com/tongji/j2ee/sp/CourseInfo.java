@@ -1,7 +1,6 @@
 package com.tongji.j2ee.sp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jgroups.blocks.LogicalLink.AllLinksDown;
-
-import com.jspsmart.upload.Request;
 
 import model.CourseFile;
 import model.CourseFileDAO;
@@ -51,6 +47,7 @@ public class CourseInfo extends HttpServlet {
 		
 	}
 
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}

@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -28,9 +29,14 @@ public class Upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String message="";
-		long maxsize=1024*1024*20;			//设置允许上传文件的总长度为20兆
-		String filedir="D:/file/";			//设置存放文件的目录(该目录位于web应用根目录下)
+		
+		HttpSession session = request.getSession();
+		String filedir = "/file/" + (String)session.getAttribute("userId") + "/";
+		
+		String message = "";
+		long maxsize = 1024*1024*20;			//设置允许上传文件的总长度为20兆
+		
+		//String filedir="D:/file/";			
 		
 		int k=0;
 		try{			
@@ -53,30 +59,20 @@ public class Upload extends HttpServlet {
 		        	if(filesize==0)
 		        		message+="<li>文件 <b><font color='red'>"+file.getFilePathName()+"</font></b> 的大小为0！本系统不允许上传0字节的文件！</li><br>";
 		        	else{
-		        		String filename=file.getFileName();				//获取上传文件的名称
-		        		//String filetype=file.getContentType().trim();
-		        		//String savename = StringHandler.getSerial(date,i)+"."+file.getFileExt();
-		        		String savename = filename;
+		        		String filename=file.getFileName();				
+		        		String location = filedir + filename;
 		        		String fileinfo = myup.getRequest().getParameter("fileinfo"+(i+1));
 		        		Date updatetime = date;
 		        		
-		        		System.out.println(filename);
-		        		System.out.println(savename);
-		        		System.out.println(filedir+savename);
-		        		System.out.println(fileinfo);
-		        		System.out.println(filesize);
-		        		System.out.println(updatetime);
-		        		
 		        		model.Files filebean=new model.Files();
 		        		filebean.setName(filename);
-		        		filebean.setLocation(savename);
-		        		//filebean.setFileType(filetype);
+		        		filebean.setLocation(location);
 		        		filebean.setFilesize(filesize);
 		        		filebean.setDescription(fileinfo);
 		        		filebean.setUpdateDate(updatetime);
 		        		
 		        		fileDao.save(filebean);													//保存文件信息到数据库中
-		        		file.saveAs(filedir+savename,File.SAVEAS_PHYSICAL);						//保存文件到磁盘的指定目录下
+		        		file.saveAs(location, File.SAVEAS_VIRTUAL);								//保存文件到磁盘的指定目录下
 		        		message+="文件 <b><font color='red'>"+file.getFilePathName()+"</font></b> 上传成功！<br>";
 		        		
 		        		Session s = (Session) HibernateSessionFactory.getSession();

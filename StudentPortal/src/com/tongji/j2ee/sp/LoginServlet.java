@@ -34,6 +34,8 @@ public class LoginServlet extends HttpServlet {
 
 		String id = request.getParameter("userID");
 		String password = request.getParameter("password");
+		
+		hs.setAttribute("userId", id);	//保存文件时用
 
 		// for student_id
 		if (id.length() == 6) {
