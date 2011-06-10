@@ -204,7 +204,9 @@ function openwindow() {
 	margin: 8px;
 	border: none;
 }
-
+ul#notes{
+list-style-type:square
+}
 /*TAB3效果[iframe]*/
 #tab ul li #oDIV3 iframe {
 	border: none;
@@ -485,13 +487,14 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<br />
 
 												<br />
-												<ul>
+												<ul id="notes">
 													<%
 														NotifyDAO notifyDAO = new NotifyDAO();
 														List ln = notifyDAO.findAll();
+														System.out.println("admin"+ln.size());
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li>" + temp.getTitle() + "</li>");
+															out.println("<li>!" + temp.getTitle() + "</li>");
 														}
 													%>
 												</ul>

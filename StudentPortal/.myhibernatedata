@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Wed Jun 08 15:34:05 CST 2011
+#Thu Jun 09 18:58:06 CST 2011
 sessionFactoryName=hibernate.HibernateSessionFactory
 genBasicCompId=false
 profile=
@@ -16,7 +16,7 @@ libInstallFolder=/WebRoot/WEB-INF/lib
 addLibs2Project=true
 genVersionTag=false
 sessionFactoryId=
-basePersistenceClass=Serializable
+basePersistenceClass=
 genAnnotations=false
 reSettingsFile=
 configFile=/StudentPortal/src/hibernate.cfg.xml

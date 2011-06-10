@@ -24,9 +24,8 @@ public class Notify implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Notify(Integer nid, Timestamp datetime, String author,
-			String content, String title) {
-		this.nid = nid;
+	public Notify(Timestamp datetime, String author, String content,
+			String title) {
 		this.datetime = datetime;
 		this.author = author;
 		this.content = content;
@@ -34,9 +33,8 @@ public class Notify implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Notify(Integer nid, Timestamp datetime, String author,
-			String content, String accessory, String title) {
-		this.nid = nid;
+	public Notify(Timestamp datetime, String author, String content,
+			String accessory, String title) {
 		this.datetime = datetime;
 		this.author = author;
 		this.content = content;

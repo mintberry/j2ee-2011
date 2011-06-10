@@ -53,10 +53,14 @@ public class EditNote extends HttpServlet {
 		NotifyDAO notifyDAO = new NotifyDAO();
 		Notify newNote = new Notify();
 		
+		System.out.println(content);
+		
 		newNote.setTitle(title);
 		newNote.setContent(content);
 		newNote.setAuthor(author);
 		newNote.setDatetime(tsig);
+		
+		
 //have to set id
 		
 		

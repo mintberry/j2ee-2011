@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.6-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/asm-attrs.jar"/>
@@ -24,6 +24,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jaas.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jacc-1_0-fr.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/javassist.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/javax.servlet.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jaxen-1.1-beta-7.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jboss-archive-browsing.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jboss-cache.jar"/>
