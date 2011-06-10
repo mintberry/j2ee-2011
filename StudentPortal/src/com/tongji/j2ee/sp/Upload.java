@@ -96,17 +96,18 @@ public class Upload extends HttpServlet {
 			k=-1;
 		    message="文件上传失败！<br>";
 		    e2.printStackTrace();
-		}catch(java.lang.OutOfMemoryError e3){
+		}
+		catch(java.lang.OutOfMemoryError e3){
 			k=-1;
 			message="您上传的文件太大！<br>";
 			e3.printStackTrace();
 		}
 		if(k<=0)
 			message+="<a href='javascript:window.history.go(-1)'>>> 返回重试</a><br>";
-		//TODO:跳转
-		//request.setAttribute("message",message);		
-		//RequestDispatcher rd=request.getRequestDispatcher("/message.jsp");
-		//rd.forward(request,response);
+		
+		request.setAttribute("message",message);		
+		RequestDispatcher rd=request.getRequestDispatcher("fileMessage.jsp");
+		rd.forward(request, response);
 	}
 
 	public void init() throws ServletException {
