@@ -204,9 +204,29 @@ function openwindow() {
 	margin: 8px;
 	border: none;
 }
-ul#notes{
-list-style-type:square
+
+ul#notes {
+	list-style-type: square;
+	margin: 0;
+	padding: 0;
+	list-style: disc outside none;
+	line-height: 1.2;
 }
+
+ul#notes li {
+	display: block;
+    float: left;
+    font-size: 15px;
+    height: 20px;
+    left: 0;
+    line-height: 1.4;
+    list-style-type: none;
+    margin: 0 0 0 22px;
+    padding: 0;
+    position: relative;
+    top: 0;
+}
+
 /*TAB3效果[iframe]*/
 #tab ul li #oDIV3 iframe {
 	border: none;
@@ -483,7 +503,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												&nbsp;
 
 												<br />
-												当前通知 |
+												&nbsp; 当前通知 |
 												<br />
 
 												<br />
@@ -491,7 +511,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 													<%
 														NotifyDAO notifyDAO = new NotifyDAO();
 														List ln = notifyDAO.findAll();
-														System.out.println("admin"+ln.size());
+														System.out.println("admin" + ln.size());
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
 															out.println("<li>!" + temp.getTitle() + "</li>");
