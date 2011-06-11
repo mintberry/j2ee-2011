@@ -102,6 +102,7 @@ public class Upload extends HttpServlet {
 			message="您上传的文件太大！<br>";
 			e3.printStackTrace();
 		}
+		
 		if(k<=0)
 			message+="<a href='javascript:window.history.go(-1)'>>> 返回重试</a><br>";
 		
