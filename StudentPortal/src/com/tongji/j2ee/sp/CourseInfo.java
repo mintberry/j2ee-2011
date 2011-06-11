@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 import model.CourseFile;
@@ -22,6 +23,8 @@ public class CourseInfo extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		String courseId = request.getParameter("id");
 		
 		CoursesDAO coursesDAO = new CoursesDAO();
@@ -35,9 +38,9 @@ public class CourseInfo extends HttpServlet {
 		List<StudentCourseFile> studentCourseFiles = new ArrayList<StudentCourseFile>();
 		StudentCourseFileDAO studentCourseFileDAO = new StudentCourseFileDAO();
 		List<StudentCourseFile> tempCourseFiles = studentCourseFileDAO.findByCourseId(courseId);
-		Studentinfo studentinfo = (Studentinfo) request.getAttribute("user");
+		Studentinfo studentinfo = (Studentinfo) session.getAttribute("user");
 		for(StudentCourseFile instance : tempCourseFiles){
-			if(instance.getSId() == studentinfo.getSId()){
+			if(instance.getSId().equals(studentinfo.getSId())){
 				studentCourseFiles.add(instance);
 			}
 		}

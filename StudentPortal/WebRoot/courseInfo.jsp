@@ -110,7 +110,7 @@ h5 {
 				<h4>
 					<%
 						List<StudentCourseFile> studentCourseFiles = (List<StudentCourseFile>) request.getAttribute("studentCourseFiles");
-						for(CourseFile instance : courseFiles){
+						for(StudentCourseFile instance : studentCourseFiles){
 							Files file = filesDAO.findById(instance.getFId());
 					 %>
 					<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
@@ -124,9 +124,13 @@ h5 {
 				</h4>
 			</div>
 
+<input name="filedir" type="hidden" value="<%=(String)session.getAttribute("userId") %>">
+				<input name="courseId" type="hidden" value="<%=course.getCourseId() %>">
+
 			<div id="ShangChuan">
-				<form action="/StudentPortal/Upload" enctype="multipart/form-data"
+				<form action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>" enctype="multipart/form-data"
 					name="uploadform" method="post">
+				
 					<tr>
 						<td width="22%" align="center" valign="top" bgcolor="#F7FAF6"
 							style="padding-top: 8">

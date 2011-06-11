@@ -28,7 +28,7 @@
 	<body>
 		<br />
 		<%
-			List myCourses = (List) session.getAttribute("myCourses");
+			List myCourses = (List) request.getAttribute("myCourses");
 			for (int i = 0; i < myCourses.size(); i++) {
 				Courses temp = (Courses) myCourses.get(i);
 		%>

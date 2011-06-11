@@ -84,7 +84,9 @@ public class LoginServlet extends HttpServlet {
 						//hs.setAttribute("schedule", courseSchedule);
 						request.setAttribute("myCourses", myCoursesInfo);
 						request.setAttribute("schedule", courseSchedule);
-						request.getRequestDispatcher("student.jsp").forward(
+						//request.getRequestDispatcher("student.jsp").forward(
+						//		request, response);
+						request.getRequestDispatcher("courseList.jsp").forward(
 								request, response);
 					}
 
