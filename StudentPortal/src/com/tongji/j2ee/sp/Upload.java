@@ -11,18 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.registry.infomodel.User;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.hql.ast.tree.Case2Node;
 
 import model.FilesDAO;
 import model.StudentCourseFile;
 import model.StudentCourseFileDAO;
+import model.Studentinfo;
 
 import com.jspsmart.upload.File;
 import com.jspsmart.upload.Files;
 import com.jspsmart.upload.SmartUpload;
-import com.sun.corba.se.pept.transport.OutboundConnectionCache;
 
 public class Upload extends HttpServlet {
 
@@ -35,7 +37,12 @@ public class Upload extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("userId");
+		Object user = session.getAttribute("user");
+		if(user instanceof Studentinfo){
+			
+		}
+		
+		String id = request.getParameter("filedir");
 		String courseId = request.getParameter("courseId");
 		String filedir = request.getParameter("filedir");
 			// 学生是学号
@@ -88,6 +95,9 @@ public class Upload extends HttpServlet {
 				filebean.setUpdateDate(updatetime);
 				fileDao.save(filebean);
 
+				
+				
+				
 				// fill the student-file-table
 				StudentCourseFile studentCourseFile = new StudentCourseFile();
 				studentCourseFile.setFId(filebean.getFId());

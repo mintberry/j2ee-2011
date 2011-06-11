@@ -124,8 +124,7 @@ h5 {
 				</h4>
 			</div>
 
-<input name="filedir" type="hidden" value="<%=(String)session.getAttribute("userId") %>">
-				<input name="courseId" type="hidden" value="<%=course.getCourseId() %>">
+
 
 			<div id="ShangChuan">
 				<form action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>" enctype="multipart/form-data"
