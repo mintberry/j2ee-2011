@@ -60,6 +60,8 @@ public class EditNote extends HttpServlet {
 		newNote.setAuthor(author);
 		newNote.setDatetime(tsig);
 		
+		HtmlGenerator hg = new HtmlGenerator();
+		hg.GenerateHtml(request);
 		
 //have to set id
 		
