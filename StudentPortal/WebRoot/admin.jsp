@@ -73,9 +73,9 @@
 		<!--link href="http://res.gurudigger.com/css/box.css" rel="stylesheet"
 			type="text/css" /-->
 
-		<script src="http://res.gurudigger.com/js/jquery.form.js"
+		<!--script src="http://res.gurudigger.com/js/jquery.form.js"
 			type="text/javascript">
-</script>
+</script-->
 		<script type="text/javascript">
 function openwindow() {
 	window
@@ -215,16 +215,16 @@ ul#notes {
 
 ul#notes li {
 	display: block;
-    float: left;
-    font-size: 15px;
-    height: 20px;
-    left: 0;
-    line-height: 1.4;
-    list-style-type: none;
-    margin: 0 0 0 22px;
-    padding: 0;
-    position: relative;
-    top: 0;
+	float: left;
+	font-size: 15px;
+	height: 20px;
+	left: 0;
+	line-height: 1.4;
+	list-style-type: none;
+	margin: 0 0 0 22px;
+	padding: 0;
+	position: relative;
+	top: 0;
 }
 
 /*TAB3效果[iframe]*/
@@ -514,7 +514,9 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														System.out.println("admin" + ln.size());
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li>!" + temp.getTitle() + "</li>");
+															out.println("<li><a href=\"/html/" + temp.getNid()
+																	+ ".html\"target=\"_blank\">" + temp.getTitle()
+																	+ "</a></li>");
 														}
 													%>
 												</ul>

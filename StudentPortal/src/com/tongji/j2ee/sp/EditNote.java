@@ -60,8 +60,12 @@ public class EditNote extends HttpServlet {
 		newNote.setAuthor(author);
 		newNote.setDatetime(tsig);
 		
+
 		HtmlGenerator hg = new HtmlGenerator();
-		hg.GenerateHtml(request);
+		hg.GenerateHtml(request, newNote);
+
+		
+		
 		
 //have to set id
 		
@@ -79,8 +83,6 @@ public class EditNote extends HttpServlet {
 			s.close();
 			request.getRequestDispatcher("admin.jsp").forward(request, response);
 		}
-		
-
 		
 
 	}
