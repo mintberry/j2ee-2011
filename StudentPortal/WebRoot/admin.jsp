@@ -514,7 +514,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														System.out.println("admin" + ln.size());
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li><a href=\"/html/" + temp.getNid()
+															out.println("<li><a href=\"/StudentPortal/html/" + temp.getNid()
 																	+ ".html\"target=\"_blank\">" + temp.getTitle()
 																	+ "</a></li>");
 														}

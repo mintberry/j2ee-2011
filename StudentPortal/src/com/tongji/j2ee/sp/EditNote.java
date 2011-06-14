@@ -61,8 +61,7 @@ public class EditNote extends HttpServlet {
 		newNote.setDatetime(tsig);
 		
 
-		HtmlGenerator hg = new HtmlGenerator();
-		hg.GenerateHtml(request, newNote);
+		
 
 		
 		
@@ -84,7 +83,8 @@ public class EditNote extends HttpServlet {
 			request.getRequestDispatcher("admin.jsp").forward(request, response);
 		}
 		
-
+		HtmlGenerator hg = new HtmlGenerator();
+		hg.GenerateHtml(request, newNote);
 	}
 
 }
