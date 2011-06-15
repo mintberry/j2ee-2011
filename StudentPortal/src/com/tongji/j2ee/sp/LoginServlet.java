@@ -79,15 +79,19 @@ public class LoginServlet extends HttpServlet {
                             }
 						}
 						
+						NotifyList lns = new NotifyList(1);
+						System.out.println("allitems" + lns.allItems);
+						request.setAttribute("noteli", lns);
+						
 						//TODO:可以考虑放到session里
 						//hs.setAttribute("myCourses", myCoursesInfo);
 						//hs.setAttribute("schedule", courseSchedule);
 						request.setAttribute("myCourses", myCoursesInfo);
 						request.setAttribute("schedule", courseSchedule);
-						//request.getRequestDispatcher("student.jsp").forward(
-						//		request, response);
-						request.getRequestDispatcher("courseList.jsp").forward(
+						request.getRequestDispatcher("student.jsp").forward(
 								request, response);
+						//request.getRequestDispatcher("courseList.jsp").forward(
+						//		request, response);
 					}
 
 				} else {
@@ -112,7 +116,7 @@ public class LoginServlet extends HttpServlet {
 					hs.setAttribute("user", teacherinfo);
 					if(teacherinfo.getTId().equals("0000000007")){
 						request.setAttribute("pageNumber", 1);
-						NotifyList lns = new NotifyList();
+						NotifyList lns = new NotifyList(0);
 						System.out.println("allitems" + lns.allItems);
 						request.setAttribute("noteli", lns);
 						

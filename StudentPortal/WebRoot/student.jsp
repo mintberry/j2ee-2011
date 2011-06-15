@@ -5,7 +5,9 @@
 	response.setDateHeader("Expires", 0);
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="model.Courses"%>
+<%@page import="model.Notify" import="model.NotifyDAO"%>
+<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList"%>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -201,6 +203,28 @@
 	width: 440px;
 	height: 157px;
 	margin: 5px;
+}
+
+ul#notes {
+	list-style-type: square;
+	margin: 0;
+	padding: 0;
+	list-style: disc outside none;
+	line-height: 1.2;
+}
+
+ul#notes li {
+	display: block;
+	float: left;
+	font-size: 15px;
+	height: 20px;
+	left: 0;
+	line-height: 1.4;
+	list-style-type: none;
+	margin: 0 0 0 22px;
+	padding: 0;
+	position: relative;
+	top: 0;
 }
 </style>
 
@@ -468,32 +492,34 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											</h3>
 											<!-- onclick鼠标释放，onmousemove鼠标经过。 -->
 											<div id="oDIV1">
-												<ol>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>使该元素在FireFox下获得高度从而显示背景</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>为了保证浏览器的兼容性</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>文本对齐方式改回默认left</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>左右自适应[FireFox居中方式]</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
-														</a>
-													</li>
-												</ol>
+												&nbsp;
+
+												<br />
+												&nbsp; 当前通知 |
+												<br />
+
+
+												<ul id="notes">
+													<%
+														//int currentPage = Integer.valueOf((String) request
+														//		.getAttribute("pageno"));
+														//NotifyDAO notifyDAO = new NotifyDAO();
+														//List lns = notifyDAO.findAll();
+														//List ln = lns.subList(currentPage, currentPage + 12);
+														NotifyList lns = (NotifyList) request.getAttribute("noteli");
+														System.out.println("admin" + lns.allItems);
+														List ln = lns.getCurrentList();
+
+														for (int i = 0; i != ln.size(); ++i) {
+															Notify temp = (Notify) ln.get(i);
+															out.println("<li><a href=\"/StudentPortal/html/"
+																	+ temp.getNid() + ".html\"target=\"_blank\">"
+																	+ temp.getTitle() + "</a></li>");
+														}
+													%>
+												</ul>
+												<br />
+												<jsp:include page="paging_footer.jsp"></jsp:include>
 											</div>
 										</li>
 										<li id="tab2">
@@ -501,8 +527,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<a href="####" onclick="javascript:toggleTo(2)">课程表</a>
 											</h3>
 											<%
-												ArrayList<Courses> courseSchedule = (ArrayList<Courses>)request.getAttribute("schedule");
-											    
+												ArrayList<Courses> courseSchedule = (ArrayList<Courses>) request
+														.getAttribute("schedule");
 											%>
 											<div id="oDIV2" style="display: none;">
 												<br />

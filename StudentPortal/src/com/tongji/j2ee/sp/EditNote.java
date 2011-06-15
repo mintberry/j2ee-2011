@@ -80,7 +80,7 @@ public class EditNote extends HttpServlet {
 
 		} finally {
 			s.close();
-			NotifyList lns = new NotifyList();
+			NotifyList lns = new NotifyList(0);
 			System.out.println("allitems" + lns.allItems);
 			request.setAttribute("noteli", lns);
 			

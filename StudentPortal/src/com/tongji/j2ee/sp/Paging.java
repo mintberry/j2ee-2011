@@ -39,6 +39,7 @@ public class Paging extends HttpServlet {
 		System.out.println("allitems" + lns.allItems);
 		request.setAttribute("noteli", lns);
 		
+		
 		request.getRequestDispatcher("admin.jsp").forward(
 				request, response);
 

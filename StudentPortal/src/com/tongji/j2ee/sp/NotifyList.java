@@ -10,6 +10,8 @@ public class NotifyList {
 	NotifyDAO notifyDAO = new NotifyDAO();
 	public List allNotes;
 	
+	public int iSymbol;                                   //0 admin, 1 student, 2 teacher
+	
 	public int currentPage;                               //当前页
 	public int pageItems;                                 //每页条目数
 	public int allItems;                                  //总条目数
@@ -76,12 +78,14 @@ public class NotifyList {
 		
 	}
 	
-	public NotifyList() {
+	public NotifyList(int i) {
 		super();
 		// TODO Auto-generated constructor stub
 		allNotes = notifyDAO.findAll();
 		pageItems = 12;
 		allItems = allNotes.size();
+		
+		iSymbol = i;
 		
 		currentPage = 1;
 		pages = allItems/pageItems + (allItems%pageItems>0?1:0);
