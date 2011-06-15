@@ -80,11 +80,18 @@ public class EditNote extends HttpServlet {
 
 		} finally {
 			s.close();
-			request.getRequestDispatcher("admin.jsp").forward(request, response);
+			NotifyList lns = new NotifyList();
+			System.out.println("allitems" + lns.allItems);
+			request.setAttribute("noteli", lns);
+			
+			request.getRequestDispatcher("admin.jsp").forward(
+					request, response);
 		}
 		
 		HtmlGenerator hg = new HtmlGenerator();
 		hg.GenerateHtml(request, newNote);
+		
+		
 	}
 
 }

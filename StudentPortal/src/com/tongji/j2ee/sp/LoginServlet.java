@@ -111,6 +111,11 @@ public class LoginServlet extends HttpServlet {
 				if (password.equals(teacherinfo.getPassword())) {
 					hs.setAttribute("user", teacherinfo);
 					if(teacherinfo.getTId().equals("0000000007")){
+						request.setAttribute("pageNumber", 1);
+						NotifyList lns = new NotifyList();
+						System.out.println("allitems" + lns.allItems);
+						request.setAttribute("noteli", lns);
+						
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;

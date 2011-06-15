@@ -5,7 +5,7 @@
 	response.setDateHeader("Expires", 0);
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="model.Courses"%>
+<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -20,6 +20,8 @@
 %>
 <%@page import="model.Courses" import="model.Notify"
 	import="model.NotifyDAO"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -506,22 +508,31 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												&nbsp; 当前通知 |
 												<br />
 
-												<br />
+
 												<ul id="notes">
 													<%
-														NotifyDAO notifyDAO = new NotifyDAO();
-														List ln = notifyDAO.findAll();
-														System.out.println("admin" + ln.size());
+														//int currentPage = Integer.valueOf((String) request
+														//		.getAttribute("pageno"));
+														//NotifyDAO notifyDAO = new NotifyDAO();
+														//List lns = notifyDAO.findAll();
+														//List ln = lns.subList(currentPage, currentPage + 12);
+														NotifyList lns = (NotifyList)request.getAttribute("noteli");
+														System.out.println("admin" + lns.allItems);
+														List ln = lns.getCurrentList();
+
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li><a href=\"/StudentPortal/html/" + temp.getNid()
-																	+ ".html\"target=\"_blank\">" + temp.getTitle()
-																	+ "</a></li>");
+															out.println("<li><a href=\"/StudentPortal/html/"
+																	+ temp.getNid() + ".html\"target=\"_blank\">"
+																	+ temp.getTitle() + "</a></li>");
 														}
 													%>
 												</ul>
+												<br />
+												<jsp:include page="paging_footer.jsp"></jsp:include>
 												<form method="post" action="/StudentPortal/EditNote"
 													name="newnote">
+													&nbsp;
 													<input type="button" value="添加通知" name="addnote"
 														onclick="openwindow();">
 													<input type="text" maxlength="45" name="title"
@@ -531,6 +542,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 													<input type="text" maxlength="20" name="author"
 														style="visibility: hidden" />
 												</form>
+												<br />
+												&nbsp;
 											</div>
 										</li>
 										<li id="tab2">
