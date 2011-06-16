@@ -236,6 +236,15 @@ ul#notes li {
 	height: 157px;
 	margin: 5px;
 }
+
+table#tnotes {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+li.noteaddr {
+	width: 300;
+}
 </style>
 
 		<script type="text/javascript">
@@ -521,12 +530,24 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														List ln = lns.getCurrentList(((Integer) request
 																.getAttribute("pageNumber")).intValue());
 
+														out.println("<table id=\"tnotes\"><thead><tr align=\"center\">"
+																+ "<td width=\"10%\">Article ID</td>"
+																+ "<td width=\"40%\">Article Title</td>"
+																+ "<td colspan=\"3\">Actions</td></tr></thead><tbody>");
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li><a href=\"/StudentPortal/html/"
-																	+ temp.getNid() + ".html\"target=\"_blank\">"
-																	+ temp.getTitle() + "</a></li>");
+															//out.println("<li><a href=\"/StudentPortal/html/"
+															//		+ temp.getNid() + ".html\"target=\"_blank\">"
+															//		+ temp.getTitle() + "</a></li>");
+															out
+																	.println("<tr align=\"center\"><td></td><td><li class=\"noteaddr\" width=\"300\"><a href=\"/StudentPortal/html/"
+																			+ temp.getNid()
+																			+ ".html\"target=\"_blank\">"
+																			+ temp.getTitle()
+																			+ "</a></li></td><td>编辑</td></tr>");
+
 														}
+														out.println("</tbody></table>");
 													%>
 												</ul>
 												<br />
