@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Paging extends HttpServlet {
 	
@@ -24,6 +25,8 @@ public class Paging extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession hs = request.getSession();
 		int iCurPage = 1;
 		String pageNumberStr = request.getParameter("pageNumber");
 		
@@ -33,15 +36,28 @@ public class Paging extends HttpServlet {
 	    }
 		System.out.println("Nextpage: " + iCurPage);
 		
-		request.setAttribute("pageNumber", iCurPage);
+		//request.setAttribute("pageNumber", iCurPage);
 		
-		NotifyList lns = new NotifyList(request);
+		NotifyList lns = (NotifyList) hs.getAttribute("noteli");
 		System.out.println("allitems" + lns.allItems);
-		request.setAttribute("noteli", lns);
+		//request.setAttribute("noteli", lns);
+		
+		switch(lns.iSymbol){
+		case 0:
+			LoginServlet.setUpAdmin(request, response, hs, iCurPage);
+			request.getRequestDispatcher("admin.jsp").forward(
+					request, response);
+			break;
+		case 1:
+			LoginServlet.setUpStudent(request, response, hs, iCurPage);
+			request.getRequestDispatcher("student.jsp").forward(
+					request, response);
+			break;
+			default:
+				break;
+		}
 		
 		
-		request.getRequestDispatcher("admin.jsp").forward(
-				request, response);
 
 //		response.setContentType("text/html");
 //		PrintWriter out = response.getWriter();

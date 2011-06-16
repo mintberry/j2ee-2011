@@ -34,8 +34,8 @@ public class LoginServlet extends HttpServlet {
 
 		String id = request.getParameter("userID");
 		String password = request.getParameter("password");
-		
-		hs.setAttribute("userId", id);	//保存文件时用
+
+		hs.setAttribute("userId", id); // 保存文件时用
 
 		// for student_id
 		if (id.length() == 6) {
@@ -71,27 +71,29 @@ public class LoginServlet extends HttpServlet {
 						emptyCourse.setName("");
 						ArrayList<Courses> courseSchedule = new ArrayList();
 						for (int i = 0; i < 35; ++i) {
-                            Courses temp = findCourseByTime(i + 1, myCourses, coursesDAO);
-                            if(temp != null){
-                            	courseSchedule.add(temp);
-                            }else{
-                            	courseSchedule.add(emptyCourse);
-                            }
+							Courses temp = findCourseByTime(i + 1, myCourses,
+									coursesDAO);
+							if (temp != null) {
+								courseSchedule.add(temp);
+							} else {
+								courseSchedule.add(emptyCourse);
+							}
 						}
-						
+
+						request.setAttribute("pageNumber", 1);
 						NotifyList lns = new NotifyList(1);
 						System.out.println("allitems" + lns.allItems);
-						request.setAttribute("noteli", lns);
-						
-						//TODO:可以考虑放到session里
-						//hs.setAttribute("myCourses", myCoursesInfo);
-						//hs.setAttribute("schedule", courseSchedule);
+						hs.setAttribute("noteli", lns); // 保存到session
+
+						// TODO:可以考虑放到session里
+						// hs.setAttribute("myCourses", myCoursesInfo);
+						// hs.setAttribute("schedule", courseSchedule);
 						request.setAttribute("myCourses", myCoursesInfo);
 						request.setAttribute("schedule", courseSchedule);
 						request.getRequestDispatcher("student.jsp").forward(
 								request, response);
-						//request.getRequestDispatcher("courseList.jsp").forward(
-						//		request, response);
+						// request.getRequestDispatcher("courseList.jsp").forward(
+						// request, response);
 					}
 
 				} else {
@@ -111,15 +113,16 @@ public class LoginServlet extends HttpServlet {
 						response);
 				return;
 			} else {
-				
+
 				if (password.equals(teacherinfo.getPassword())) {
 					hs.setAttribute("user", teacherinfo);
-					if(teacherinfo.getTId().equals("0000000007")){
+					if (teacherinfo.getTId().equals("0000000007")) {
 						request.setAttribute("pageNumber", 1);
+
 						NotifyList lns = new NotifyList(0);
 						System.out.println("allitems" + lns.allItems);
-						request.setAttribute("noteli", lns);
-						
+						hs.setAttribute("noteli", lns);
+
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;
@@ -144,18 +147,69 @@ public class LoginServlet extends HttpServlet {
 		// TODO:for admin_id
 	}
 
-	private Courses findCourseByTime(int iTime,
-			List<StudentCourse> mycourses, CoursesDAO coursesDAO) {
+	private static Courses findCourseByTime(int iTime, List<StudentCourse> mycourses,
+			CoursesDAO coursesDAO) {
 		for (int i = 0; i < mycourses.size(); i++) {
 			Courses temp = coursesDAO.findById(mycourses.get(i).getCourseId());
-			if (((temp.getSchedule0() - 1)%35 + 1) == iTime || ((temp.getSchedule1() - 1)%35 + 1) == iTime
-					|| ((temp.getSchedule2() - 1)%35 + 1) == iTime
-					|| ((temp.getSchedule3() - 1)%35 + 1) == iTime) {
-                return temp;
+			if (((temp.getSchedule0() - 1) % 35 + 1) == iTime
+					|| ((temp.getSchedule1() - 1) % 35 + 1) == iTime
+					|| ((temp.getSchedule2() - 1) % 35 + 1) == iTime
+					|| ((temp.getSchedule3() - 1) % 35 + 1) == iTime) {
+				return temp;
 			}
 			// myCoursesInfo.add(temp);
 		}
 		return null;
 	}
-	
+
+	public static void setUpStudent(HttpServletRequest request,
+			HttpServletResponse response, HttpSession hs,int icurpage) {
+		StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
+		List<StudentCourse> myCourses = studentCourseDAO.findBySId(hs.getAttribute("userId"));
+
+		// find the courses in the courses table
+		CoursesDAO coursesDAO = new CoursesDAO();
+		List myCoursesInfo = (List) new java.util.ArrayList();
+		for (int i = 0; i < myCourses.size(); i++) {
+			Courses temp = coursesDAO.findById(myCourses.get(i).getCourseId());
+			myCoursesInfo.add(temp);
+		}
+
+		// to implement the course schedule
+		Courses emptyCourse = new Courses();
+		emptyCourse.setName("");
+		ArrayList<Courses> courseSchedule = new ArrayList();
+		for (int i = 0; i < 35; ++i) {
+			Courses temp = findCourseByTime(i + 1, myCourses, coursesDAO);
+			if (temp != null) {
+				courseSchedule.add(temp);
+			} else {
+				courseSchedule.add(emptyCourse);
+			}
+		}
+
+		request.setAttribute("pageNumber", icurpage);
+		//NotifyList lns = new NotifyList(1);                              //暂时不需要新建，因为都在session里了
+		//System.out.println("allitems" + lns.allItems);
+		//hs.setAttribute("noteli", lns); // 保存到session
+
+		// TODO:可以考虑放到session里
+		// hs.setAttribute("myCourses", myCoursesInfo);
+		// hs.setAttribute("schedule", courseSchedule);
+		request.setAttribute("myCourses", myCoursesInfo);
+		request.setAttribute("schedule", courseSchedule);
+	}
+
+	public void setUpTeacher() {
+
+	}
+
+	public static void setUpAdmin(HttpServletRequest request,
+			HttpServletResponse response, HttpSession hs, int icurpage) {
+		request.setAttribute("pageNumber", icurpage);
+
+		//NotifyList lns = new NotifyList(0);
+		//System.out.println("allitems" + lns.allItems);
+		//hs.setAttribute("noteli", lns);
+	}
 }

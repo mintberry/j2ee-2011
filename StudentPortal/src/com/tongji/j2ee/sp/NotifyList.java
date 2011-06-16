@@ -92,9 +92,9 @@ public class NotifyList {
 		
 	}
 
-	public List getCurrentList(){
-		int curItem = (currentPage-1) * pageItems;
-		List curList = allNotes.subList(curItem, currentPage==pages?(allItems):curItem + pageItems);
+	public List getCurrentList(int curPage){
+		int curItem = (curPage-1) * pageItems;
+		List curList = allNotes.subList(curItem, curPage==pages?(allItems):curItem + pageItems);
 		return curList;
 	}
 }

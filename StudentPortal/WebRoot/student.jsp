@@ -506,9 +506,10 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														//NotifyDAO notifyDAO = new NotifyDAO();
 														//List lns = notifyDAO.findAll();
 														//List ln = lns.subList(currentPage, currentPage + 12);
-														NotifyList lns = (NotifyList) request.getAttribute("noteli");
-														System.out.println("admin" + lns.allItems);
-														List ln = lns.getCurrentList();
+														NotifyList lns = (NotifyList) session.getAttribute("noteli");
+														System.out.println("student:" + lns.allItems);
+														List ln = lns.getCurrentList(((Integer) request
+																.getAttribute("pageNumber")).intValue());
 
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
