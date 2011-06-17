@@ -149,7 +149,20 @@ function openwindow() {
 #tab ul li div#oDIV4 {
 	left: -300px;
 }
-
+ul#notes li.noteaddr {
+	width: 300px;
+	display: block;
+    float: left;
+    font-size: 15px;
+    height: 20px;
+    left: 0;
+    line-height: 1.4;
+    list-style-type: none;
+    margin: 0 0 0 22px;
+    padding: 0;
+    position: relative;
+    top: 0;
+}
 /*TAB-标题修饰*/
 #tab,#tab ul li div,#tab ul li div li {
 	width: 945px;
@@ -242,9 +255,7 @@ table#tnotes {
 	border-spacing: 0;
 }
 
-li.noteaddr {
-	width: 300;
-}
+
 </style>
 
 		<script type="text/javascript">
@@ -532,7 +543,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 														out.println("<table id=\"tnotes\"><thead><tr align=\"center\">"
 																+ "<td width=\"10%\">Article ID</td>"
-																+ "<td width=\"40%\">Article Title</td>"
+																+ "<td width=\"60%\">Article Title</td>"
 																+ "<td colspan=\"3\">Actions</td></tr></thead><tbody>");
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
@@ -540,7 +551,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															//		+ temp.getNid() + ".html\"target=\"_blank\">"
 															//		+ temp.getTitle() + "</a></li>");
 															out
-																	.println("<tr align=\"center\"><td></td><td><li class=\"noteaddr\" width=\"300\"><a href=\"/StudentPortal/html/"
+																	.println("<tr align=\"center\"><td></td><td><li class=\"noteaddr\"><a href=\"/StudentPortal/html/"
 																			+ temp.getNid()
 																			+ ".html\"target=\"_blank\">"
 																			+ temp.getTitle()
