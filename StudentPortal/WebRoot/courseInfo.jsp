@@ -49,7 +49,7 @@ h5 {
 
 #LiuYan {
 	left: 85px;
-	height: 300px;
+	height: 500px;
 	width: 300px;
 	font-size: 18px;
 	font-style: italic;

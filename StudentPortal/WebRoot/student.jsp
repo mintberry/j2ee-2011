@@ -708,13 +708,10 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 													for (int i = 0; i < myCourses.size(); i++) {
 														Courses temp = (Courses) myCourses.get(i);
 												%>
-												<br />
-												<%--=temp.getName()--%>
-												<br />
 												<a
 													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"><%=temp.getName()%></a>
 												<%
-													}//先注释掉，因为会报错
+													}
 												%>
 											</div>
 										</li>
