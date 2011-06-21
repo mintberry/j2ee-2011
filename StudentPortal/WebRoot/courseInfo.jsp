@@ -49,7 +49,7 @@ h5 {
 
 #LiuYan {
 	left: 85px;
-	height: 500px;
+	height: 300px;
 	width: 300px;
 	font-size: 18px;
 	font-style: italic;
@@ -125,38 +125,38 @@ h5 {
 		</div>
 
 		<div id="KeJian">
-			<strong><font size="5">课件</font></strong>
+			<font face="方正姚体"><strong><font size="5">课件</font></strong></font>
+				<div class="filename" id="filename">
 				<%
 						FilesDAO filesDAO = new FilesDAO();
 						List<CourseFile> courseFiles = (List<CourseFile>) request.getAttribute("courseFiles");
 						for(CourseFile instance : courseFiles){
 							Files file = filesDAO.findById(instance.getFId());
 				%>
-				<div class="filename" id="filename">
 					<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
-				</div>
+					<br/>
 				<%
 						}
 				%>
-
+				</div>
 				<!-- <input type="submit" name="button" id="button" value="download" /> -->
 		</div>
 		<br/>
 		<div id="ZuoYe">
-			<strong><font size="5">作业</font></strong>
+			<font face="方正姚体"><strong><font size="5">作业</font></strong></font>
 			<div id="XiaZai">
-
+					<div class="filename" id="filename">
 					<%
 						List<StudentCourseFile> studentCourseFiles = (List<StudentCourseFile>) request.getAttribute("studentCourseFiles");
 						for(StudentCourseFile instance : studentCourseFiles){
 							Files file = filesDAO.findById(instance.getFId());
 					 %>
-					<div class="filename" id="filename">
 						<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
-					</div>
+						<br/>
 					<%
 						}
 					%>
+					</div>
 
 					<!-- <input type="submit" name="button" id="button" value="download" /> -->
 			</div>

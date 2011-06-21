@@ -140,6 +140,14 @@ public class Upload extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("fileMessage.jsp");
 		rd.forward(request, response);
 	}
+	
+	private void doStudent(){
+		
+	}
+	
+	private void doTeacher(){
+		
+	}
 
 	public void init() throws ServletException {
 		// Put your code here
