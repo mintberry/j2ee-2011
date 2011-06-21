@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import model.Notify;
 import model.NotifyDAO;
 
 public class NotifyList {
@@ -88,13 +89,18 @@ public class NotifyList {
 		iSymbol = i;
 		
 		currentPage = 1;
-		pages = allItems/pageItems + (allItems%pageItems>0?1:0);
+		pages = allItems/pageItems + ((allItems%pageItems>0)?1:0);
 		
 	}
 
 	public List getCurrentList(int curPage){
 		int curItem = (curPage-1) * pageItems;
-		List curList = allNotes.subList(curItem, curPage==pages?(allItems):curItem + pageItems);
+		
+		//下一句有bug
+		if(0 == pages){
+			return allNotes;
+		}
+		List curList = allNotes.subList(curItem, (curPage==pages)?(allItems):(curItem + pageItems));
 		return curList;
 	}
 }

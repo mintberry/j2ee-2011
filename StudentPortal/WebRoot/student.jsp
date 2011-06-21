@@ -1,7 +1,7 @@
 
 <%
 	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
 	response.setDateHeader("Expires", 0);
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
