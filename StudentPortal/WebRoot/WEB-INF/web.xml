@@ -80,6 +80,13 @@
     <servlet-name>Paging</servlet-name>
     <servlet-class>com.tongji.j2ee.sp.Paging</servlet-class>
   </servlet>
+  <servlet>
+    <description>student sent message</description>
+    <display-name>StudentMessage</display-name>
+    <servlet-name>StudentMessage</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.StudentMessage</servlet-class>
+  </servlet>
+
 
  <servlet-mapping>
   <servlet-name>LoginServlet</servlet-name>
@@ -124,6 +131,10 @@
   <servlet-mapping>
     <servlet-name>Paging</servlet-name>
     <url-pattern>/Paging</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StudentMessage</servlet-name>
+    <url-pattern>/StudentMessage</url-pattern>
   </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>

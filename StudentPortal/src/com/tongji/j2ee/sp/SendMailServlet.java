@@ -43,7 +43,7 @@ public class SendMailServlet extends HttpServlet {
 		//sendMail(to, "邮箱地址确认", content);
 	}
 	
-	public void sendMail(String to, String subject, String content){
+	public boolean sendMail(String to, String subject, String content){
 		try {
 			Properties prop = new Properties();
 			prop.put("mail.smtp.host", mailserver);
@@ -71,10 +71,13 @@ public class SendMailServlet extends HttpServlet {
 			transport.close();
 		} catch (Exception e) {
 			System.out.println("Email sending error:" + e.getMessage());
+			return false;
 		}
+		
+		return true;
 	}
 	
-	public void sendMails(Vector<String> to, String subject, String content){
+	public boolean sendMails(Vector<String> to, String subject, String content){
 		try {
 			Properties prop = new Properties();
 			prop.put("mail.smtp.host", mailserver);
@@ -104,7 +107,10 @@ public class SendMailServlet extends HttpServlet {
 			transport.close();
 		} catch (Exception e) {
 			System.out.println("Email sending error:" + e.getMessage());
+			return false;
 		}
+		
+		return true;
 	}
 	
 	public void init() throws ServletException {

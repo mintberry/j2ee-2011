@@ -49,10 +49,8 @@ h5 {
 
 #LiuYan {
 	left: 85px;
-	height: 300px;
+	height: 380px;
 	width: 300px;
-	font-size: 18px;
-	font-style: italic;
 	
 	padding-right: 50px;
 	padding-bottom: 10px;
@@ -87,40 +85,61 @@ h5 {
 
 
 		<div id="Kecheng">
-		<% Courses course = (Courses) request.getAttribute("course"); %>
-		<table class="title" id="title">
+		<%
+			Courses course = (Courses) request.getAttribute("course");
+		%>
+		<table class="title" id="title" width="530" height="116" style="height: 116px;">
 		<tr>	
 					<td width="500px" height="20px">
 				
-					课程名：<%=course.getName() %> (<%=course.getCourseId() %>)
+					课程名：<%=course.getName()%> (<%=course.getCourseId()%>)
 					</td>
 					<td width="300px" height="20px">
-					教师：<%=course.getTName() %> 
+					教师：<%=course.getTName()%> 
 					</td>
 					</tr>
 					<tr>
 					<td width="500px" height="20px">
-					地点 ：<%=course.getPlace() %> 
+					地点 ：<%=course.getPlace()%> 
 					</td>
 					<td width="300px" height="20px">
-					学分：<%=course.getCredit() %>
+					学分：<%=course.getCredit()%>
 					</td>
 				</tr>
 			</table>
 		</div>
 
 		<div id="LiuYan">
-			<strong><font size="5">留言</font></strong>
-			<h4>
-				<textarea name="Time" cols="35" rows="15" readonly="true">周一 13：00——15：20
-周四 08：00——09：40</textarea>
-			</h4>
-			<h4>
-				<label>
-					<input type="submit" name="Pinlun" id="Pinlun" value="评论" />
-				</label>
-			</h4>
+			<div align="center">
+				<br />
+				<strong><font size="5">留言</font>
+				</strong>
+			</div>
+			<strong> </strong>
+			<br />
 
+			<form method="post"
+				action="/StudentPortal/StudentMessage?to=<%out.print(course.getTId());%>"
+				target="_blank">
+				主题
+				<input type="text" size=40 name="subject">
+
+				<br />
+				<br />
+
+				内容<br/>
+				 <textarea style="height:150px;width:270px;overflow:auto" name="content">
+				 </textarea>
+				 
+				<br/>
+				<br/>
+				 
+				<div align="center">
+					<label>
+								<input type="submit" name="Pinlun" id="Pinlun" value="评论" />
+					</label>
+				</div>
+			</form>
 
 		</div>
 
@@ -128,15 +147,16 @@ h5 {
 			<font face="方正姚体"><strong><font size="5">课件</font></strong></font>
 				<div class="filename" id="filename">
 				<%
-						FilesDAO filesDAO = new FilesDAO();
-						List<CourseFile> courseFiles = (List<CourseFile>) request.getAttribute("courseFiles");
-						for(CourseFile instance : courseFiles){
-							Files file = filesDAO.findById(instance.getFId());
+					FilesDAO filesDAO = new FilesDAO();
+					List<CourseFile> courseFiles = (List<CourseFile>) request
+							.getAttribute("courseFiles");
+					for (CourseFile instance : courseFiles) {
+						Files file = filesDAO.findById(instance.getFId());
 				%>
 					<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
 					<br/>
 				<%
-						}
+					}
 				%>
 				</div>
 				<!-- <input type="submit" name="button" id="button" value="download" /> -->
@@ -147,10 +167,11 @@ h5 {
 			<div id="XiaZai">
 					<div class="filename" id="filename">
 					<%
-						List<StudentCourseFile> studentCourseFiles = (List<StudentCourseFile>) request.getAttribute("studentCourseFiles");
-						for(StudentCourseFile instance : studentCourseFiles){
+						List<StudentCourseFile> studentCourseFiles = (List<StudentCourseFile>) request
+								.getAttribute("studentCourseFiles");
+						for (StudentCourseFile instance : studentCourseFiles) {
 							Files file = filesDAO.findById(instance.getFId());
-					 %>
+					%>
 						<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
 						<br/>
 					<%
@@ -164,7 +185,7 @@ h5 {
 			<br/>
 			
 			<div id="ShangChuan">
-				<form action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>" enctype="multipart/form-data"
+				<form action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String) session.getAttribute("userId")%>" enctype="multipart/form-data"
 					name="uploadform" method="post">
 				
 					<tr>
