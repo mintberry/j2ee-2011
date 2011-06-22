@@ -119,7 +119,9 @@ h5 {
 			<br />
 
 			<form method="post"
-				action="/StudentPortal/StudentMessage?to=<%out.print(course.getTId());%>"
+				action="/StudentPortal/StudentMessage
+					?to=<%out.print(course.getTId());%>
+					&course=<%out.print(course.getName());%>"
 				target="_blank">
 				主题
 				<input type="text" size=40 name="subject">
