@@ -3,16 +3,16 @@ package com.tongji.j2ee.sp;
 import hibernate.HibernateSessionFactory;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Studentinfo;
 import model.StudentinfoDAO;
+import model.Teacherinfo;
+import model.TeacherinfoDAO;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,14 +22,27 @@ public class RegMailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		
+		TeacherinfoDAO tiDAO = new TeacherinfoDAO();
+		StudentinfoDAO studentinfoDAO = new StudentinfoDAO();
+		
 		String email = request.getParameter("email");
 		
-		StudentinfoDAO studentinfoDAO = new StudentinfoDAO();
-		Studentinfo current = studentinfoDAO.findById(id);
-
+		if(10 == id.length()){
+			
+			Teacherinfo current =tiDAO.findById(id);
+			current.setEmail(email);
+			tiDAO.save(current);
+			
+		}else{
+		    Studentinfo current = studentinfoDAO.findById(id);
+		    current.setEmail(email);
+		    studentinfoDAO.save(current);
+		}
+		
 		Session s = (Session) HibernateSessionFactory.getSession();
-		current.setEmail(email);
-		studentinfoDAO.save(current);
+		
+		
 		try {
 			Transaction ts = s.beginTransaction();
 			ts.commit();

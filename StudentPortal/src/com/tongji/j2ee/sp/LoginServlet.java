@@ -131,6 +131,38 @@ public class LoginServlet extends HttpServlet {
 						request.getRequestDispatcher("register.jsp").forward(
 								request, response);
 					} else {
+						// 载入教师页面
+						CoursesDAO studentCourseDAO = new CoursesDAO();
+						List<Courses> myCourses = studentCourseDAO
+								.findByTId(teacherinfo.getTId());
+
+						// find the courses in the courses table
+						CoursesDAO coursesDAO = new CoursesDAO();
+
+						// to implement the course schedule
+						Courses emptyCourse = new Courses();
+						emptyCourse.setName("");
+						ArrayList<Courses> courseSchedule = new ArrayList();
+						for (int i = 0; i < 35; ++i) {
+							Courses temp = findCourseByTime(i + 1, coursesDAO,
+									myCourses);
+							if (temp != null) {
+								courseSchedule.add(temp);
+							} else {
+								courseSchedule.add(emptyCourse);
+							}
+						}
+
+						request.setAttribute("pageNumber", 1);
+						NotifyList lns = new NotifyList(1);
+						System.out.println("allitems" + lns.allItems);
+						hs.setAttribute("noteli", lns); // 保存到session
+
+						// TODO:可以考虑放到session里
+						// hs.setAttribute("myCourses", myCoursesInfo);
+						// hs.setAttribute("schedule", courseSchedule);
+						request.setAttribute("myCourses", myCourses);
+						request.setAttribute("schedule", courseSchedule);
 						request.getRequestDispatcher("teacher.jsp").forward(
 								request, response);
 					}
@@ -147,8 +179,23 @@ public class LoginServlet extends HttpServlet {
 		// TODO:for admin_id
 	}
 
-	private static Courses findCourseByTime(int iTime, List<StudentCourse> mycourses,
-			CoursesDAO coursesDAO) {
+	private static Courses findCourseByTime(int iTime,
+			List<StudentCourse> mycourses, CoursesDAO coursesDAO) {
+		for (int i = 0; i < mycourses.size(); i++) {
+			Courses temp = coursesDAO.findById(mycourses.get(i).getCourseId());
+			if (((temp.getSchedule0() - 1) % 35 + 1) == iTime
+					|| ((temp.getSchedule1() - 1) % 35 + 1) == iTime
+					|| ((temp.getSchedule2() - 1) % 35 + 1) == iTime
+					|| ((temp.getSchedule3() - 1) % 35 + 1) == iTime) {
+				return temp;
+			}
+			// myCoursesInfo.add(temp);
+		}
+		return null;
+	}
+
+	private static Courses findCourseByTime(int iTime, CoursesDAO coursesDAO,
+			List<Courses> mycourses) {
 		for (int i = 0; i < mycourses.size(); i++) {
 			Courses temp = coursesDAO.findById(mycourses.get(i).getCourseId());
 			if (((temp.getSchedule0() - 1) % 35 + 1) == iTime
@@ -163,9 +210,10 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	public static void setUpStudent(HttpServletRequest request,
-			HttpServletResponse response, HttpSession hs,int icurpage) {
+			HttpServletResponse response, HttpSession hs, int icurpage) {
 		StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
-		List<StudentCourse> myCourses = studentCourseDAO.findBySId(hs.getAttribute("userId"));
+		List<StudentCourse> myCourses = studentCourseDAO.findBySId(hs
+				.getAttribute("userId"));
 
 		// find the courses in the courses table
 		CoursesDAO coursesDAO = new CoursesDAO();
@@ -189,9 +237,9 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		request.setAttribute("pageNumber", icurpage);
-		//NotifyList lns = new NotifyList(1);                              //暂时不需要新建，因为都在session里了
-		//System.out.println("allitems" + lns.allItems);
-		//hs.setAttribute("noteli", lns); // 保存到session
+		// NotifyList lns = new NotifyList(1); //暂时不需要新建，因为都在session里了
+		// System.out.println("allitems" + lns.allItems);
+		// hs.setAttribute("noteli", lns); // 保存到session
 
 		// TODO:可以考虑放到session里
 		// hs.setAttribute("myCourses", myCoursesInfo);
@@ -200,16 +248,47 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("schedule", courseSchedule);
 	}
 
-	public void setUpTeacher() {
+	public void setUpTeacher(HttpServletRequest request,
+			HttpServletResponse response, HttpSession hs, int icurpage) {
+		CoursesDAO studentCourseDAO = new CoursesDAO();
+		List<Courses> myCourses = studentCourseDAO.findByTId(teacherinfo
+				.getTId());
 
+		// find the courses in the courses table
+		CoursesDAO coursesDAO = new CoursesDAO();
+
+		// to implement the course schedule
+		Courses emptyCourse = new Courses();
+		emptyCourse.setName("");
+		ArrayList<Courses> courseSchedule = new ArrayList();
+		for (int i = 0; i < 35; ++i) {
+			Courses temp = findCourseByTime(i + 1, coursesDAO, myCourses);
+			if (temp != null) {
+				courseSchedule.add(temp);
+			} else {
+				courseSchedule.add(emptyCourse);
+			}
+		}
+
+		request.setAttribute("pageNumber", icurpage);
+//		request.setAttribute("pageNumber", 1);
+//		NotifyList lns = new NotifyList(1);
+//		System.out.println("allitems" + lns.allItems);
+//		hs.setAttribute("noteli", lns); // 保存到session
+
+		// TODO:可以考虑放到session里
+		// hs.setAttribute("myCourses", myCoursesInfo);
+		// hs.setAttribute("schedule", courseSchedule);
+		request.setAttribute("myCourses", myCourses);
+		request.setAttribute("schedule", courseSchedule);
 	}
 
 	public static void setUpAdmin(HttpServletRequest request,
 			HttpServletResponse response, HttpSession hs, int icurpage) {
 		request.setAttribute("pageNumber", icurpage);
 
-		//NotifyList lns = new NotifyList(0);
-		//System.out.println("allitems" + lns.allItems);
-		//hs.setAttribute("noteli", lns);
+		// NotifyList lns = new NotifyList(0);
+		// System.out.println("allitems" + lns.allItems);
+		// hs.setAttribute("noteli", lns);
 	}
 }

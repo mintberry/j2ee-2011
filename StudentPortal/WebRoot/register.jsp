@@ -170,8 +170,8 @@
 									<%--input type="image" alt="提交" src="imgs/login.png"
 										onclick="submit()" /--%>
 									<img alt="提交" src="imgs/login.png" class="submitbtn"
-										style="cursor: pointer"
-										onclick="validateForm(document.mailform)" />
+										style="cursor: pointer;"
+										onclick="validateForm(document.mailform)" width="128" height="35"/>
 								</form>
 							</div>
 
@@ -686,7 +686,7 @@ function validateForm(form) {
 
 	var firstMail = form.elements[0].value;
 	var secondMail = form.elements[1].value;
-	alert(firstMail + ":" + secondMail);
+	//alert(firstMail + ":" + secondMail);
 	if (!reMail.exec(firstMail)) {
 		//alert("IDerror");
 		document.getElementById("error1").style.display = "inline";

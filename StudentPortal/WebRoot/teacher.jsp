@@ -6,6 +6,8 @@
 			+ path + "/";
 %>
 
+<%@page import="model.Notify" import="model.NotifyDAO"%>
+<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -189,6 +191,28 @@
 	height: 157px;
 	margin: 5px;
 }
+
+ul#notes {
+	list-style-type: square;
+	margin: 0;
+	padding: 0;
+	list-style: disc outside none;
+	line-height: 1.2;
+}
+
+ul#notes li {
+	display: block;
+	float: left;
+	font-size: 15px;
+	height: 20px;
+	left: 0;
+	line-height: 1.4;
+	list-style-type: none;
+	margin: 0 0 0 22px;
+	padding: 0;
+	position: relative;
+	top: 0;
+}
 </style>
 
 		<script type="text/javascript">
@@ -244,9 +268,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 							<a class="nav-prof-itm" id="nav-prof-setting" href="/settings"
 								title="设置"><img src="imgs/setting.png"
 									style="left: 2px; width: 16px;" /> </a><a class="nav-prof-itm"
-								id="nav-prof-logout" title="退出" href="/logout"><img
+								id="nav-prof-logout" title="退出" href="/StudentPortal/logout"><img
 									src="imgs/exit.png" /> </a>
-
 
 
 						</div>
@@ -257,29 +280,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 				<div id="nav-bar">
 
-					<ul id="nav-lst" class="nav-lst">
-
-						<li class="nav-itm nav-curr ">
-
-							<br>
-						</li>
-
-						<li class="nav-itm ">
-
-							<br>
-						</li>
-
-						<li class="nav-itm ">
-
-							<br>
-						</li>
-
-						<li class="nav-itm ">
-
-
-							<br>
-						</li>
-					</ul>
+				
 
 					<div id="sub-nav-c">
 
@@ -363,25 +364,31 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 									<div id="prof-info">
 
 										<h1>
-											<span id="prof-name">littne</span>
+											<!--span id="prof-name">littne</span-->
+											<jsp:useBean id="user" scope="session"
+												class="model.Teacherinfo"></jsp:useBean>
 										</h1>
 
 										<div id="prof-desc">
 
 											<div>
+												<span id="prof-title" style="display: none">Shanghai,
+													CN</span>
 
 
 
-												<span id="prof-title">Shanghai, CN</span>
-
-
-
-												<span id="prof-info-spl">|</span>
+												<span id="prof-info-spl"></span>
 
 
 
 												<a id="prof-blog" href="http://littne.wordpress.com"
-													target="_blank">littne.wordpress.com</a>
+													target="_blank" style="display: none">littne.wordpress.com</a>
+												<br>
+												<%=user.getTId()%>
+												&nbsp;&nbsp;
+												<%=user.getName()%><br>
+
+												<%=user.getSex()%><br>
 
 
 
@@ -414,8 +421,6 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 							</div>
 
 							<br>
-
-
 
 							<div id="prof-pnl-act" class="bd-round-blue-light">
 
@@ -452,196 +457,204 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											</h3>
 											<!-- onclick鼠标释放，onmousemove鼠标经过。 -->
 											<div id="oDIV1">
-												<ol>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>使该元素在FireFox下获得高度从而显示背景</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>为了保证浏览器的兼容性</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>文本对齐方式改回默认left</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>左右自适应[FireFox居中方式]</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
-														</a>
-													</li>
-													<li>
-														<a href="http://www.ijavascript.cn"><span>内容对齐方式为居中[IE居中方式]</span>
-														</a>
-													</li>
-												</ol>
+												&nbsp;
+
+												<br />
+												&nbsp; 当前通知 |
+												<br />
+
+
+												<ul id="notes">
+													<%
+														//int currentPage = Integer.valueOf((String) request
+														//		.getAttribute("pageno"));
+														//NotifyDAO notifyDAO = new NotifyDAO();
+														//List lns = notifyDAO.findAll();
+														//List ln = lns.subList(currentPage, currentPage + 12);
+														NotifyList lns = (NotifyList) session.getAttribute("noteli");
+														System.out.println("student:" + lns.allItems);
+														List ln = lns.getCurrentList(((Integer) request
+																.getAttribute("pageNumber")).intValue());
+
+														for (int i = 0; i != ln.size(); ++i) {
+															Notify temp = (Notify) ln.get(i);
+															out.println("<li><a href=\"/StudentPortal/html/"
+																	+ temp.getNid() + ".html\"target=\"_blank\">"
+																	+ temp.getTitle() + "</a></li>");
+														}
+													%>
+												</ul>
+												<br />
+												<jsp:include page="paging_footer.jsp"></jsp:include>
 											</div>
 										</li>
 										<li id="tab2">
 											<h3>
 												<a href="####" onclick="javascript:toggleTo(2)">课程表</a>
 											</h3>
+											<%
+												ArrayList<Courses> courseSchedule = (ArrayList<Courses>) request
+														.getAttribute("schedule");
+											%>
 											<div id="oDIV2" style="display: none;">
-											<br/>
-												<table height="90%" width="90%" border="1"
-													bgcolor="#80ffff" align="center">
+												<br />
+												<table height="90%" width="90%" border="1" bgcolor="#80ffff"
+													align="center">
 													<tbody>
-														<tr>
+														<tr class="tablerow" id="row1">
 															<td>
 																&nbsp;
 															</td>
-															<td>
+															<td align="center">
+																星期一&nbsp;
+															</td>
+															<td align="center">
+																星期二&nbsp;
+															</td>
+															<td align="center">
+																星期三&nbsp;
+															</td>
+															<td align="center">
+																星期四&nbsp;
+															</td>
+															<td align="center">
+																星期五&nbsp;
+															</td>
+															<td align="center">
+																星期六&nbsp;
+															</td>
+															<td align="center">
+																星期日&nbsp;
+															</td>
+														</tr>
+														<tr class="tablerow" id="row2">
+															<td align="center">
+																1,2&nbsp;
+															</td>
+															<td id="1">
+																<%=courseSchedule.get(0).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="6"><%=courseSchedule.get(5).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="11"><%=courseSchedule.get(10).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="16"><%=courseSchedule.get(15).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="21"><%=courseSchedule.get(20).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="26"><%=courseSchedule.get(25).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="31"><%=courseSchedule.get(30).getName()%>
 																&nbsp;
 															</td>
 														</tr>
-														<tr>
-															<td>
+														<tr class="tablerow" id="row3">
+															<td align="center">
+																3,4&nbsp;
+															</td>
+															<td id="2"><%=courseSchedule.get(1).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="7"><%=courseSchedule.get(6).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="12"><%=courseSchedule.get(11).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="17"><%=courseSchedule.get(16).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="22"><%=courseSchedule.get(21).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="27"><%=courseSchedule.get(26).getName()%>
 																&nbsp;
 															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
+															<td id="32"><%=courseSchedule.get(31).getName()%>
 																&nbsp;
 															</td>
 														</tr>
-														<tr>
-															<td>
+														<tr class="tablerow" id="row4">
+															<td align="center">
+																5,6&nbsp;
+															</td>
+															<td id="3"><%=courseSchedule.get(2).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="8"><%=courseSchedule.get(7).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="13"><%=courseSchedule.get(12).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="18"><%=courseSchedule.get(17).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="23"><%=courseSchedule.get(22).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="28"><%=courseSchedule.get(27).getName()%>
 																&nbsp;
 															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-														</tr>
-														<tr>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
-																&nbsp;
-															</td>
-															<td>
+															<td id="33"><%=courseSchedule.get(32).getName()%>
 																&nbsp;
 															</td>
 														</tr>
-														<tr>
-															<td>
+														<tr class="tablerow" id="row5">
+															<td align="center">
+																7,8&nbsp;
+															</td>
+															<td id="4"><%=courseSchedule.get(3).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="9"><%=courseSchedule.get(8).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="14"><%=courseSchedule.get(13).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="19"><%=courseSchedule.get(18).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="24"><%=courseSchedule.get(23).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="29"><%=courseSchedule.get(28).getName()%>
 																&nbsp;
 															</td>
-															<td>
+															<td id="34"><%=courseSchedule.get(33).getName()%>
 																&nbsp;
 															</td>
-															<td>
+														</tr>
+														<tr class="tablerow" id="row6">
+															<td align="center">
+																9,10&nbsp;
+															</td>
+															<td id="5"><%=courseSchedule.get(4).getName()%>
+																&nbsp;
+															</td>
+															<td id="10"><%=courseSchedule.get(9).getName()%>
+																&nbsp;
+															</td>
+															<td id="15"><%=courseSchedule.get(14).getName()%>
+																&nbsp;
+															</td>
+															<td id="20"><%=courseSchedule.get(19).getName()%>
+																&nbsp;
+															</td>
+															<td id="25"><%=courseSchedule.get(24).getName()%>
+																&nbsp;
+															</td>
+															<td id="30"><%=courseSchedule.get(29).getName()%>
+																&nbsp;
+															</td>
+															<td id="35"><%=courseSchedule.get(34).getName()%>
 																&nbsp;
 															</td>
 														</tr>
@@ -654,8 +667,20 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												<a href="####" onclick="javascript:toggleTo(3)">课程管理</a>
 											</h3>
 											<div id="oDIV3" style="display: none;">
-											<br/>
-												
+												<br />
+												<%
+													List myCourses = (List) request.getAttribute("myCourses");
+													for (int i = 0; i < myCourses.size(); i++) {
+														Courses temp = (Courses) myCourses.get(i);
+												%>
+												<a
+													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"
+													 target="_blank">
+														<%=temp.getName()%>
+												</a>
+												<%
+													}
+												%>
 											</div>
 										</li>
 										<li id="tab4">

@@ -323,30 +323,6 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 				<div id="nav-bar">
 
-					<ul id="nav-lst" class="nav-lst">
-
-						<li class="nav-itm nav-curr ">
-
-							<br>
-						</li>
-
-						<li class="nav-itm ">
-
-							<br>
-						</li>
-
-						<li class="nav-itm ">
-
-							<br>
-						</li>
-
-						<li class="nav-itm ">
-
-
-							<br>
-						</li>
-					</ul>
-
 					<div id="sub-nav-c">
 
 						<div id="sub-nav-c-lt">

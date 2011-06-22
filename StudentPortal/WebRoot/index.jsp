@@ -142,8 +142,8 @@ response.setDateHeader("Expires", 0);
 								</div>
 								<%--input type="image" alt="提交" src="imgs/login.png" /--%>
 								<img alt="提交" src="imgs/login.png" class="submitbtn"
-									style="cursor: pointer"
-									onclick="validateForm(document.loginform)" />
+									style="cursor: pointer;"
+									onclick="validateForm(document.loginform)" width="128" height="35"/>
 								<br />
 							</form>
 
