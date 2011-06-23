@@ -16,13 +16,11 @@ import model.Courses;
 import model.CoursesDAO;
 import model.StudentCourse;
 import model.StudentCourseDAO;
-import model.StudentCourseFile;
-import model.StudentCourseFileDAO;
 import model.Studentinfo;
 import model.StudentinfoDAO;
-import model.Teacherinfo;
 
-public class CourseInfo extends HttpServlet {
+
+public class CourseInfo1 extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -38,22 +36,22 @@ public class CourseInfo extends HttpServlet {
 		List<CourseFile> courseFiles = courseFileDAO.findByCourseId(courseId);
 		request.setAttribute("courseFiles", courseFiles);
 
-		List<StudentCourseFile> studentCourseFiles = new ArrayList<StudentCourseFile>();
-		StudentCourseFileDAO studentCourseFileDAO = new StudentCourseFileDAO();
-		List<StudentCourseFile> tempCourseFiles = studentCourseFileDAO
+		StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
+		StudentinfoDAO studentinfoDAO = new StudentinfoDAO();
+		List<StudentCourse> studentCourses = studentCourseDAO
 				.findByCourseId(courseId);
-		Studentinfo studentinfo = (Studentinfo) session.getAttribute("user");
-		for (StudentCourseFile instance : tempCourseFiles) {
-			if (instance.getSId().equals(studentinfo.getSId())) {
-				studentCourseFiles.add(instance);
-			}
+		List<Studentinfo> studentinfoList = new ArrayList<Studentinfo>();
+		for (StudentCourse instance : studentCourses) {
+			Studentinfo temp = studentinfoDAO.findById(instance.getSId());
+			studentinfoList.add(temp);
 		}
-		request.setAttribute("studentCourseFiles", studentCourseFiles);
+		request.setAttribute("studentinfoList", studentinfoList);
 
-		request.getRequestDispatcher("courseInfo.jsp").forward(request,
+		request.getRequestDispatcher("courseInfo1.jsp").forward(request,
 				response);
 
 	}
+
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

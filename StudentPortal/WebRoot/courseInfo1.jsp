@@ -3,6 +3,7 @@
 <%@page import="model.FilesDAO"%>
 <%@page import="model.Files"%>
 <%@page import="model.StudentCourseFile"%>
+<%@page import="model.Studentinfo"%>
 <%@page import="model.Courses"%>
 <%
 	String path = request.getContextPath();
@@ -51,33 +52,22 @@ h5 {
 	text-align: left
 }
 
-#KeJian {
-	width: 400px;
-	top: -318px;
-	left: 450px;
-	position: relative;
-	height: 150px;
-	visibility: inherit;
-	border-left-width: 0px;
-	border-top-width: 0px;
-	border: 4px solid #1e90ff;
-}
-
 #ZuoYe {
-	width: 400px;
-	top: -300px;
+	width: 302px;
+	top: -387px;
 	left: 450px;
 	position: relative;
-	height: 400px;
+	height: 230px;
 	visibility: inherit;
 	border-left-width: 0px;
 	border-top-width: 0px;
 	border: 4px solid #1e90ff;
+	margin-left:-80;
 }
 
 #LiuYan {
 	left: 85px;
-	height: 300px;
+	height: 350px;
 	width: 300px;
 	font-size: 18px;
 	font-style: italic;
@@ -85,6 +75,7 @@ h5 {
 	padding-bottom: 10px;
 	padding-left: 50px;
 	border: 4px solid #1e90ff;
+	margin-left:-80;
 }
 
 #Kecheng {
@@ -97,6 +88,7 @@ h5 {
 	width: 800px;
 	font-size: 30px;
 	font-family: "隶书";
+	margin-left:-80;
 }
 
 #filename {
@@ -196,8 +188,8 @@ h5 {
 										<div id="prof-info">
 											<div id="Kecheng">
 												<% Courses course = (Courses) request.getAttribute("course"); %>
-												<table class="title" id="title" width="530" height="116"
-													style="height: 116px;">
+												<% List<Studentinfo> studentinfoList = (List<Studentinfo>) request.getAttribute("studentinfoList"); %>
+												<table class="title" id="title">
 													<tr>
 														<td width="500px" height="20px">
 
@@ -205,7 +197,7 @@ h5 {
 															(<%=course.getCourseId() %>)
 														</td>
 														<td width="300px" height="20px">
-															教师：<%=course.getTName() %>
+															学生人数：<%=studentinfoList.size() %>
 														</td>
 													</tr>
 													<tr>
@@ -229,8 +221,8 @@ h5 {
 
 												<form method="post"
 													action="/StudentPortal/StudentMessage
-					?to=<%out.print(course.getTId());%>
-					&course=<%out.print(course.getName());%>"
+														?to=<%out.print(course.getTId());%>
+														&course=<%out.print(course.getName());%>"
 													target="_blank">
 													主题
 													<input type="text" size=40 name="subject">
@@ -257,11 +249,14 @@ h5 {
 
 											</div>
 
-											<div id="KeJian">
+											
+											<br />
+											<div id="ZuoYe">
 												<font face="方正姚体"><strong><font size="5">课件</font>
 												</strong> </font>
-												<div class="filename" id="filename">
-													<%
+												<div id="XiaZai">
+													<div class="filename" id="filename">
+				<%
 						FilesDAO filesDAO = new FilesDAO();
 						List<CourseFile> courseFiles = (List<CourseFile>) request.getAttribute("courseFiles");
 						for(CourseFile instance : courseFiles){
@@ -273,26 +268,6 @@ h5 {
 													<%
 						}
 				%>
-												</div>
-												<!-- <input type="submit" name="button" id="button" value="download" /> -->
-											</div>
-											<br />
-											<div id="ZuoYe">
-												<font face="方正姚体"><strong><font size="5">作业</font>
-												</strong> </font>
-												<div id="XiaZai">
-													<div class="filename" id="filename">
-														<%
-						List<StudentCourseFile> studentCourseFiles = (List<StudentCourseFile>) request.getAttribute("studentCourseFiles");
-						for(StudentCourseFile instance : studentCourseFiles){
-							Files file = filesDAO.findById(instance.getFId());
-					 %>
-														<a
-															href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
-														<br />
-														<%
-						}
-					%>
 													</div>
 
 													<!-- <input type="submit" name="button" id="button" value="download" /> -->
@@ -302,28 +277,21 @@ h5 {
 
 												<div id="ShangChuan">
 													<form
-														action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>"
+														action="/StudentPortal/Upload1?courseId=<%=course.getCourseId()%>"
 														enctype="multipart/form-data" name="uploadform"
 														method="post">
 
 														<tr>
-															<td width="22%" align="center" valign="top"
-																bgcolor="#F7FAF6" style="padding-top: 8">
-																<div
-																	style="background: #177B6C; width: 100%; height: 25; color: white">
-																	<b>注意事项：</b>
-																</div>
-																文件长度最大允许为50兆！
-															</td>
 															<td valign="top"
 																style="padding-left: 30; padding-top: 10"
 																bgcolor="white">
-																文件路径1：
+																文件路径：
 																<br>
 																<input type="file" name="file1" size="40">
 																<br>
-																<input type="submit" value="确定">
-																<br>
+																<br/>
+																<div align="center"><input type="submit" value="上传"> 
+																<br></div>
 																<br>
 															</td>
 														</tr>

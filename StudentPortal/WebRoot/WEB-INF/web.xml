@@ -92,6 +92,20 @@
     <servlet-name>CourseInfo1</servlet-name>
     <servlet-class>com.tongji.j2ee.sp.CourseInfo1</servlet-class>
   </servlet>
+  <servlet>
+    <description>student sent message</description>
+    <display-name>StudentMessage</display-name>
+    <servlet-name>TeacherMessage</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.TeacherMessage</servlet-class>
+  </servlet>
+  <servlet>
+    <description>student sent message</description>
+    <display-name>StudentMessage</display-name>
+    <servlet-name>Upload1</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.Upload1</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -146,6 +160,14 @@
   <servlet-mapping>
     <servlet-name>CourseInfo1</servlet-name>
     <url-pattern>/CourseInfo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeacherMessage</servlet-name>
+    <url-pattern>/TeacherMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Upload1</servlet-name>
+    <url-pattern>/Upload1</url-pattern>
   </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>

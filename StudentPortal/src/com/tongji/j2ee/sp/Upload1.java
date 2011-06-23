@@ -11,22 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.registry.infomodel.User;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.hql.ast.tree.Case2Node;
 
+import model.CourseFile;
+import model.CourseFileDAO;
 import model.FilesDAO;
-import model.StudentCourseFile;
-import model.StudentCourseFileDAO;
 import model.Studentinfo;
 
 import com.jspsmart.upload.File;
 import com.jspsmart.upload.Files;
 import com.jspsmart.upload.SmartUpload;
 
-public class Upload extends HttpServlet {
+public class Upload1 extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -44,11 +42,10 @@ public class Upload extends HttpServlet {
 		
 		String id = request.getParameter("filedir");
 		String courseId = request.getParameter("courseId");
-		String filedir = request.getParameter("filedir");
 			// 学生是学号
 			// 老师是课程号
 		
-		filedir = "/file/" + filedir + "/";
+		String filedir = "/file/" + courseId + "/";
 		
 
 
@@ -71,7 +68,7 @@ public class Upload extends HttpServlet {
 			boolean mark = false;
 
 			FilesDAO fileDao = new FilesDAO();
-			StudentCourseFileDAO studentCourseFileDAO = new StudentCourseFileDAO();
+			CourseFileDAO CourseFileDAO = new CourseFileDAO();
 
 			File file = files.getFile(0);
 			int filesize = file.getSize();
@@ -96,15 +93,13 @@ public class Upload extends HttpServlet {
 				fileDao.save(filebean);
 
 				
-				
-				
-				// fill the student-file-table
-				StudentCourseFile studentCourseFile = new StudentCourseFile();
-				studentCourseFile.setFId(filebean.getFId());
-				studentCourseFile.setCourseId(courseId);
-				studentCourseFile.setSId(id);
-				studentCourseFileDAO.save(studentCourseFile);
+				// fill the course-file-table
+				CourseFile courseFile = new CourseFile();
+				courseFile.setFId(filebean.getFId());
+				courseFile.setCourseId(courseId);
+				CourseFileDAO.save(courseFile);
 
+				
 				file.saveAs(location, File.SAVEAS_VIRTUAL); // 保存文件到磁盘的指定目录下
 				message += "文件 <b><font color='red'>" + file.getFilePathName()
 						+ "</font></b> 上传成功！<br>";
