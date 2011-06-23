@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>编辑通知</title>
+		<title>修改通知</title>
 
 		<meta name="keywords" content="Gurudigger" />
 		<meta name="description" content="通知" />
@@ -137,18 +137,20 @@
 											<p>
 												&nbsp;
 												<font bgcolor="#b6f8f4">标题：</font> &nbsp; &nbsp;
-												<input type="text" maxlength="45" name="title" />
+												<input type="text" maxlength="45" name="title"
+													value="${title}" />
 											</p>
 											<p>
 												&nbsp; 内容：
 											</p>
 											<p>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<textarea rows="6" name="content"></textarea>
+												<textarea rows="6" name="content"">${content}</textarea>
 											</p>
 											<p>
 												&nbsp;发布者：
-												<input type="text" maxlength="20" name="author" />
+												<input type="text" maxlength="20" name="author"
+													value="${author}" />
 											</p>
 											<p>
 												&nbsp;上传附件：
@@ -156,6 +158,10 @@
 											</p>
 											<p>
 												&nbsp;
+												<input type="text" maxlength="20" name="noteid"
+													value="${noteid}"
+													style="visibility: hidden "/>
+
 											</p>
 											<p>
 												&nbsp;
@@ -163,7 +169,7 @@
 													onclick="bconfirm()" />
 											</p>
 											<p>
-												&nbsp;
+												&nbsp;&nbsp;
 											</p>
 											<p>
 												&nbsp;
@@ -178,6 +184,7 @@ function bconfirm() {
 	window.dialogArguments.newnote.title.value = document.editform.title.value;
 	window.dialogArguments.newnote.content.value = document.editform.content.value;
 	window.dialogArguments.newnote.author.value = document.editform.author.value;
+	window.dialogArguments.newnote.noteid.value = document.editform.noteid.value;
 	//alert(dialogArguments.newnote.title.value);
 	window.dialogArguments.newnote.submit();
 	window.close();

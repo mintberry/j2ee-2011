@@ -53,26 +53,16 @@ public class Paging extends HttpServlet {
 			request.getRequestDispatcher("student.jsp").forward(
 					request, response);
 			break;
+		case 2:
+			LoginServlet.setUpTeacher(request, response, hs, iCurPage);
+			request.getRequestDispatcher("teacher.jsp").forward(
+					request, response);
 			default:
 				break;
 		}
 		
 		
 
-//		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
-//		out
-//				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-//		out.println("<HTML>");
-//		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-//		out.println("  <BODY>");
-//		out.print("    This is ");
-//		out.print(this.getClass());
-//		out.println(", using the GET method");
-//		out.println("  </BODY>");
-//		out.println("</HTML>");
-//		out.flush();
-//		out.close();
 	}
 
 	/**

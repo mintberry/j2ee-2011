@@ -17,6 +17,10 @@ public class HtmlGenerator {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void changeHtml(){
+		
+	}
 
 	public void GenerateHtml(HttpServletRequest request, Notify newnote) {
 		ServletContext sc = request.getSession().getServletContext();

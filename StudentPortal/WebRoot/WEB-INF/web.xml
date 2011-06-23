@@ -1,178 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
- <filter>
-  <display-name>ChnFilter</display-name>
-  <filter-name>ChnFilter</filter-name>
-  <filter-class>com.tongji.j2ee.sp.ChnFilter</filter-class>
-  <init-param>
-   <param-name>defaultencoding</param-name>
-   <param-value>UTF-8</param-value>
-  </init-param>
- </filter>
- <filter-mapping>
-  <filter-name>ChnFilter</filter-name>
-  <url-pattern>/*</url-pattern>
- </filter-mapping>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>LoginServlet</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.LoginServlet</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>RegMailServlet</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.RegMailServlet</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>CheckMailAddrServlet</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.CheckMailAddrServlet</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>SendMailServlet</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.SendMailServlet</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>CourseInfo</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.CourseInfo</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>Logout</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.Logout</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>FileServlet</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.FileServlet</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>Upload</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.Upload</servlet-class>
- </servlet>
-  <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>Download</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.Download</servlet-class>
- </servlet>
- <servlet>
-  <description>This is the description of my J2EE component</description>
-  <display-name>This is the display name of my J2EE component</display-name>
-  <servlet-name>EditNote</servlet-name>
-  <servlet-class>com.tongji.j2ee.sp.EditNote</servlet-class>
- </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>Paging</servlet-name>
-    <servlet-class>com.tongji.j2ee.sp.Paging</servlet-class>
-  </servlet>
-  <servlet>
-    <description>student sent message</description>
-    <display-name>StudentMessage</display-name>
-    <servlet-name>StudentMessage</servlet-name>
-    <servlet-class>com.tongji.j2ee.sp.StudentMessage</servlet-class>
-  </servlet>
-  <servlet>
-    <description>student sent message</description>
-    <display-name>StudentMessage</display-name>
-    <servlet-name>CourseInfo1</servlet-name>
-    <servlet-class>com.tongji.j2ee.sp.CourseInfo1</servlet-class>
-  </servlet>
-  <servlet>
-    <description>student sent message</description>
-    <display-name>StudentMessage</display-name>
-    <servlet-name>TeacherMessage</servlet-name>
-    <servlet-class>com.tongji.j2ee.sp.TeacherMessage</servlet-class>
-  </servlet>
-  <servlet>
-    <description>student sent message</description>
-    <display-name>StudentMessage</display-name>
-    <servlet-name>Upload1</servlet-name>
-    <servlet-class>com.tongji.j2ee.sp.Upload1</servlet-class>
-  </servlet>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<filter>
+		<display-name>ChnFilter</display-name>
+		<filter-name>ChnFilter</filter-name>
+		<filter-class>com.tongji.j2ee.sp.ChnFilter</filter-class>
+		<init-param>
+			<param-name>defaultencoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ChnFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>RegMailServlet</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.RegMailServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>CheckMailAddrServlet</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.CheckMailAddrServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>SendMailServlet</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.SendMailServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>CourseInfo</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.CourseInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.Logout</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>FileServlet</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.FileServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.Upload</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>Download</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.Download</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>EditNote</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.EditNote</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>Paging</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.Paging</servlet-class>
+	</servlet>
+	<servlet>
+		<description>student sent message</description>
+		<display-name>StudentMessage</display-name>
+		<servlet-name>StudentMessage</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.StudentMessage</servlet-class>
+	</servlet>
+	<servlet>
+		<description>student sent message</description>
+		<display-name>StudentMessage</display-name>
+		<servlet-name>CourseInfo1</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.CourseInfo1</servlet-class>
+	</servlet>
+	<servlet>
+		<description>student sent message</description>
+		<display-name>StudentMessage</display-name>
+		<servlet-name>TeacherMessage</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.TeacherMessage</servlet-class>
+	</servlet>
+	<servlet>
+		<description>student sent message</description>
+		<display-name>StudentMessage</display-name>
+		<servlet-name>Upload1</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.Upload1</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>DeleteNote</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.DeleteNote</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>GetCurNote</servlet-name>
+		<servlet-class>com.tongji.j2ee.sp.GetCurNote</servlet-class>
+	</servlet>
 
 
 
 
-
- <servlet-mapping>
-  <servlet-name>LoginServlet</servlet-name>
-  <url-pattern>/LoginServlet</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>RegMailServlet</servlet-name>
-  <url-pattern>/RegMailServlet</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>CheckMailAddrServlet</servlet-name>
-  <url-pattern>/CheckMailAddrServlet</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>SendMailServlet</servlet-name>
-  <url-pattern>/SendMailServlet</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>CourseInfo</servlet-name>
-  <url-pattern>/CourseInfo</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>Logout</servlet-name>
-  <url-pattern>/logout</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>FileServlet</servlet-name>
-  <url-pattern>/FileServlet</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>Upload</servlet-name>
-  <url-pattern>/Upload</url-pattern>
- </servlet-mapping>
-  <servlet-mapping>
-  <servlet-name>Download</servlet-name>
-  <url-pattern>/Download</url-pattern>
- </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>EditNote</servlet-name>
-  <url-pattern>/EditNote</url-pattern>
- </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Paging</servlet-name>
-    <url-pattern>/Paging</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>StudentMessage</servlet-name>
-    <url-pattern>/StudentMessage</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CourseInfo1</servlet-name>
-    <url-pattern>/CourseInfo1</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>TeacherMessage</servlet-name>
-    <url-pattern>/TeacherMessage</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Upload1</servlet-name>
-    <url-pattern>/Upload1</url-pattern>
-  </servlet-mapping>
- <welcome-file-list>
-  <welcome-file>index.jsp</welcome-file>
- </welcome-file-list>
- <login-config>
-  <auth-method>BASIC</auth-method>
- </login-config>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegMailServlet</servlet-name>
+		<url-pattern>/RegMailServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckMailAddrServlet</servlet-name>
+		<url-pattern>/CheckMailAddrServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SendMailServlet</servlet-name>
+		<url-pattern>/SendMailServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CourseInfo</servlet-name>
+		<url-pattern>/CourseInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FileServlet</servlet-name>
+		<url-pattern>/FileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/Upload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Download</servlet-name>
+		<url-pattern>/Download</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditNote</servlet-name>
+		<url-pattern>/EditNote</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Paging</servlet-name>
+		<url-pattern>/Paging</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StudentMessage</servlet-name>
+		<url-pattern>/StudentMessage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CourseInfo1</servlet-name>
+		<url-pattern>/CourseInfo1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TeacherMessage</servlet-name>
+		<url-pattern>/TeacherMessage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Upload1</servlet-name>
+		<url-pattern>/Upload1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteNote</servlet-name>
+		<url-pattern>/DeleteNote</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetCurNote</servlet-name>
+		<url-pattern>/GetCurNote</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
 </web-app>

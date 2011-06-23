@@ -132,14 +132,12 @@ public class LoginServlet extends HttpServlet {
 								request, response);
 					} else {
 						// 载入教师页面
-						
-						// find the courses in the courses table
-						CoursesDAO coursesDAO = new CoursesDAO();
-						List<Courses> myCourses = coursesDAO
+						CoursesDAO studentCourseDAO = new CoursesDAO();
+						List<Courses> myCourses = studentCourseDAO
 								.findByTId(teacherinfo.getTId());
 
-						
-						//CoursesDAO coursesDAO = new CoursesDAO();
+						// find the courses in the courses table
+						CoursesDAO coursesDAO = new CoursesDAO();
 
 						// to implement the course schedule
 						Courses emptyCourse = new Courses();
@@ -156,7 +154,7 @@ public class LoginServlet extends HttpServlet {
 						}
 
 						request.setAttribute("pageNumber", 1);
-						NotifyList lns = new NotifyList(1);
+						NotifyList lns = new NotifyList(2);
 						System.out.println("allitems" + lns.allItems);
 						hs.setAttribute("noteli", lns); // 保存到session
 
@@ -250,11 +248,11 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("schedule", courseSchedule);
 	}
 
-	public void setUpTeacher(HttpServletRequest request,
+	public static void setUpTeacher(HttpServletRequest request,
 			HttpServletResponse response, HttpSession hs, int icurpage) {
 		CoursesDAO studentCourseDAO = new CoursesDAO();
-		List<Courses> myCourses = studentCourseDAO.findByTId(teacherinfo
-				.getTId());
+		List<Courses> myCourses = studentCourseDAO.findByTId(hs
+				.getAttribute("userId"));
 
 		// find the courses in the courses table
 		CoursesDAO coursesDAO = new CoursesDAO();

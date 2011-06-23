@@ -1,8 +1,9 @@
 
 <%
 	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-cache");
-	response.setDateHeader("Expires", 0);
+	response.setHeader("Cache-Control",
+			"no-cache, no-store, must-revalidate");
+	response.setDateHeader("Expires", -1);
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList"%>
@@ -82,7 +83,13 @@
 function openwindow() {
 	window
 			.showModalDialog("editnote.jsp", document,
-					"status:no;scroll:no;dialogWidth:400px;dialogHeight:300px;resizable:yes");
+					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
+}
+function openedit(servletarg) {
+
+	window
+			.showModalDialog(servletarg, document,
+					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
 }
 </script>
 
@@ -149,20 +156,22 @@ function openwindow() {
 #tab ul li div#oDIV4 {
 	left: -300px;
 }
+
 ul#notes li.noteaddr {
 	width: 300px;
 	display: block;
-    float: left;
-    font-size: 15px;
-    height: 20px;
-    left: 0;
-    line-height: 1.4;
-    list-style-type: none;
-    margin: 0 0 0 22px;
-    padding: 0;
-    position: relative;
-    top: 0;
+	float: left;
+	font-size: 15px;
+	height: 20px;
+	left: 0;
+	line-height: 1.4;
+	list-style-type: none;
+	margin: 0 0 0 22px;
+	padding: 0;
+	position: relative;
+	top: 0;
 }
+
 /*TAB-标题修饰*/
 #tab,#tab ul li div,#tab ul li div li {
 	width: 945px;
@@ -254,8 +263,6 @@ table#tnotes {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
 </style>
 
 		<script type="text/javascript">
@@ -517,21 +524,35 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														List ln = lns.getCurrentList(((Integer) request
 																.getAttribute("pageNumber")).intValue());
 
-														out.println("<table id=\"tnotes\"><thead><tr align=\"center\">"
-																+ "<td width=\"10%\">Article ID</td>"
-																+ "<td width=\"60%\">Article Title</td>"
-																+ "<td colspan=\"3\">Actions</td></tr></thead><tbody>");
+														out
+																.println("<table id=\"tnotes\" width=\"100%\"><thead><tr align=\"center\">"
+																		+ "<td width=\"20%\">发布时间</td>"
+																		+ "<td width=\"60%\">通知标题</td>"
+																		+ "<td colspan=\"3\">操作</td></tr></thead><tbody>");
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
+															String date = temp.getDatetime().toString();
+
 															//out.println("<li><a href=\"/StudentPortal/html/"
 															//		+ temp.getNid() + ".html\"target=\"_blank\">"
 															//		+ temp.getTitle() + "</a></li>");
+															if ((i % 2) == 0) {
+																out.println("<tr align=\"center\">");
+															} else {
+																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");
+															}
 															out
-																	.println("<tr align=\"center\"><td></td><td><li class=\"noteaddr\"><a href=\"/StudentPortal/html/"
+																	.println("<td>"
+																			+ date.substring(0, date.indexOf(' '))
+																			+ "</td><td><a href=\"/StudentPortal/html/"
 																			+ temp.getNid()
 																			+ ".html\"target=\"_blank\">"
 																			+ temp.getTitle()
-																			+ "</a></li></td><td>编辑</td></tr>");
+																			+ "</a></td><td><a href=\"javascript:openedit(\'/StudentPortal/GetCurNote?noteid="
+																			+ temp.getNid()
+																			+ "\')\">编辑</a>"
+																			+ "&nbsp;<a href=\"/StudentPortal/DeleteNote?noteid="
+																			+ temp.getNid() + "\">删除</a></td>" + "</tr>");
 
 														}
 														out.println("</tbody></table>");
@@ -549,6 +570,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 													<input type="text" maxlength="1000" name="content"
 														style="visibility: hidden" />
 													<input type="text" maxlength="20" name="author"
+														style="visibility: hidden" />
+													<input type="text" maxlength="20" name="noteid"
 														style="visibility: hidden" />
 												</form>
 												<br />
@@ -716,10 +739,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 		<div id="mn-pop"></div>
 
-
-
 		<br>
-
 
 	</body>
 

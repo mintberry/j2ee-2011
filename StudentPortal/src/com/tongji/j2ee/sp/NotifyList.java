@@ -11,6 +11,8 @@ public class NotifyList {
 	NotifyDAO notifyDAO = new NotifyDAO();
 	public List allNotes;
 	
+	public List originList;
+	
 	public int iSymbol;                                   //0 admin, 1 student, 2 teacher
 	
 	public int currentPage;                               //当前页
@@ -69,7 +71,10 @@ public class NotifyList {
 	public NotifyList(HttpServletRequest request) {
 		super();
 		// TODO Auto-generated constructor stub
-		allNotes = notifyDAO.findAll();
+		originList = notifyDAO.findAll();
+		for(int i = originList.size() - 1; i != -1;--i){
+			allNotes.add(originList.get(i));
+		}
 		pageItems = 12;
 		allItems = allNotes.size();
 		
@@ -82,7 +87,10 @@ public class NotifyList {
 	public NotifyList(int i) {
 		super();
 		// TODO Auto-generated constructor stub
-		allNotes = notifyDAO.findAll();
+		originList = notifyDAO.findAll();
+		for(int it = originList.size() - 1; it != -1;--it){
+			allNotes.add(originList.get(it));
+		}
 		pageItems = 12;
 		allItems = allNotes.size();
 		
@@ -100,6 +108,7 @@ public class NotifyList {
 		if(0 == pages){
 			return allNotes;
 		}
+		
 		List curList = allNotes.subList(curItem, (curPage==pages)?(allItems):(curItem + pageItems));
 		return curList;
 	}

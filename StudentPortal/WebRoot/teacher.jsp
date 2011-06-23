@@ -472,7 +472,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														//List lns = notifyDAO.findAll();
 														//List ln = lns.subList(currentPage, currentPage + 12);
 														NotifyList lns = (NotifyList) session.getAttribute("noteli");
-														System.out.println("student:" + lns.allItems);
+														System.out.println("teachers:" + lns.allItems);
 														List ln = lns.getCurrentList(((Integer) request
 																.getAttribute("pageNumber")).intValue());
 
