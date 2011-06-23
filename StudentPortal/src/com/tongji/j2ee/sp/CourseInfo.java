@@ -20,37 +20,22 @@ import model.StudentCourseFile;
 import model.StudentCourseFileDAO;
 import model.Studentinfo;
 import model.StudentinfoDAO;
+import model.Teacherinfo;
 
 public class CourseInfo extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-
-		String courseId = request.getParameter("id");
-
-		CoursesDAO coursesDAO = new CoursesDAO();
-		Courses course = coursesDAO.findById(courseId);
-		request.setAttribute("course", course);
-
-		CourseFileDAO courseFileDAO = new CourseFileDAO();
-		List<CourseFile> courseFiles = courseFileDAO.findByCourseId(courseId);
-		request.setAttribute("courseFiles", courseFiles);
-
-		List<StudentCourseFile> studentCourseFiles = new ArrayList<StudentCourseFile>();
-		StudentCourseFileDAO studentCourseFileDAO = new StudentCourseFileDAO();
-		List<StudentCourseFile> tempCourseFiles = studentCourseFileDAO.findByCourseId(courseId);
-		Studentinfo studentinfo = (Studentinfo) session.getAttribute("user");
-		for (StudentCourseFile instance : tempCourseFiles) {
-			if (instance.getSId().equals(studentinfo.getSId())) {
-				studentCourseFiles.add(instance);
-			}
+		
+		Object instance = session.getAttribute("user");
+		if(instance instanceof Studentinfo){
+			doStudent(request, response);
 		}
-		request.setAttribute("studentCourseFiles", studentCourseFiles);
-
-		request.getRequestDispatcher("courseInfo.jsp").forward(request,
-				response);
-
+		
+		if(instance instanceof Teacherinfo){
+			doTeacher(request, response);
+		}
 	}
 
 	private void doStudent(HttpServletRequest request,
@@ -107,6 +92,9 @@ public class CourseInfo extends HttpServlet {
 			studentinfoList.add(temp);
 		}
 		request.setAttribute("studentinfoList", studentinfoList);
+		
+		request.getRequestDispatcher("EmailSuccess.html").forward(request,
+				response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

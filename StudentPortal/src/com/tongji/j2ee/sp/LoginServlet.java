@@ -132,12 +132,14 @@ public class LoginServlet extends HttpServlet {
 								request, response);
 					} else {
 						// 载入教师页面
-						CoursesDAO studentCourseDAO = new CoursesDAO();
-						List<Courses> myCourses = studentCourseDAO
-								.findByTId(teacherinfo.getTId());
-
+						
 						// find the courses in the courses table
 						CoursesDAO coursesDAO = new CoursesDAO();
+						List<Courses> myCourses = coursesDAO
+								.findByTId(teacherinfo.getTId());
+
+						
+						//CoursesDAO coursesDAO = new CoursesDAO();
 
 						// to implement the course schedule
 						Courses emptyCourse = new Courses();
