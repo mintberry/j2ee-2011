@@ -189,6 +189,10 @@
 		<servlet-name>GetCurNote</servlet-name>
 		<url-pattern>/GetCurNote</url-pattern>
 	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>StudentInfo</servlet-name>
+		<url-pattern>/StudentInfo</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

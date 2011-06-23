@@ -3,8 +3,8 @@
 <%@page import="model.FilesDAO"%>
 <%@page import="model.Files"%>
 <%@page import="model.StudentCourseFile"%>
-<%@page import="model.Studentinfo"%>
 <%@page import="model.Courses"%>
+<%@page import="model.Studentinfo"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -52,9 +52,22 @@ h5 {
 	text-align: left
 }
 
-#Kejian {
+#LiuYan {
 	width: 302px;
-	top: -387px;
+	top: -368px;
+	left: 450px;
+	position: relative;
+	height: 300px;
+	visibility: inherit;
+	border-left-width: 0px;
+	border-top-width: 0px;
+	border: 4px solid #1e90ff;
+	margin-left:-80;
+}
+
+#KeJian {
+	width: 302px;
+	top: -370px;
 	left: 450px;
 	position: relative;
 	height: 230px;
@@ -65,7 +78,7 @@ h5 {
 	margin-left:-80;
 }
 
-#LiuYan {
+#List {
 	left: 85px;
 	height: 350px;
 	width: 300px;
@@ -97,6 +110,14 @@ h5 {
 	height: 100px;
 	overflow: auto;
 }
+
+#studentlist {
+	border: 1px solid #CCCCCC;
+	width: 300px;
+	height: 400px;
+	overflow: auto;
+}
+
 </style>
 	<body>
 		<body>
@@ -211,16 +232,36 @@ h5 {
 												</table>
 											</div>
 
-											<div id="LiuYan">
+											<div id="List">
 												<div align="center">
 													<br />
-													<strong><font size="5">留言</font> </strong>
-												</div>
-												<strong> </strong>
+													<strong><font size="5">学生列表</font> </strong>
+												</div>													
 												<br />
+												
+												<div class="studentlist" id="studentlist">
+													<%
+														for(Studentinfo instance : studentinfoList){
+													%>
+													<a href="javascript:void(0)"target="_blank"
+														onclick="javascript:window.showModalDialog('/StudentPortal/StudentInfo?id=<%out.print(instance.getSId());%>")', null, 'status:no; dialogWidth:500px; dialogHeight:400px; dialogHide:true; help:no; scroll:no;'>
+															<%=instance.getSId()%><%=instance.getName()%>
+													</a>
+													
+													<br />
+													<%
+														}
+													%>
+												</div>
+			
 
-												<form method="post"
-													action="/StudentPortal/StudentMessage
+											</div>
+
+											<div id="LiuYan">
+												<font face="方正姚体"><strong><font size="5">课件</font>
+												</strong> </font>
+													<form method="post"
+													action="/StudentPortal/TeacherMessage
 														?to=<%out.print(course.getTId());%>
 														&course=<%out.print(course.getName());%>"
 													target="_blank">
@@ -246,17 +287,15 @@ h5 {
 														</label>
 													</div>
 												</form>
-
+												<!-- <input type="submit" name="button" id="button" value="download" /> -->
 											</div>
-
-											
 											<br />
 											<div id="KeJian">
 												<font face="方正姚体"><strong><font size="5">课件</font>
 												</strong> </font>
 												<div id="XiaZai">
 													<div class="filename" id="filename">
-				<%
+														<%
 						FilesDAO filesDAO = new FilesDAO();
 						List<CourseFile> courseFiles = (List<CourseFile>) request.getAttribute("courseFiles");
 						for(CourseFile instance : courseFiles){
@@ -277,7 +316,7 @@ h5 {
 
 												<div id="ShangChuan">
 													<form
-														action="/StudentPortal/Upload1?courseId=<%=course.getCourseId()%>"
+														action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>"
 														enctype="multipart/form-data" name="uploadform"
 														method="post">
 

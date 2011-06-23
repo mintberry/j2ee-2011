@@ -47,7 +47,7 @@ public class CourseInfo1 extends HttpServlet {
 		}
 		request.setAttribute("studentinfoList", studentinfoList);
 
-		request.getRequestDispatcher("courseInfo1.jsp").forward(request,
+		request.getRequestDispatcher("courseInfo2.jsp").forward(request,
 				response);
 
 	}
