@@ -29,11 +29,11 @@
 
 	</head>
 
-	<link href="../imgs/c1.jpg" rel="shortcut icon" type="image/x-icon" />
+	<link href="imgs/c1.jpg" rel="shortcut icon" type="image/x-icon" />
 
-	<link href="../css/core.css" rel="stylesheet" type="text/css" />
+	<link href="css/core.css" rel="stylesheet" type="text/css" />
 
-	<link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 #prof-info {
 	float: left;
@@ -119,7 +119,7 @@ h5 {
 						<div id="hd-l">
 
 							<a id="hd-logo" href="http://sse.tongji.edu.cn"> <img
-									id="hd-logo-img" src="../imgs/sse.png" title="Tongji"
+									id="hd-logo-img" src="imgs/sse.png" title="Tongji"
 									alt="Tongji" /> </a>
 
 						</div>

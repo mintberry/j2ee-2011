@@ -50,7 +50,7 @@ public class CourseInfo extends HttpServlet {
 		}
 		request.setAttribute("studentCourseFiles", studentCourseFiles);
 
-		request.getRequestDispatcher("courseInfo.jsp").forward(request,
+		request.getRequestDispatcher("courseInfo1.jsp").forward(request,
 				response);
 
 	}
