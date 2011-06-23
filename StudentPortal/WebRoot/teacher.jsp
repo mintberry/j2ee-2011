@@ -674,7 +674,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														Courses temp = (Courses) myCourses.get(i);
 												%>
 												<a
-													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"
+													href="/StudentPortal/CourseInfo1?id=<%out.print(temp.getCourseId());%>"
 													 target="_blank">
 														<%=temp.getName()%>
 												</a>

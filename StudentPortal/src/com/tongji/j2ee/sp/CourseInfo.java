@@ -27,21 +27,6 @@ public class CourseInfo extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
-		Object instance = session.getAttribute("user");
-		if(instance instanceof Studentinfo){
-			doStudent(request, response);
-		}
-		
-		if(instance instanceof Teacherinfo){
-			doTeacher(request, response);
-		}
-	}
-
-	private void doStudent(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		HttpSession session = request.getSession();
 
 		String courseId = request.getParameter("id");
 
@@ -55,7 +40,8 @@ public class CourseInfo extends HttpServlet {
 
 		List<StudentCourseFile> studentCourseFiles = new ArrayList<StudentCourseFile>();
 		StudentCourseFileDAO studentCourseFileDAO = new StudentCourseFileDAO();
-		List<StudentCourseFile> tempCourseFiles = studentCourseFileDAO.findByCourseId(courseId);
+		List<StudentCourseFile> tempCourseFiles = studentCourseFileDAO
+				.findByCourseId(courseId);
 		Studentinfo studentinfo = (Studentinfo) session.getAttribute("user");
 		for (StudentCourseFile instance : tempCourseFiles) {
 			if (instance.getSId().equals(studentinfo.getSId())) {
@@ -66,35 +52,7 @@ public class CourseInfo extends HttpServlet {
 
 		request.getRequestDispatcher("courseInfo.jsp").forward(request,
 				response);
-	}
 
-	private void doTeacher(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		HttpSession session = request.getSession();
-
-		String courseId = request.getParameter("id");
-
-		CoursesDAO coursesDAO = new CoursesDAO();
-		Courses course = coursesDAO.findById(courseId);
-		request.setAttribute("course", course);
-
-		CourseFileDAO courseFileDAO = new CourseFileDAO();
-		List<CourseFile> courseFiles = courseFileDAO.findByCourseId(courseId);
-		request.setAttribute("courseFiles", courseFiles);
-
-		StudentCourseDAO studentCourseDAO = new StudentCourseDAO();
-		StudentinfoDAO studentinfoDAO = new StudentinfoDAO();
-		List<StudentCourse> studentCourses = studentCourseDAO.findByCourseId(courseId);
-		List<Studentinfo> studentinfoList = new ArrayList<Studentinfo>();
-		for (StudentCourse instance : studentCourses) {
-			Studentinfo temp = studentinfoDAO.findById(instance.getSId());
-			studentinfoList.add(temp);
-		}
-		request.setAttribute("studentinfoList", studentinfoList);
-		
-		request.getRequestDispatcher("EmailSuccess.html").forward(request,
-				response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

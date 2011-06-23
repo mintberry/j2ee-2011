@@ -82,8 +82,8 @@ public class Upload extends HttpServlet {
 			else {
 				String filename = file.getFileName();
 				String location = filedir + filename;
-				String fileinfo = myup.getRequest().getParameter(
-						"fileinfo"+1);
+				//String fileinfo = myup.getRequest().getParameter(
+				//		"fileinfo"+1);
 				Date updatetime = date;
 
 				// fill the file-table
@@ -91,7 +91,7 @@ public class Upload extends HttpServlet {
 				filebean.setName(filename);
 				filebean.setLocation(location);
 				filebean.setFilesize(filesize);
-				filebean.setDescription(fileinfo);
+				//filebean.setDescription(fileinfo);
 				filebean.setUpdateDate(updatetime);
 				fileDao.save(filebean);
 
