@@ -439,29 +439,6 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 
-								<!--div class="pnl-head clearfix" id="tab-bar">
-
-									<h3 class="pnl-caption">
-										你想说：
-									</h3>
-
-								</div>
-
-
-
-								<div class="pnl-content" id="tab-content">
-
-
-
-									<div id="prof-status" class="clearfix"></div>
-
-
-
-									<div id="activity"></div>
-									
-									
-
-								</div-->
 								<div id="tab">
 									<ul>
 										<li id="tab1" class="up">
@@ -489,12 +466,33 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														List ln = lns.getCurrentList(((Integer) request
 																.getAttribute("pageNumber")).intValue());
 
+														out
+																.println("<table id=\"tnotes\" width=\"100%\"><thead><tr align=\"center\">"
+																		+ "<td width=\"20%\">发布时间</td>"
+																		+ "<td width=\"60%\">通知标题</td></tr></thead><tbody>");
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li><a href=\"/StudentPortal/html/"
-																	+ temp.getNid() + ".html\"target=\"_blank\">"
-																	+ temp.getTitle() + "</a></li>");
+															String date = temp.getDatetime().toString();
+
+															//out.println("<li><a href=\"/StudentPortal/html/"
+															//		+ temp.getNid() + ".html\"target=\"_blank\">"
+															//		+ temp.getTitle() + "</a></li>");
+															if ((i % 2) == 1) {
+																out.println("<tr align=\"center\">");
+															} else {
+																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");
+															}
+															out
+																	.println("<td>"
+																			+ date.substring(0, date.indexOf(' '))
+																			+ "</td><td><a href=\"/StudentPortal/html/"
+																			+ temp.getNid()
+																			+ ".html\"target=\"_blank\">"
+																			+ temp.getTitle()
+																			+ "</a></td></tr>");
+
 														}
+														out.println("</tbody></table>");
 													%>
 												</ul>
 												<br />

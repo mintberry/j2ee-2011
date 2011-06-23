@@ -280,7 +280,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 				<div id="nav-bar">
 
-				
+
 
 					<div id="sub-nav-c">
 
@@ -476,12 +476,33 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 														List ln = lns.getCurrentList(((Integer) request
 																.getAttribute("pageNumber")).intValue());
 
+														out
+																.println("<table id=\"tnotes\" width=\"100%\"><thead><tr align=\"center\">"
+																		+ "<td width=\"20%\">发布时间</td>"
+																		+ "<td width=\"60%\">通知标题</td></tr></thead><tbody>");
 														for (int i = 0; i != ln.size(); ++i) {
 															Notify temp = (Notify) ln.get(i);
-															out.println("<li><a href=\"/StudentPortal/html/"
-																	+ temp.getNid() + ".html\"target=\"_blank\">"
-																	+ temp.getTitle() + "</a></li>");
+															String date = temp.getDatetime().toString();
+
+															//out.println("<li><a href=\"/StudentPortal/html/"
+															//		+ temp.getNid() + ".html\"target=\"_blank\">"
+															//		+ temp.getTitle() + "</a></li>");
+															if ((i % 2) == 1) {
+																out.println("<tr align=\"center\">");
+															} else {
+																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");
+															}
+															out
+																	.println("<td>"
+																			+ date.substring(0, date.indexOf(' '))
+																			+ "</td><td><a href=\"/StudentPortal/html/"
+																			+ temp.getNid()
+																			+ ".html\"target=\"_blank\">"
+																			+ temp.getTitle()
+																			+ "</a></td></tr>");
+
 														}
+														out.println("</tbody></table>");
 													%>
 												</ul>
 												<br />
@@ -675,9 +696,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												%>
 												<a
 													href="/StudentPortal/CourseInfo1?id=<%out.print(temp.getCourseId());%>"
-													 target="_blank">
-														<%=temp.getName()%>
-												</a>
+													target="_blank"> <%=temp.getName()%> </a>
 												<%
 													}
 												%>

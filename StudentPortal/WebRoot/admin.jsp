@@ -536,7 +536,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															//out.println("<li><a href=\"/StudentPortal/html/"
 															//		+ temp.getNid() + ".html\"target=\"_blank\">"
 															//		+ temp.getTitle() + "</a></li>");
-															if ((i % 2) == 0) {
+															if ((i % 2) == 1) {
 																out.println("<tr align=\"center\">");
 															} else {
 																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");

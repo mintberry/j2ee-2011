@@ -9,7 +9,7 @@ import model.NotifyDAO;
 
 public class NotifyList {
 	NotifyDAO notifyDAO = new NotifyDAO();
-	public List allNotes;
+	public List<Notify> allNotes;
 	
 	public List originList;
 	
@@ -71,12 +71,14 @@ public class NotifyList {
 	public NotifyList(HttpServletRequest request) {
 		super();
 		// TODO Auto-generated constructor stub
+		allNotes = notifyDAO.findAll();
+		allNotes.clear();
 		originList = notifyDAO.findAll();
 		for(int i = originList.size() - 1; i != -1;--i){
-			allNotes.add(originList.get(i));
+			allNotes.add((Notify) originList.get(i));
 		}
 		pageItems = 12;
-		allItems = allNotes.size();
+		allItems = originList.size();
 		
 		currentPage = (Integer) request
 				.getAttribute("pageNumber");
@@ -87,12 +89,14 @@ public class NotifyList {
 	public NotifyList(int i) {
 		super();
 		// TODO Auto-generated constructor stub
+		allNotes = notifyDAO.findAll();
+		allNotes.clear();
 		originList = notifyDAO.findAll();
 		for(int it = originList.size() - 1; it != -1;--it){
-			allNotes.add(originList.get(it));
+			allNotes.add((Notify) originList.get(it));
 		}
 		pageItems = 12;
-		allItems = allNotes.size();
+		allItems = originList.size();
 		
 		iSymbol = i;
 		
