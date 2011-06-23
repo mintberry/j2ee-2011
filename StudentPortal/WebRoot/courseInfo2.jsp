@@ -243,8 +243,7 @@ h5 {
 													<%
 														for(Studentinfo instance : studentinfoList){
 													%>
-													<a href="javascript:void(0)"target="_blank"
-														onclick="javascript:window.showModalDialog('/StudentPortal/StudentInfo?id=<%out.print(instance.getSId());%>")', null, 'status:no; dialogWidth:500px; dialogHeight:400px; dialogHide:true; help:no; scroll:no;'>
+													<a href="javascript:window.showModalDialog('/StudentPortal/StudentInfo?id=<%out.print(instance.getSId());%>', null, 'status:no; dialogWidth:500px; dialogHeight:400px; dialogHide:true; help:no; scroll:no;')"target="_blank">
 															<%=instance.getSId()%><%=instance.getName()%>
 													</a>
 													
