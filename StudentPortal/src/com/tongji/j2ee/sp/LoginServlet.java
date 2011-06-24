@@ -122,7 +122,12 @@ public class LoginServlet extends HttpServlet {
 						NotifyList lns = new NotifyList(0);
 						System.out.println("allitems" + lns.allItems);
 						hs.setAttribute("noteli", lns);
-
+						
+						
+				List<Studentinfo> StudentList = studentinfoDAO.findAll();
+					
+						
+						hs.setAttribute("MyStudentList", StudentList);
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;

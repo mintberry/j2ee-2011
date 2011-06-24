@@ -6,7 +6,8 @@
 	response.setDateHeader("Expires", -1);
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList"%>
+<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList" import="model.Studentinfo" %>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -20,7 +21,9 @@
 		out.print("<script>window.location.href='index.jsp';</script>");//strange here
 %>
 <%@page import="model.Courses" import="model.Notify"
-	import="model.NotifyDAO"%>
+	import="model.NotifyDAO"   import="model.Studentinfo"%>%>
+	
+	
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -85,6 +88,12 @@ function openwindow() {
 			.showModalDialog("editnote.jsp", document,
 					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
 }
+function openwindow1() {
+
+            document.getElementById("StudentNumber").value=document.getElementById("StudentSelectID").options[document.getElementById("StudentSelectID").selectedIndex].value;
+		//	document.getElementById("editPerson").submit();
+}
+
 function openedit(servletarg) {
 
 	window
@@ -94,6 +103,19 @@ function openedit(servletarg) {
 </script>
 
 		<style type="text/css" media="all">
+		
+		#PersonalInfo {
+	top:15px;
+ 	left:350px;
+	height:300px;
+	width:500px;
+
+	padding-top: 10px;
+	padding-right: 50px;
+	padding-bottom: 10px;
+	padding-left: 100px;
+}
+
 /*TAB布局*/
 #tab * {
 	font-size: 12px;
@@ -584,7 +606,80 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 											</h3>
 											<div id="oDIV2" style="display: none;">
 												<br />
+								
+												<%
+													List myStudent = (List) session.getAttribute("MyStudentList");
+												%>
+							
+											
+													
+									
+												
+  <SELECT   id="StudentSelectID" name="XiaZaiWenJian" size="14"  style="width:300px" onchange="openwindow1();">
+<%										
+											
+		for (int i = 0; i < myStudent.size(); i++) {
+		Studentinfo temp = (Studentinfo) myStudent.get(i);
+%>
+<OPTION   VALUE=  <%out.print(temp.getSId());%> > <%out.print(temp.getName());%> </OPTION>
+<% }%>
+</SELECT> 
+ 
+<div id="PersonalInfo">
 
+	<form method="post" action="/StudentPortal/EditPersonalInfo" id="editPerson" >
+	
+							
+			<p>
+				&nbsp;
+						
+				<font bgcolor="#b6f8f4">学号</font> &nbsp; &nbsp;
+				<input id="StudentNumber" value="ddssdd" type="text" maxlength="45" name="id" />
+			</p>	
+			<p>
+					&nbsp;
+				<font bgcolor="#b6f8f4">姓名</font> &nbsp; &nbsp;
+				<input id="StudentName" value= "abcdefg" type="text" maxlength="45" name="name" />
+			</p>
+			
+				<p>
+					&nbsp;
+				<font bgcolor="#b6f8f4">性别</font> &nbsp; &nbsp;
+				
+				 <select name="sex" id="Sex2" accesskey="男" tabindex="0"> 
+   					 <option value="男">男</option> 
+  					  <option value="女">女</option> 
+  				</select> 
+  
+			</p>
+			
+					<p>&nbsp; 
+					生日&nbsp; &nbsp;&nbsp; <input id="StudentBirthday" type="text" maxlength="45" name="birthday" />
+			</p>
+				<p>&nbsp; 
+					国籍&nbsp; &nbsp;&nbsp; <input id="StudentNation" type="text" maxlength="45" name="nation" />
+			</p>
+			
+				<p>&nbsp; 
+					地址&nbsp; &nbsp;&nbsp; <input id="StudentAddress" type="text" maxlength="45" name="address" />
+			</p>
+			
+				<p>&nbsp; 邮箱&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" />
+			</p>
+			<p> 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>
+				&nbsp;
+				<input type="submit" name="button" id="button" value="完成" />
+
+			</p>
+			<p>
+				&nbsp;
+			</p>
+			
+		</form>
+		</div>
+		<input type="button" value="添加" name="addnote" onclick="openwindow1();"
+														>										
 											</div>
 										</li>
 										<li id="tab3">
