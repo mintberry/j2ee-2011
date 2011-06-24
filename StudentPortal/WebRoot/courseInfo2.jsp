@@ -243,7 +243,9 @@ h5 {
 													<%
 														for(Studentinfo instance : studentinfoList){
 													%>
-													<a href="javascript:window.showModalDialog('/StudentPortal/StudentInfo?id=<%out.print(instance.getSId());%>', null, 'status:no; dialogWidth:500px; dialogHeight:400px; dialogHide:true; help:no; scroll:no;')"target="_blank">
+													<a href="javascript:window.showModalDialog('/StudentPortal/StudentInfo
+														?s_id=<%out.print(instance.getSId());%>
+														&c_id=<%out.print(course.getCourseId());%>', null, 'status:no; dialogWidth:500px; dialogHeight:400px; dialogHide:true; help:no; scroll:no;')"target="_blank">
 															<%=instance.getSId()%><%=instance.getName()%>
 													</a>
 													
