@@ -80,8 +80,11 @@ public class FindPersonalInfo extends HttpServlet {
 
 System.out.println("FindPerson!!!!!!!!!!!!!!!!!");
 
-String ID=request.getParameter("id");
+String ID=request.getParameter("XiaZaiWenJian");
 System.out.println(ID);
+
+
+
 //DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //String datetime = formatter.format(new java.util.Date());
 

@@ -113,7 +113,7 @@ public class EditPersonalInfo extends HttpServlet {
 				
 				
 				request.setAttribute("pageNumber", 1);
-				
+				request.setAttribute("Jump", 2);
 				HttpSession hs = request.getSession();
 	
 			

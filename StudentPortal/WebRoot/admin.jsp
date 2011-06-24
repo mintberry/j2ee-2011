@@ -103,12 +103,14 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 </script>
 
 <% 	Integer myJump=(Integer)request.getAttribute("Jump");%>
+
 		<script type="text/javascript">
 function jump() {
 <%if (myJump==1){%>
 		toggleTo(1);
 		<%}else if (myJump==2){%>
 toggleTo(2);
+
 <%};%>
 }
 function openwindow() {
@@ -119,7 +121,9 @@ function openwindow() {
 function openwindow1() {
 
             document.getElementById("StudentNumber").value=document.getElementById("StudentSelectID").options[document.getElementById("StudentSelectID").selectedIndex].value;
-         // document.getElementById("StudentSelectID").setAttribute("")
+///         document.getElementById("StudentSelectID").setAttribute("")
+  
+  
             document.getElementById("findPerson").submit();
 }
 function openedit(servletarg) {
@@ -633,7 +637,7 @@ table#tnotes {
 <OPTION   VALUE=  <%out.print(temp.getSId());%> > <%out.print(temp.getName());%> </OPTION>
 <% }%>
 </SELECT> 
-
+	 </form>
 <div id="PersonalInfo">
 
 	<form method="post" action="/StudentPortal/EditPersonalInfo" id="editPerson" >
@@ -686,6 +690,8 @@ table#tnotes {
 			
 				<p>&nbsp; 邮箱&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" value=<%out.print(myEmail);%> />
 			</p>
+				<p>&nbsp; 电话&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" value=<%out.print(myEmail);%> />
+			</p>
 			<p> 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>
 				&nbsp;
@@ -697,7 +703,7 @@ table#tnotes {
 			</p>
 			
 		</form>
-		 </form>
+	
 		</div>
 		<input type="button" value="添加" name="addnote" onclick="openwindow1();"
 														>										
