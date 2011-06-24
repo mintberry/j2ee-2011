@@ -83,6 +83,34 @@
 			type="text/javascript">
 </script-->
 		<script type="text/javascript">
+<!--
+function toggleTo(img)
+{
+var ts=document.getElementById("tab").getElementsByTagName("div");
+for(i=1;i<ts.length+1;i++){
+if(img==i)
+{
+document.getElementById("oDIV"+i).style.display = "";
+document.getElementById("oDIV"+i).parentNode.className+=" up";
+}
+else{
+document.getElementById("oDIV"+i).style.display = "none";
+document.getElementById("oDIV"+i).parentNode.className="tab"+i;
+}
+}
+}
+-->
+</script>
+
+<% 	Integer myJump=(Integer)request.getAttribute("Jump");%>
+		<script type="text/javascript">
+function jump() {
+<%if (myJump==1){%>
+		toggleTo(1);
+		<%}else if (myJump==2){%>
+toggleTo(2);
+<%};%>
+}
 function openwindow() {
 	window
 			.showModalDialog("editnote.jsp", document,
@@ -286,32 +314,14 @@ table#tnotes {
 }
 </style>
 
-		<script type="text/javascript">
-<!--
-function toggleTo(img)
-{
-var ts=document.getElementById("tab").getElementsByTagName("div");
-for(i=1;i<ts.length+1;i++){
-if(img==i)
-{
-document.getElementById("oDIV"+i).style.display = "";
-document.getElementById("oDIV"+i).parentNode.className+=" up";
-}
-else{
-document.getElementById("oDIV"+i).style.display = "none";
-document.getElementById("oDIV"+i).parentNode.className="tab"+i;
-}
-}
-}
--->
-</script>
+
 
 
 	</head>
 
 
 
-	<body  onLoad="javascript:toggleTo(2);">>
+	<body  onLoad="javascript:jump();">>
 
 
 
@@ -631,7 +641,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 										
 												<%
 												String myID = (String) session.getAttribute("StudentID");
-													String myName = (String) session.getAttribute("StudentNumber");
+													String myName = (String) session.getAttribute("StudentName");
 													String mySex= (String) session.getAttribute("Sex");
 													
 													

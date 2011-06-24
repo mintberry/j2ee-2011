@@ -118,7 +118,7 @@ public class LoginServlet extends HttpServlet {
 					hs.setAttribute("user", teacherinfo);
 					if (teacherinfo.getTId().equals("0000000007")) {
 						request.setAttribute("pageNumber", 1);
-
+						request.setAttribute("Jump",1);
 						NotifyList lns = new NotifyList(0);
 						System.out.println("allitems" + lns.allItems);
 						hs.setAttribute("noteli", lns);
