@@ -91,11 +91,10 @@ function openwindow() {
 function openwindow1() {
 
             document.getElementById("StudentNumber").value=document.getElementById("StudentSelectID").options[document.getElementById("StudentSelectID").selectedIndex].value;
-		//	document.getElementById("editPerson").submit();
+         // document.getElementById("StudentSelectID").setAttribute("")
+            document.getElementById("findPerson").submit();
 }
-
 function openedit(servletarg) {
-
 	window
 			.showModalDialog(servletarg, document,
 					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
@@ -312,7 +311,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 
-	<body>
+	<body  onLoad="javascript:toggleTo(2);">>
 
 
 
@@ -613,9 +612,9 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 							
 											
 													
-									
+			<form method="post" action="/StudentPortal/FindPersonalInfo" id="findPerson" >						
 												
-  <SELECT   id="StudentSelectID" name="XiaZaiWenJian" size="14"  style="width:300px" onchange="openwindow1();">
+  <SELECT   id="StudentSelectID" value="" name="XiaZaiWenJian" size="14"  style="width:300px" onchange="openwindow1();" selected="1">
 <%										
 											
 		for (int i = 0; i < myStudent.size(); i++) {
@@ -624,29 +623,40 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 <OPTION   VALUE=  <%out.print(temp.getSId());%> > <%out.print(temp.getName());%> </OPTION>
 <% }%>
 </SELECT> 
- 
+
 <div id="PersonalInfo">
 
 	<form method="post" action="/StudentPortal/EditPersonalInfo" id="editPerson" >
 	
+										
+												<%
+												String myID = (String) session.getAttribute("StudentID");
+													String myName = (String) session.getAttribute("StudentNumber");
+													String mySex= (String) session.getAttribute("Sex");
+													
+													
+													String myNation= (String) session.getAttribute("StudentNation");
+													String myAddress= (String) session.getAttribute("StudentAddress");
+													String myEmail= (String) session.getAttribute("StudentEmail");
+												%>
 							
 			<p>
 				&nbsp;
 						
 				<font bgcolor="#b6f8f4">学号</font> &nbsp; &nbsp;
-				<input id="StudentNumber" value="ddssdd" type="text" maxlength="45" name="id" />
+				<input id="StudentNumber" value=<%out.print(myID);%> type="" maxlength="45" name="id" />
 			</p>	
 			<p>
 					&nbsp;
 				<font bgcolor="#b6f8f4">姓名</font> &nbsp; &nbsp;
-				<input id="StudentName" value= "abcdefg" type="text" maxlength="45" name="name" />
+				<input id="StudentName" value=<%out.print(myName);%> type="text" maxlength="45" name="name" />
 			</p>
 			
 				<p>
 					&nbsp;
 				<font bgcolor="#b6f8f4">性别</font> &nbsp; &nbsp;
 				
-				 <select name="sex" id="Sex2" accesskey="男" tabindex="0"> 
+				 <select name="sex" id="Sex2" accesskey=<%out.print(mySex);%> tabindex="0"> 
    					 <option value="男">男</option> 
   					  <option value="女">女</option> 
   				</select> 
@@ -654,17 +664,17 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 			</p>
 			
 					<p>&nbsp; 
-					生日&nbsp; &nbsp;&nbsp; <input id="StudentBirthday" type="text" maxlength="45" name="birthday" />
+					生日&nbsp; &nbsp;&nbsp; <input id="StudentBirthday" type="text" maxlength="45" name="birthday"  value=""/>
 			</p>
 				<p>&nbsp; 
-					国籍&nbsp; &nbsp;&nbsp; <input id="StudentNation" type="text" maxlength="45" name="nation" />
+					国籍&nbsp; &nbsp;&nbsp; <input id="StudentNation" type="text" maxlength="45" name="nation" value=<%out.print(myNation);%> />
 			</p>
 			
 				<p>&nbsp; 
-					地址&nbsp; &nbsp;&nbsp; <input id="StudentAddress" type="text" maxlength="45" name="address" />
+					地址&nbsp; &nbsp;&nbsp; <input id="StudentAddress" type="text" maxlength="45" name="address" value=<%out.print(myAddress);%> />
 			</p>
 			
-				<p>&nbsp; 邮箱&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" />
+				<p>&nbsp; 邮箱&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" value=<%out.print(myEmail);%> />
 			</p>
 			<p> 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>
@@ -677,6 +687,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 			</p>
 			
 		</form>
+		 </form>
 		</div>
 		<input type="button" value="添加" name="addnote" onclick="openwindow1();"
 														>										

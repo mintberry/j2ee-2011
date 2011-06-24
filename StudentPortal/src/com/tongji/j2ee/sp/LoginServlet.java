@@ -128,6 +128,15 @@ public class LoginServlet extends HttpServlet {
 					
 						
 						hs.setAttribute("MyStudentList", StudentList);
+						hs.setAttribute("StudentID", null);
+						hs.setAttribute("StudentName", null);
+						hs.setAttribute("Sex",null);
+						hs.setAttribute("StudentBirthday", null);
+						hs.setAttribute("StudentNation",null);
+						hs.setAttribute("StudentAddress", null);
+						hs.setAttribute("StudentEmail",null);
+						
+						
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;
