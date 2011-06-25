@@ -70,6 +70,9 @@ public class EditPersonalInfo extends HttpServlet {
 
 		System.out.println("EditPerson!!!!!!!!!!!!!!!!!");
 
+		
+		String Way=request.getParameter("act");
+		System.out.println(Way);
 		String ID=request.getParameter("id");
 		String Name = request.getParameter("name");
 		String Sex = request.getParameter("sex");
@@ -78,30 +81,62 @@ public class EditPersonalInfo extends HttpServlet {
 		String Mail = request.getParameter("mail");
 		String Address = request.getParameter("address");
 		String Phone = request.getParameter("phone");
+
 //		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		String datetime = formatter.format(new java.util.Date());
 		
+	
 		StudentinfoDAO MyStudentDAO=new StudentinfoDAO();
 		Studentinfo MyStudentInfo;
 	
+		Session s = (Session) HibernateSessionFactory.getSession();
+		if (Way.equalsIgnoreCase("edit"))
+		{
+			System.out.println("编辑!");
 		MyStudentInfo=MyStudentDAO.findById(ID);
 		MyStudentInfo.setName(Name);
 		MyStudentInfo.setSex(Sex);
 		MyStudentInfo.setNation(Nation);
 		MyStudentInfo.setEmail(Mail);
 		MyStudentInfo.setAddress(Address);
-		Date MyDate=new Date();
-		MyDate.setDate(20);
-		MyDate.setHours(12);
-		MyDate.setYear(1990);
-		MyDate.setMonth(11);
+	//	Date MyDate=new Date();
+		//MyDate.setDate(20);
+		//MyDate.setHours(12);
+		//MyDate.setYear(1990);
+		//MyDate.setMonth(11);
 
-		MyStudentInfo.setBirthday(MyDate);
+		//MyStudentInfo.setBirthday(MyDate);
 		MyStudentInfo.setPhoneNumber(Phone);
 		System.out.println(Name);
 		System.out.println(Sex);
-		Session s = (Session) HibernateSessionFactory.getSession();
+		
 		MyStudentDAO.save(MyStudentInfo);	
+		}
+		else if (Way.equalsIgnoreCase("add"))
+		{
+			System.out.println("添加!");
+			MyStudentInfo=new Studentinfo();
+			MyStudentInfo.setSId(ID);
+			MyStudentInfo.setPassword("1234");
+			MyStudentInfo.setPinCode("1234");
+			MyStudentInfo.setName(Name);
+			MyStudentInfo.setSex(Sex);
+			MyStudentInfo.setNation(Nation);
+			MyStudentInfo.setEmail(Mail);
+			MyStudentInfo.setAddress(Address);
+			Date MyDate=new Date();
+			MyDate.setDate(20);
+			MyDate.setHours(12);
+			MyDate.setYear(1990);
+			MyDate.setMonth(11);
+
+			MyStudentInfo.setBirthday(MyDate);
+			MyStudentInfo.setPhoneNumber(Phone);
+			System.out.println(Name);
+			System.out.println(Sex);
+			
+			MyStudentDAO.save(MyStudentInfo);	
+		}
 			try {
 				Transaction ts = s.beginTransaction();
 				ts.commit();
@@ -121,37 +156,7 @@ public class EditPersonalInfo extends HttpServlet {
 				
 				request.getRequestDispatcher("admin.jsp").forward(request, response);
 			}
-		
-		//NotifyDAO notifyDAO = new NotifyDAO();
-		//Notify newNote = new Notify();
-		
-		//System.out.println(content);
-		
-		//newNote.setTitle(title);
-		//newNote.setContent(content);
-		//newNote.setAuthor(author);
-		//newNote.setDatetime(tsig);
-		
-		
-//have to set id
-		
-		
-		
-		//notifyDAO.save(newNote);
-	//	notifyDAO.attachDirty(newNote);
-	//	try {
-	//		Transaction ts = s.beginTransaction();
-	//		ts.commit();
-//		} catch (Exception e) {
-
-//		} finally {
-//			s.close();
-		//	request.getRequestDispatcher("admin.jsp").forward(request, response);
-//		}
-		
-
-		
 
 	}
-
 }
+

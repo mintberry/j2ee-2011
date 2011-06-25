@@ -131,6 +131,56 @@ function openedit(servletarg) {
 			.showModalDialog(servletarg, document,
 					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
 }
+
+function selectRes() {
+  document.getElementById("act").value="edit";
+  document.getElementById("editPerson").submit();
+}
+function deleteRes() {
+  document.getElementById("act").value="add";
+  //document.getElementById("editPerson").submit();
+   document.getElementById("AddingButton").value="确认添加";
+   document.getElementById("EditingButton").type="hidden";
+   document.getElementById("AddingButton").onclick=Adding
+   document.getElementById("StudentNumber").readOnly="";
+   document.getElementById("StudentNumber").value="";
+   document.getElementById("StudentName").value="";
+     document.getElementById("Sex2").value="";
+      document.getElementById("StudentBirthday").value="";
+    document.getElementById("StudentEmail").value="";
+    document.getElementById("StudentPhone").value="";
+ document.getElementById("StudentAddress").value="";
+
+ 
+}
+
+function Adding(){
+
+var k=document.getElementById("StudentSelectID").options.length;
+var x=false;
+for (var j = 0; j <k; j++) {
+	
+	if (document.getElementById("StudentNumber").value==document.getElementById("StudentSelectID").options[j].value)
+	{
+	alert("已存在该用户");
+	x=true;
+	break;
+	}
+}  
+if (x==true)
+{
+alert("添加失败");
+}
+else
+{
+  document.getElementById("editPerson").submit();
+}
+
+
+
+}
+
+
 </script>
 
 		<style type="text/css" media="all">
@@ -652,13 +702,14 @@ table#tnotes {
 													String myNation= (String) session.getAttribute("StudentNation");
 													String myAddress= (String) session.getAttribute("StudentAddress");
 													String myEmail= (String) session.getAttribute("StudentEmail");
+													String myPhone= (String) session.getAttribute("StudentPhone");
 												%>
 							
 			<p>
 				&nbsp;
 						
 				<font bgcolor="#b6f8f4">学号</font> &nbsp; &nbsp;
-				<input id="StudentNumber" value=<%out.print(myID);%> type="" maxlength="45" name="id" />
+				<input readonly="true" id="StudentNumber" value=<%out.print(myID);%> type="" maxlength="45" name="id" />
 			</p>	
 			<p>
 					&nbsp;
@@ -690,12 +741,19 @@ table#tnotes {
 			
 				<p>&nbsp; 邮箱&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" value=<%out.print(myEmail);%> />
 			</p>
-				<p>&nbsp; 电话&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" value=<%out.print(myEmail);%> />
+				<p>&nbsp; 电话&nbsp; &nbsp;&nbsp; <input id="StudentPhone" type="text" maxlength="45" name="phone" value=<%out.print(myPhone);%> />
 			</p>
 			<p> 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>
 				&nbsp;
-				<input type="submit" name="button" id="button" value="完成" />
+				
+				<input type="hidden" id="act" name="act" value="select">
+ <input type="button" value="修改" onclick="selectRes()" id="EditingButton">
+<input type="hidden" name="act" value="delete">
+  <input type="button" value="添加" onClick="deleteRes()" id="AddingButton">
+				
+				
+			
 
 			</p>
 			<p>
@@ -705,8 +763,7 @@ table#tnotes {
 		</form>
 	
 		</div>
-		<input type="button" value="添加" name="addnote" onclick="openwindow1();"
-														>										
+								
 											</div>
 										</li>
 										<li id="tab3">

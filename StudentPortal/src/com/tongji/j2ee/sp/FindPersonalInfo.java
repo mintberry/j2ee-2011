@@ -100,6 +100,7 @@ hs.setAttribute("StudentBirthday", MyStudentInfo.getBirthday());
 hs.setAttribute("StudentNation", MyStudentInfo.getNation());
 hs.setAttribute("StudentAddress", MyStudentInfo.getAddress());
 hs.setAttribute("StudentEmail", MyStudentInfo.getEmail());
+hs.setAttribute("StudentPhone", MyStudentInfo.getPhoneNumber());
 Session s = (Session) HibernateSessionFactory.getSession();
 MyStudentDAO.save(MyStudentInfo);	
 	try {

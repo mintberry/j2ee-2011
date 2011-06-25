@@ -135,7 +135,7 @@ public class LoginServlet extends HttpServlet {
 						hs.setAttribute("StudentNation",null);
 						hs.setAttribute("StudentAddress", null);
 						hs.setAttribute("StudentEmail",null);
-						
+						hs.setAttribute("StudentPhone",null);
 						
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
