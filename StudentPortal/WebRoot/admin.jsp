@@ -136,11 +136,12 @@ function selectRes() {
   document.getElementById("act").value="edit";
   document.getElementById("editPerson").submit();
 }
-function deleteRes() {
+function AddingRes() {
   document.getElementById("act").value="add";
   //document.getElementById("editPerson").submit();
    document.getElementById("AddingButton").value="确认添加";
    document.getElementById("EditingButton").type="hidden";
+      document.getElementById("DeletingButton").type="hidden";
    document.getElementById("AddingButton").onclick=Adding
    document.getElementById("StudentNumber").readOnly="";
    document.getElementById("StudentNumber").value="";
@@ -153,7 +154,11 @@ function deleteRes() {
 
  
 }
-
+function DeleteRes()
+{
+ document.getElementById("act").value="delete";
+   document.getElementById("editPerson").submit();
+}
 function Adding(){
 
 var k=document.getElementById("StudentSelectID").options.length;
@@ -749,10 +754,11 @@ table#tnotes {
 				
 				<input type="hidden" id="act" name="act" value="select">
  <input type="button" value="修改" onclick="selectRes()" id="EditingButton">
-<input type="hidden" name="act" value="delete">
-  <input type="button" value="添加" onClick="deleteRes()" id="AddingButton">
+<input type="hidden" name="act" value="edit">
+  <input type="button" value="添加" onClick="AddingRes()" id="AddingButton">
 				
-				
+				<input type="hidden" name="act" value="delete">
+  <input type="button" value="删除" onClick="DeleteRes()" id="DeletingButton">
 			
 
 			</p>

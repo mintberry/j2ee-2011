@@ -137,6 +137,12 @@ public class EditPersonalInfo extends HttpServlet {
 			
 			MyStudentDAO.save(MyStudentInfo);	
 		}
+		else if (Way.equalsIgnoreCase("delete"))
+		{
+			MyStudentInfo=MyStudentDAO.findById(ID);
+			MyStudentDAO.delete(MyStudentInfo);
+		}
+		
 			try {
 				Transaction ts = s.beginTransaction();
 				ts.commit();
