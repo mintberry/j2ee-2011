@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="model.StudentCourseFile"%>
 <%@page import="model.Files"%>
 <%
@@ -34,15 +34,17 @@
 }
 </style>
 
-	<body>
-		<div class="filename" id="filename">
+	<body> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<strong>作业</strong>
+		<br>
+		<br><div class="filename" id="filename">
 			<%
 				List<Files> files = (List<Files>) request.getAttribute("files");
-				for(Files file : files){
-					
+				for (Files file : files) {
 			%>
-				<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
-				<br />
+			<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
+			<br />
 			<%
 				}
 			%>

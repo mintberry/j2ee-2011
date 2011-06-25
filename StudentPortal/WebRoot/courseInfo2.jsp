@@ -263,8 +263,7 @@ h5 {
 												</strong> </font>
 													<form method="post"
 													action="/StudentPortal/TeacherMessage
-														?to=<%out.print(course.getTId());%>
-														&course=<%out.print(course.getName());%>"
+														?course_id=<%out.print(course.getCourseId());%>"
 													target="_blank">
 													主题
 													<input type="text" size=40 name="subject">
