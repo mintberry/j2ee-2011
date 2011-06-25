@@ -246,6 +246,11 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 }
 }
 -->
+function blura(){
+    //alert("test");
+    doucment.getElementById("editinfoa").style.background='#00ea90';
+    alert("test");
+}
 </script>
 
 
@@ -293,7 +298,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 				<div id="nav-bar">
 
-				
+
 
 					<div id="sub-nav-c">
 
@@ -366,9 +371,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 								<div id="prof-basic-l">
 
 									<a href="/profile?uid=24660"><img id="prof-photo"
-											class="photo"
-											src="http://www.gravatar.com/avatar/b2be14fe77d541e857248adc7ef2e52f?d=mm&s=87"
-											alt="littne" /> </a>
+											class="photo" src="imgs/face.png" alt="littne" /> </a>
 
 								</div>
 
@@ -392,27 +395,57 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 												<span id="prof-info-spl"></span>
 
-
-
-												<a id="prof-blog" href="http://littne.wordpress.com"
-													target="_blank" style="display: none">littne.wordpress.com</a>
 												<br>
-												<%=user.getSId()%>
+												<table width="402" border="0" bgcolor="#fafeff"
+													align="center" height="89">
+													<tbody>
+														<tr>
+															<td width="%20">
+																&nbsp;<%=user.getSId()%>
+															</td>
+															<td colspan="2">
+																&nbsp;<%=user.getName()%>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;<%
+																	String s = user.getBirthday().toString();
+																	s = s.substring(0, s.indexOf(' '));
+																	out.print(s);
+																%>
+															</td>
+															<td>
+																&nbsp;<%=user.getNation()%></td>
+															<td>
+																&nbsp;<%=user.getSex()%>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																&nbsp;<%=user.getEmail()%>
+															</td>
+															<td>
+																&nbsp;<%
+																	String n = user.getPhoneNumber();
+																	if (n != null) {
+																		out.print(n);
+																	}
+																%>
+															</td>
+														</tr>
+
+													</tbody>
+												</table>
+
 												&nbsp;&nbsp;
-												<%=user.getName()%><br>
+												<br />
 
-												<%=user.getSex()%><br>
-
-
-
+												<a id="editinfoa" href=""
+													onmouseover="javascript:this.style.backgroundColor='#efeed9'"
+													onmouseout="javascript:this.style.backgroundColor='#fafeff'">编辑个人信息</a>
+												<br>
 											</div>
-
-											<div id="latest-status" class="clearfix">
-
-
-
-											</div>
-
 										</div>
 
 									</div>
@@ -420,17 +453,8 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 
 
 								</div>
-
-
-
-
-
-
-
-								&nbsp;
-
-
-
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<br>
 							</div>
 
 							<br>
@@ -482,14 +506,10 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															} else {
 																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");
 															}
-															out
-																	.println("<td>"
-																			+ date.substring(0, date.indexOf(' '))
-																			+ "</td><td><a href=\"/StudentPortal/html/"
-																			+ temp.getNid()
-																			+ ".html\"target=\"_blank\">"
-																			+ temp.getTitle()
-																			+ "</a></td></tr>");
+															out.println("<td>" + date.substring(0, date.indexOf(' '))
+																	+ "</td><td><a href=\"/StudentPortal/html/"
+																	+ temp.getNid() + ".html\"target=\"_blank\">"
+																	+ temp.getTitle() + "</a></td></tr>");
 
 														}
 														out.println("</tbody></table>");
@@ -686,9 +706,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												%>
 												<a
 													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"
-													 target="_blank">
-														<%=temp.getName()%>
-												</a>
+													target="_blank"> <%=temp.getName()%> </a>
 												<%
 													}
 												%>

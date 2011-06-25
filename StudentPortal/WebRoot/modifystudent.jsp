@@ -14,7 +14,7 @@
 
 	<head>
 
-		<title>注册邮箱</title>
+		<title>修改个人信息</title>
 
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
@@ -115,8 +115,8 @@
 						</div>
 						<div id="acc-apply-l" class="ly-l">
 
-							<div id="slogan">
-								第一次登录请注册邮箱
+							<div id="slogan"> 
+								修改邮箱地址 
 							</div>
 
 							<div id="acc-form">

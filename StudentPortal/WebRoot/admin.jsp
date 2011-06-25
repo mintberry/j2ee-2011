@@ -545,13 +545,6 @@ table#tnotes {
 
 
 								</div>
-
-
-
-
-
-
-
 								&nbsp;
 
 
