@@ -1,5 +1,19 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+	response.setHeader("Pragma", "No-cache");
+	response.setHeader("Cache-Control",
+			"no-cache, no-store, must-revalidate");
+	response.setDateHeader("Expires", -1);
+%>
+<%
+	if (session.getAttribute("user") == null) {
+
+		response.sendRedirect("outofsession.html");
+		//out.print("<script>window.location.href='insession.html';</script>");
+		return;
+	}
+%>
+<%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
@@ -426,7 +440,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												&nbsp;&nbsp;
 												<br />
 
-												<a id="editinfoa" href="" target="_blank"
+												<a id="editinfoa" href="modifytea.jsp" target="_blank"
 													onmouseover="javascript:this.style.backgroundColor='#efeed9'"
 													onmouseout="javascript:this.style.backgroundColor='#fafeff'">编辑个人信息</a>
 												<br>

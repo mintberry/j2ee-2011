@@ -42,6 +42,8 @@ public class CheckMailAddrServlet extends HttpServlet {
 			SendMailServlet sendMailServlet = new SendMailServlet();
 			sendMailServlet.sendMail(to, subject, content);
 			request.getRequestDispatcher("EmailSuccess.html").forward(request, response);
+			
+			return;
 		}
 	}
 }

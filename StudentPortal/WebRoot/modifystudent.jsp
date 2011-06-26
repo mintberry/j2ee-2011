@@ -99,7 +99,7 @@
 											</div>
 
 											<div class="row-c bd">
-												<input id="acc-email" type="text" class="text" name="email1"
+												<input id="acc-email" type="text" class="text" name="email"
 													maxlength="200" />
 											</div>
 

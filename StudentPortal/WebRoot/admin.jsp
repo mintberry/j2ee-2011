@@ -5,8 +5,17 @@
 			"no-cache, no-store, must-revalidate");
 	response.setDateHeader("Expires", -1);
 %>
+<%
+	if (session.getAttribute("user") == null) {
+
+		response.sendRedirect("outofsession.html");
+		//out.print("<script>window.location.href='insession.html';</script>");
+		return;
+	}
+%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList" import="model.Studentinfo" %>
+<%@page import="model.Courses" import="com.tongji.j2ee.sp.NotifyList"
+	import="model.Studentinfo"%>
 
 <%
 	String path = request.getContextPath();
@@ -21,9 +30,9 @@
 		out.print("<script>window.location.href='index.jsp';</script>");//strange here
 %>
 <%@page import="model.Courses" import="model.Notify"
-	import="model.NotifyDAO"   import="model.Studentinfo"%>%>
-	
-	
+	import="model.NotifyDAO" import="model.Studentinfo"%>%>
+
+
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -102,16 +111,19 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 -->
 </script>
 
-<% 	Integer myJump=(Integer)request.getAttribute("Jump");%>
+		<%
+			Integer myJump = (Integer) request.getAttribute("Jump");
+		%>
 
 		<script type="text/javascript">
 function jump() {
-<%if (myJump==1){%>
+<%if (myJump == 1) {%>
 		toggleTo(1);
-		<%}else if (myJump==2){%>
+		<%} else if (myJump == 2) {%>
 toggleTo(2);
 
-<%};%>
+<%}
+			;%>
 }
 function openwindow() {
 	window
@@ -189,13 +201,11 @@ else
 </script>
 
 		<style type="text/css" media="all">
-		
-		#PersonalInfo {
-	top:15px;
- 	left:350px;
-	height:300px;
-	width:500px;
-
+#PersonalInfo {
+	top: 15px;
+	left: 350px;
+	height: 300px;
+	width: 500px;
 	padding-top: 10px;
 	padding-right: 50px;
 	padding-bottom: 10px;
@@ -380,7 +390,8 @@ table#tnotes {
 
 
 
-	<body  onLoad="javascript:jump();">>
+	<body onLoad="javascript:jump();">
+		>
 
 
 
@@ -491,9 +502,7 @@ table#tnotes {
 								<div id="prof-basic-l">
 
 									<a href="/profile?uid=24660"><img id="prof-photo"
-											class="photo"
-											src="http://www.gravatar.com/avatar/b2be14fe77d541e857248adc7ef2e52f?d=mm&s=87"
-											alt="littne" /> </a>
+											class="photo" src="imgs/face.png" alt="littne" /> </a>
 
 								</div>
 
@@ -667,102 +676,135 @@ table#tnotes {
 											</h3>
 											<div id="oDIV2" style="display: none;">
 												<br />
-								
+
 												<%
 													List myStudent = (List) session.getAttribute("MyStudentList");
 												%>
-							
-											
-													
-			<form method="post" action="/StudentPortal/FindPersonalInfo" id="findPerson" >						
-												
-  <SELECT   id="StudentSelectID" value="" name="XiaZaiWenJian" size="14"  style="width:300px" onchange="openwindow1();" selected="1">
-<%										
-											
-		for (int i = 0; i < myStudent.size(); i++) {
-		Studentinfo temp = (Studentinfo) myStudent.get(i);
-%>
-<OPTION   VALUE=  <%out.print(temp.getSId());%> > <%out.print(temp.getName());%> </OPTION>
-<% }%>
-</SELECT> 
-	 </form>
-<div id="PersonalInfo">
 
-	<form method="post" action="/StudentPortal/EditPersonalInfo" id="editPerson" >
-	
-										
-												<%
-												String myID = (String) session.getAttribute("StudentID");
-													String myName = (String) session.getAttribute("StudentName");
-													String mySex= (String) session.getAttribute("Sex");
-													
-													
-													String myNation= (String) session.getAttribute("StudentNation");
-													String myAddress= (String) session.getAttribute("StudentAddress");
-													String myEmail= (String) session.getAttribute("StudentEmail");
-													String myPhone= (String) session.getAttribute("StudentPhone");
-												%>
-							
-			<p>
-				&nbsp;
-						
-				<font bgcolor="#b6f8f4">学号</font> &nbsp; &nbsp;
-				<input readonly="true" id="StudentNumber" value=<%out.print(myID);%> type="" maxlength="45" name="id" />
-			</p>	
-			<p>
-					&nbsp;
-				<font bgcolor="#b6f8f4">姓名</font> &nbsp; &nbsp;
-				<input id="StudentName" value=<%out.print(myName);%> type="text" maxlength="45" name="name" />
-			</p>
-			
-				<p>
-					&nbsp;
-				<font bgcolor="#b6f8f4">性别</font> &nbsp; &nbsp;
-				
-				 <select name="sex" id="Sex2" accesskey=<%out.print(mySex);%> tabindex="0"> 
-   					 <option value="男">男</option> 
-  					  <option value="女">女</option> 
-  				</select> 
-  
-			</p>
-			
-					<p>&nbsp; 
-					生日&nbsp; &nbsp;&nbsp; <input id="StudentBirthday" type="text" maxlength="45" name="birthday"  value=""/>
-			</p>
-				<p>&nbsp; 
-					国籍&nbsp; &nbsp;&nbsp; <input id="StudentNation" type="text" maxlength="45" name="nation" value=<%out.print(myNation);%> />
-			</p>
-			
-				<p>&nbsp; 
-					地址&nbsp; &nbsp;&nbsp; <input id="StudentAddress" type="text" maxlength="45" name="address" value=<%out.print(myAddress);%> />
-			</p>
-			
-				<p>&nbsp; 邮箱&nbsp; &nbsp;&nbsp; <input id="StudentEmail" type="text" maxlength="45" name="mail" value=<%out.print(myEmail);%> />
-			</p>
-				<p>&nbsp; 电话&nbsp; &nbsp;&nbsp; <input id="StudentPhone" type="text" maxlength="45" name="phone" value=<%out.print(myPhone);%> />
-			</p>
-			<p> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>
-				&nbsp;
-				
-				<input type="hidden" id="act" name="act" value="select">
- <input type="button" value="修改" onclick="selectRes()" id="EditingButton">
-<input type="hidden" name="act" value="edit">
-  <input type="button" value="添加" onClick="AddingRes()" id="AddingButton">
-				
-				<input type="hidden" name="act" value="delete">
-  <input type="button" value="删除" onClick="DeleteRes()" id="DeletingButton">
-			
 
-			</p>
-			<p>
-				&nbsp;
-			</p>
-			
-		</form>
-	
-		</div>
-								
+
+												<form method="post" action="/StudentPortal/FindPersonalInfo"
+													id="findPerson">
+
+													<SELECT id="StudentSelectID" value="" name="XiaZaiWenJian"
+														size="14" style="width: 300px" onchange="openwindow1();"
+														selected="1">
+														<%
+															for (int i = 0; i < myStudent.size(); i++) {
+																Studentinfo temp = (Studentinfo) myStudent.get(i);
+														%>
+														<OPTION VALUE=<%out.print(temp.getSId());%>>
+															<%
+																out.print(temp.getName());
+															%>
+														</OPTION>
+														<%
+															}
+														%>
+													</SELECT>
+												</form>
+												<div id="PersonalInfo">
+
+													<form method="post"
+														action="/StudentPortal/EditPersonalInfo" id="editPerson">
+
+
+														<%
+															String myID = (String) session.getAttribute("StudentID");
+															String myName = (String) session.getAttribute("StudentName");
+															String mySex = (String) session.getAttribute("Sex");
+
+															String myNation = (String) session.getAttribute("StudentNation");
+															String myAddress = (String) session.getAttribute("StudentAddress");
+															String myEmail = (String) session.getAttribute("StudentEmail");
+															String myPhone = (String) session.getAttribute("StudentPhone");
+														%>
+
+														<p>
+															&nbsp;
+
+															<font bgcolor="#b6f8f4">学号</font> &nbsp; &nbsp;
+															<input readonly="true" id="StudentNumber"
+																value=<%out.print(myID);%> type="" maxlength="45"
+																name="id" />
+														</p>
+														<p>
+															&nbsp;
+															<font bgcolor="#b6f8f4">姓名</font> &nbsp; &nbsp;
+															<input id="StudentName" value=<%out.print(myName);%>
+																type="text" maxlength="45" name="name" />
+														</p>
+
+														<p>
+															&nbsp;
+															<font bgcolor="#b6f8f4">性别</font> &nbsp; &nbsp;
+
+															<select name="sex" id="Sex2"
+																accesskey=<%out.print(mySex);%> tabindex="0">
+																<option value="男">
+																	男
+																</option>
+																<option value="女">
+																	女
+																</option>
+															</select>
+
+														</p>
+
+														<p>
+															&nbsp; 生日&nbsp; &nbsp;&nbsp;
+															<input id="StudentBirthday" type="text" maxlength="45"
+																name="birthday" value="" />
+														</p>
+														<p>
+															&nbsp; 国籍&nbsp; &nbsp;&nbsp;
+															<input id="StudentNation" type="text" maxlength="45"
+																name="nation" value=<%out.print(myNation);%> />
+														</p>
+
+														<p>
+															&nbsp; 地址&nbsp; &nbsp;&nbsp;
+															<input id="StudentAddress" type="text" maxlength="45"
+																name="address" value=<%out.print(myAddress);%> />
+														</p>
+
+														<p>
+															&nbsp; 邮箱&nbsp; &nbsp;&nbsp;
+															<input id="StudentEmail" type="text" maxlength="45"
+																name="mail" value=<%out.print(myEmail);%> />
+														</p>
+														<p>
+															&nbsp; 电话&nbsp; &nbsp;&nbsp;
+															<input id="StudentPhone" type="text" maxlength="45"
+																name="phone" value=<%out.print(myPhone);%> />
+														</p>
+														<p>
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														</p>
+														<p>
+															&nbsp;
+
+															<input type="hidden" id="act" name="act" value="select">
+															<input type="button" value="修改" onclick="selectRes()"
+																id="EditingButton">
+															<input type="hidden" name="act" value="edit">
+															<input type="button" value="添加" onClick="AddingRes()"
+																id="AddingButton">
+
+															<input type="hidden" name="act" value="delete">
+															<input type="button" value="删除" onClick="DeleteRes()"
+																id="DeletingButton">
+
+
+														</p>
+														<p>
+															&nbsp;
+														</p>
+
+													</form>
+
+												</div>
+
 											</div>
 										</li>
 										<li id="tab3">

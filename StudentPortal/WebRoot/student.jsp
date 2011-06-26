@@ -1,8 +1,17 @@
 
 <%
 	response.setHeader("Pragma", "No-cache");
-	response.setHeader("Cache-Control", "no-store");
-	response.setDateHeader("Expires", 0);
+	response.setHeader("Cache-Control",
+			"no-cache, no-store, must-revalidate");
+	response.setDateHeader("Expires", -1);
+%>
+<%
+	if (session.getAttribute("user") == null) {
+
+		response.sendRedirect("outofsession.html");
+		//out.print("<script>window.location.href='insession.html';</script>");
+		return;
+	}
 %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="model.Notify" import="model.NotifyDAO"%>

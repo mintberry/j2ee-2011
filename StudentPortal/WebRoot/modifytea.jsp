@@ -93,13 +93,13 @@
 												<div class="row-l" style="color: #89D6F4">
 													&nbsp; 邮箱地址:
 												</div>
-												<span id="error1" style="display: none"
+												<span id="error0" style="display: none"
 													style="font-size:10px"><font color=red>请输入正确的邮箱地址</font>
 												</span>
 											</div>
 
 											<div class="row-c bd">
-												<input id="acc-email" type="text" class="text" name="email1"
+												<input id="acc-email" type="text" class="text" name="email"
 													maxlength="200" />
 											</div>
 
@@ -148,7 +148,8 @@
 
 
 										</div>
-
+										<span id="error3" style="display: none" style="font-size:10px"><font
+											color=red>请至少修改一项</font> </span>
 										<div id="row-submit" class="row clearfix">
 										</div>
 										<%--input type="image" alt="提交" src="imgs/login.png"
@@ -730,16 +731,33 @@ $(function() {
 function validateForm(form) {
 	document.getElementById("error1").style.display = "none";
 	document.getElementById("error2").style.display = "none";
+	document.getElementById("error0").style.display = "none";
+	document.getElementById("error3").style.display = "none";
 	//alert(form.elements.length);
 	//form.submit();
 	var valid = true;
 
 	var reMail = /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/;
+	var repw = /^[a-zA-Z0-9]{4,10}$/;
 
-	var firstMail = form.elements[0].value;
-	var secondMail = form.elements[1].value;
+	var firstMail = form.elements[1].value;
+	var secondMail = form.elements[2].value;
+	var realmail = form.elements[0].value;
+	if (realmail == '' && firstMail == '') {
+		//alert("null");
+		document.getElementById("error3").style.display = "inline";
+		valid = false;
+		return valid;
+	}
 	//alert(firstMail + ":" + secondMail);
-	if (!reMail.exec(firstMail)) {
+	if (!reMail.exec(realmail) &&　realmail　!= '') {
+		//alert("IDerror");
+		document.getElementById("error0").style.display = "inline";
+
+		valid = false;
+		return valid;
+	}
+	if (!repw.exec(firstMail) &&　firstMail　!= '') {
 		//alert("IDerror");
 		document.getElementById("error1").style.display = "inline";
 
