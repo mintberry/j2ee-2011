@@ -426,7 +426,7 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 												&nbsp;&nbsp;
 												<br />
 
-												<a id="editinfoa" href=""
+												<a id="editinfoa" href="" target="_blank"
 													onmouseover="javascript:this.style.backgroundColor='#efeed9'"
 													onmouseout="javascript:this.style.backgroundColor='#fafeff'">编辑个人信息</a>
 												<br>

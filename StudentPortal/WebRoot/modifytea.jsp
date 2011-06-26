@@ -85,7 +85,7 @@
 								<br />
 								<div align="center">
 									<form name="mailform"
-										action="/StudentPortal/CheckMailAddrServlet" method="post">
+										action="/StudentPortal/ModifyServlet" method="post">
 										<div id="row-email" class="row clearfix">
 
 											<div class="clearfix">
@@ -173,7 +173,7 @@
 							<div id="acc-form">
 								<br />
 								<div align="center">
-									用户基本信息
+									教师基本信息
 									<br />
 									<br />
 								</div>
