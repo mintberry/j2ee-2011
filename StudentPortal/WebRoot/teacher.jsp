@@ -385,8 +385,11 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															<td width="%20">
 																&nbsp;<%=user.getTId()%>
 															</td>
-															<td colspan="2">
+															<td>
 																&nbsp;<%=user.getName()%>
+															</td>
+															<td>
+																<%=user.getTitle()%>
 															</td>
 														</tr>
 														<tr>
@@ -511,14 +514,10 @@ document.getElementById("oDIV"+i).parentNode.className="tab"+i;
 															} else {
 																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");
 															}
-															out
-																	.println("<td>"
-																			+ date.substring(0, date.indexOf(' '))
-																			+ "</td><td><a href=\"/StudentPortal/html/"
-																			+ temp.getNid()
-																			+ ".html\"target=\"_blank\">"
-																			+ temp.getTitle()
-																			+ "</a></td></tr>");
+															out.println("<td>" + date.substring(0, date.indexOf(' '))
+																	+ "</td><td><a href=\"/StudentPortal/html/"
+																	+ temp.getNid() + ".html\"target=\"_blank\">"
+																	+ temp.getTitle() + "</a></td></tr>");
 
 														}
 														out.println("</tbody></table>");

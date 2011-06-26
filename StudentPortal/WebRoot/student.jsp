@@ -441,7 +441,7 @@ function blura(){
 												&nbsp;&nbsp;
 												<br />
 
-												<a id="editinfoa" href=""
+												<a id="editinfoa" href="modifystudent.jsp"
 													onmouseover="javascript:this.style.backgroundColor='#efeed9'"
 													onmouseout="javascript:this.style.backgroundColor='#fafeff'">编辑个人信息</a>
 												<br>

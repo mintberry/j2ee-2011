@@ -183,13 +183,13 @@
 											HttpSession hs = request.getSession();
 											Object inf = hs.getAttribute("user");
 
-											Studentinfo si = (Studentinfo) inf;
+											Teacherinfo si = (Teacherinfo) inf;
 										%>
 										<table>
 											<tbody style="color: #ffffff">
 												<tr>
 													<td>
-														学号：<%=si.getSId()%></td>
+														学号：<%=si.getTId()%></td>
 												</tr>
 												<tr>
 													<td>
@@ -202,6 +202,12 @@
 												<tr>
 													<td>
 														国籍：<%=si.getNation()%></td>
+												</tr>
+												<tr>
+													<td>
+														职称：
+														<%=si.getTitle()%>
+													</td>
 												</tr>
 												<tr>
 													<td>

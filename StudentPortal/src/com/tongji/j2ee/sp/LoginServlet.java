@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("userID");
 		String password = request.getParameter("password");
 
-		hs.setAttribute("userId", id); // 保存文件时用
+		hs.setAttribute("userId", id);                                        //* 保存文件时用,session保存用户账号
 
 		// for student_id
 		if (id.length() == 6) {
@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 						response);
 			} else {
 				if (password.equals(studentinfo.getPassword())) {
-					hs.setAttribute("user", studentinfo);
+					hs.setAttribute("user", studentinfo);                                //* session保存用户信息
 					if (studentinfo.getEmail().equals("")) {
 						// hs.setAttribute("user", studentinfo);
 						request.getRequestDispatcher("register.jsp").forward(
@@ -80,16 +80,16 @@ public class LoginServlet extends HttpServlet {
 							}
 						}
 
-						request.setAttribute("pageNumber", 1);
+						request.setAttribute("pageNumber", 1);                  //request传入页数
 						NotifyList lns = new NotifyList(1);
 						System.out.println("allitems" + lns.allItems);
-						hs.setAttribute("noteli", lns); // 保存到session
+						hs.setAttribute("noteli", lns);                        // 保存到session
 
 						// TODO:可以考虑放到session里
 						// hs.setAttribute("myCourses", myCoursesInfo);
 						// hs.setAttribute("schedule", courseSchedule);
-						request.setAttribute("myCourses", myCoursesInfo);
-						request.setAttribute("schedule", courseSchedule);
+						request.setAttribute("myCourses", myCoursesInfo);           //课程列表保存到request
+						request.setAttribute("schedule", courseSchedule);            //时间表保存到request
 						request.getRequestDispatcher("student.jsp").forward(
 								request, response);
 						// request.getRequestDispatcher("courseList.jsp").forward(
@@ -115,28 +115,27 @@ public class LoginServlet extends HttpServlet {
 			} else {
 
 				if (password.equals(teacherinfo.getPassword())) {
-					hs.setAttribute("user", teacherinfo);
+					hs.setAttribute("user", teacherinfo);                            // session保存用户信息
 					if (teacherinfo.getTId().equals("0000000007")) {
 						request.setAttribute("pageNumber", 1);
-						request.setAttribute("Jump",1);
+						request.setAttribute("Jump", 1);
 						NotifyList lns = new NotifyList(0);
 						System.out.println("allitems" + lns.allItems);
 						hs.setAttribute("noteli", lns);
-						
-						
-				List<Studentinfo> StudentList = studentinfoDAO.findAll();
-					
-						
+
+						List<Studentinfo> StudentList = studentinfoDAO
+								.findAll();
+
 						hs.setAttribute("MyStudentList", StudentList);
 						hs.setAttribute("StudentID", null);
 						hs.setAttribute("StudentName", null);
-						hs.setAttribute("Sex",null);
+						hs.setAttribute("Sex", null);
 						hs.setAttribute("StudentBirthday", null);
-						hs.setAttribute("StudentNation",null);
+						hs.setAttribute("StudentNation", null);
 						hs.setAttribute("StudentAddress", null);
-						hs.setAttribute("StudentEmail",null);
-						hs.setAttribute("StudentPhone",null);
-						
+						hs.setAttribute("StudentEmail", null);
+						hs.setAttribute("StudentPhone", null);
+
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;
@@ -285,10 +284,7 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		request.setAttribute("pageNumber", icurpage);
-//		request.setAttribute("pageNumber", 1);
-//		NotifyList lns = new NotifyList(1);
-//		System.out.println("allitems" + lns.allItems);
-//		hs.setAttribute("noteli", lns); // 保存到session
+		
 
 		// TODO:可以考虑放到session里
 		// hs.setAttribute("myCourses", myCoursesInfo);
@@ -300,9 +296,5 @@ public class LoginServlet extends HttpServlet {
 	public static void setUpAdmin(HttpServletRequest request,
 			HttpServletResponse response, HttpSession hs, int icurpage) {
 		request.setAttribute("pageNumber", icurpage);
-
-		// NotifyList lns = new NotifyList(0);
-		// System.out.println("allitems" + lns.allItems);
-		// hs.setAttribute("noteli", lns);
 	}
 }
