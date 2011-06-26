@@ -36,12 +36,10 @@
 
 
 	<body>
-		<hr width="100%" size="2">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<strong>作业</strong>
+		<hr width="100%" size="2"><div align="left"> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<strong>作业</strong></div>
 		<div class="filename" id="filename">
-			<br>
-			<br>
 			<%
 				List<Files> files = (List<Files>) request.getAttribute("files");
 				for (Files file : files) {

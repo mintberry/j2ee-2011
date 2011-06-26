@@ -29,8 +29,7 @@
   		<%
   			Files file = (Files) request.getAttribute("file");
   		%>
-		<form action="/StudentPortal/EditGrade?fileId=<%=file.getFId()%>" method="post">
-			<textarea name="grade" style="height: 150px; width: 270px; overflow: auto">
+			<textarea readonly name="grade" style="height: 150px; width: 270px; overflow: auto">
 				<%
 					if(file != null){
 				 %>
@@ -39,11 +38,9 @@
   					}
   				 %>
   			</textarea>
-  			<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; 
-			<input type="submit" value="评价">
-		</form>
+  			<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
 		
-		<form action="/StudentPortal/Download?id=<%=file.getFId()%>" method="post">
+		<form action="/StudentPortal/Download?id=<%=file.getFId()%>" method="post"> 
 			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 			<input type="submit" value="下载">
 		</form>

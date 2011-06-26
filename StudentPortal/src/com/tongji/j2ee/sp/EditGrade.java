@@ -49,6 +49,15 @@ public class EditGrade extends HttpServlet {
 		} finally {
 			s.close();
 		}
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<HTML> <BODY>");
+		out.println("<script language='javascript'>");
+		out.println("alert('评价成功！');");// 可以不写
+		out.println("history.go(-1)");// 填写你要跳回的页面，或者用("history.go(-1)");
+		out.println("</script>");
+		out.println("</body> </html>");
 	}
 
 }

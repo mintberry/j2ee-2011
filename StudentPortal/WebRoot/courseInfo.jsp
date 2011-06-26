@@ -290,8 +290,9 @@ h5 {
 						for(StudentCourseFile instance : studentCourseFiles){
 							Files file = filesDAO.findById(instance.getFId());
 					 %>
-														<a
-															href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
+														<a href="javascript:window.showModalDialog('/StudentPortal/FileSelect1?id=<%out.print(file.getFId());%>', null, 'status:no; dialogWidth:500px; dialogHeight:400px; dialogHide:true; help:no; scroll:no;')" target="_blank">
+																<%=file.getName()%>
+														</a>
 														<br />
 														<%
 						}

@@ -114,7 +114,7 @@ h5 {
 #studentlist {
 	border: 1px solid #CCCCCC;
 	width: 300px;
-	height: 400px;
+	height: 250px;
 	overflow: auto;
 }
 
