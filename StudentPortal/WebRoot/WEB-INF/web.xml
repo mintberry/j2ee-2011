@@ -153,6 +153,13 @@
     <servlet-name>ModifyServlet</servlet-name>
     <servlet-class>com.tongji.j2ee.sp.ModifyServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>student sent message</description>
+    <display-name>StudentMessage</display-name>
+    <servlet-name>FileSelect</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.FileSelect</servlet-class>
+  </servlet>
+
 
 
 
@@ -252,6 +259,10 @@
   <servlet-mapping>
     <servlet-name>ModifyServlet</servlet-name>
     <url-pattern>/ModifyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileSelect</servlet-name>
+    <url-pattern>/FileSelect</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

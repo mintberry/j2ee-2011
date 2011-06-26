@@ -1,7 +1,6 @@
 package com.tongji.j2ee.sp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class GetSelectValue extends HttpServlet {
+import model.Files;
+import model.FilesDAO;
+
+
+public class FileSelect extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -20,12 +23,15 @@ public class GetSelectValue extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String selectValue = request.getParameter("filelist");
 		
-		request.setAttribute("selectValue", selectValue);
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-		request.getRequestDispatcher("studentInfo.jsp").forward(request, response);
+		FilesDAO filesDAO =  new FilesDAO();
+		Files file = filesDAO.findById(id);
+		
+		request.setAttribute("file", file);
+		
+		request.getRequestDispatcher("file.jsp").forward(request, response);
 	}
 
 }
