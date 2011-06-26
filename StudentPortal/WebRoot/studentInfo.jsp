@@ -27,27 +27,46 @@
 
 	<style type="text/css">
 #filename {
-	border: 1px solid #CCCCCC;
 	width: 300px;
 	height: 200px;
 	overflow: auto;
 }
 </style>
 
-	<body> 
+<script type="text/javascript">
+function select{
+}
+	var selectItem = filelist.value;
+	var selectValue = filelist.options[selectItem].value;
+</script>
+
+	<body><hr width="100%" size="2"> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		<strong>作业</strong>
 		<br>
-		<br><div class="filename" id="filename">
-			<%
-				List<Files> files = (List<Files>) request.getAttribute("files");
-				for (Files file : files) {
-			%>
-			<a href="/StudentPortal/Download?id=<%out.print(file.getFId());%>"><%=file.getName()%></a>
-			<br />
-			<%
-				}
-			%>
-		</div>
+		<br>
+		<%String fileId = (String) request.getAttribute("fileId"); %>
+		<form action="/StudentPortal/EditGrade">
+			<select name="filelist" size="15">
+				<%
+					List<Files> files = (List<Files>) request.getAttribute("files");
+					for (int i=0;i<files.size();i++) {
+						Files file = files.get(i);
+				%>
+				<option value=<%=i%>"><%=file.getName()%></option>
+				<br />
+				<%
+					}
+				%>
+			</select>
+		</form>
+
+		<form action="/StudentPortal/EditGrade?fileId=<%=fileId%>" method="post">
+			<textarea name="grade">
+				<%=files.get(1).getDescription()%>
+			</textarea>
+			<br/>
+		</form>
+		
 	</body>
 </html>

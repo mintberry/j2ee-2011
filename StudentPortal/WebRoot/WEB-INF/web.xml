@@ -135,6 +135,20 @@
     <servlet-name>FindPersonalInfo</servlet-name>
     <servlet-class>com.tongji.j2ee.sp.FindPersonalInfo</servlet-class>
   </servlet>
+  <servlet>
+    <description>student sent message</description>
+    <display-name>StudentMessage</display-name>
+    <servlet-name>GetSelectValue</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.GetSelectValue</servlet-class>
+  </servlet>
+  <servlet>
+    <description>student sent message</description>
+    <display-name>StudentMessage</display-name>
+    <servlet-name>EditGrade</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.EditGrade</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -219,6 +233,14 @@
   <servlet-mapping>
     <servlet-name>FindPersonalInfo</servlet-name>
     <url-pattern>/FindPersonalInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetSelectValue</servlet-name>
+    <url-pattern>/GetSelectValue</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EditGrade</servlet-name>
+    <url-pattern>/EditGrade</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
