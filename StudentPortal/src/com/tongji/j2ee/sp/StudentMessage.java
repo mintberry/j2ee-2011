@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import model.Courses;
 import model.Studentinfo;
 import model.Teacherinfo;
@@ -35,6 +34,8 @@ public class StudentMessage extends HttpServlet {
 		subject = course + studentinfo.getName() + ":" + subject;
 		
 		String content = request.getParameter("content");
+		String emailAddr = "\n\n\n 发信者邮箱地址:" + studentinfo.getEmail();
+		content = content + emailAddr;
 		
 		String t_id = request.getParameter("to");
 		TeacherinfoDAO teacherinfoDAO = new TeacherinfoDAO();

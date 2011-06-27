@@ -29,6 +29,8 @@
   		<%
   			Files file = (Files) request.getAttribute("file");
   		%>
+  		<font face="隶书" size="4"><strong><%=file.getName()%></strong></font>
+  		<br/>
 		<form action="/StudentPortal/EditGrade?fileId=<%=file.getFId()%>" method="post">
 			<textarea name="grade" style="height: 150px; width: 270px; overflow: auto">
 				<%
