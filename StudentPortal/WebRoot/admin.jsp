@@ -31,7 +31,7 @@
 %>
 <%@page import="model.Courses" import="model.Notify"
 	import="model.NotifyDAO" import="model.Studentinfo"
-	import="model.Teacherinfo"%>%>
+	import="model.Teacherinfo"%>
 
 
 
@@ -167,6 +167,7 @@ function openedit(servletarg) {
 			.showModalDialog(servletarg, document,
 					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
 }
+
 function AddStudent()
 {
 var str=prompt("请输入添加学生的学号");
@@ -214,6 +215,29 @@ function EditCourse()
 	  document.getElementById("act4").value="edit";
   document.getElementById("editCourse").submit();
 }
+function AddCourse()
+{
+document.getElementById("act4").value="add";
+  //document.getElementById("editPerson").submit();
+   document.getElementById("AddingButton4").value="确认添加";
+   document.getElementById("EditingButton4").type="hidden";
+      document.getElementById("DeletingButton4").type="hidden";
+   document.getElementById("AddingButton4").onclick=AddingC
+   document.getElementById("CourseNumber").readOnly="";
+   document.getElementById("CourseNumber").value="";
+   document.getElementById("CourseName").value="";
+     document.getElementById("CourseTeacherID").value="";
+      document.getElementById("CourseTeacherName").value="";
+    document.getElementById("CourseMaxStudent").value="";
+    document.getElementById("CourseCredit").value="";
+ document.getElementById("CoursePlace").value="";
+ 
+  document.getElementById("CoureseSchedule1").value="";
+  document.getElementById("CoureseSchedule2").value="";
+  document.getElementById("CoureseSchedule3").value="";
+  document.getElementById("CoureseSchedule4").value="";
+  
+}
 function selectRes() {
   document.getElementById("act").value="edit";
   document.getElementById("editPerson").submit();
@@ -236,10 +260,40 @@ function AddingRes() {
 
  
 }
+function DeleteCourese()
+{
+ document.getElementById("act4").value="delete";
+   document.getElementById("editCourse").submit();
+}
 function DeleteRes()
 {
  document.getElementById("act").value="delete";
    document.getElementById("editPerson").submit();
+}
+function AddingC()
+{
+	var k=document.getElementById("CourseSelectID").options.length;
+var x=false;
+for (var j = 0; j <k; j++) {
+	
+	if (document.getElementById("CourseNumber").value==document.getElementById("CourseSelectID").options[j].value)
+	{
+	alert("已存在该课程");
+	x=true;
+	break;
+	}
+}  
+if (x==true)
+{
+alert("添加失败");
+}
+else
+{
+  document.getElementById("editCourse").submit();
+}
+
+
+	
 }
 function Adding(){
 
@@ -524,7 +578,7 @@ table#tnotes {
 
 
 	<body onLoad="javascript:jump();">
-		>
+		
 
 
 
@@ -1150,7 +1204,7 @@ table#tnotes {
 																name="MaxStudent" value=<%out.print(CourseMaxStudent);%> />
 											
 																	<label>学分</label> 
-															<input id="CourseCreditCourseCredit" type="text" maxlength="45"
+															<input id="CourseCredit" type="text" maxlength="45"
 																name="Credit" value=<%out.print(CourseCredit);%> />
 														</p>
 
@@ -1183,14 +1237,14 @@ table#tnotes {
 															<input id="CoursePlace" type="text" maxlength="45"
 																name="CoursePlace" value=<%out.print(CoursePlace);%> />
 											<input type="button" value="修改" onclick="EditCourse()"
-																id="EditingButton" style="margin-left:100px">
+																id="EditingButton4" style="margin-left:100px">
 															<input type="hidden" name="act4"  id="act4" value="edit">
 															<input type="button" value="添加" onClick="AddCourse()"
-																id="AddingButton">
+																id="AddingButton4">
 
 													
 															<input type="button" value="删除" onClick="DeleteCourese()"
-																id="DeletingButton">
+																id="DeletingButton4">
 						
 															
 														</p>
@@ -1201,7 +1255,7 @@ table#tnotes {
 															
 																						<%	List myCourseStudent = (List) session.getAttribute("CourseStudentList");  %>
 															<SELECT id="StudentSelectCourseID" value="" name="XiaZaiWenJian"
-														size="8" style="width: 300px"
+														size="7" style="width: 300px"
 														>
 											
 												<%
@@ -1243,14 +1297,7 @@ table#tnotes {
 												</div>
 											</div>
 										</li>
-										<li id="tab4">
-											<h3>
-												<a href="####" onclick="javascript:toggleTo(4)">课程</a>
-											</h3>
-											<div id="oDIV4" style="display: none;">
-
-											</div>
-										</li>
+									
 									</ul>
 								</div>
 

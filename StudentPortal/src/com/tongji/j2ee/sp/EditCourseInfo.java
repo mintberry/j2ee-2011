@@ -231,6 +231,138 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 	
 			}
 
+			TempDAO.save(TempCourse);
+		}
+		else if (Way.equalsIgnoreCase("add"))
+		{
+			
+			String CourseID=request.getParameter("id");
+			String CourseName=request.getParameter("name");
+
+			String teacherID = request.getParameter("teacherID");
+			//String Birthday = request.getParameter("birthday");
+			String teacherName = request.getParameter("teacherName");
+			String Time1 = request.getParameter("Time1");
+			String Time2 = request.getParameter("Time2");
+			String Time3 = request.getParameter("Time3");
+			String Time4 = request.getParameter("Time4");
+			String Credit = request.getParameter("Credit");
+			String MaxStudent = request.getParameter("MaxStudent");
+			String CoursePlace=request.getParameter("CoursePlace");
+			
+			
+			Courses TempCourse=new Courses();
+
+			
+			TempCourse.setCourseId(CourseID);
+			TempCourse.setName(CourseName);
+			TempCourse.setTId(teacherID);
+			TempCourse.setPlace(CoursePlace);
+			TempCourse.setTName(teacherName);
+			int i=Integer.parseInt(MaxStudent);
+			TempCourse.setMaxstudent(i);
+			i=Integer.parseInt(Credit);
+			TempCourse.setCredit(i);
+			
+			int ShangkeTime=0;
+			int TempInt;
+			int TempInt1;
+			char TempChar;
+			if (!Time1.equalsIgnoreCase("null"))
+			{
+			TempChar=Time1.charAt(0);
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time1.charAt(3);
+			 TempInt=TempChar-'1';
+			TempChar=Time1.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule0(ShangkeTime);
+			ShangkeTime=0;
+			}
+			if (!Time2.equalsIgnoreCase("null"))
+			{
+			TempChar=Time2.charAt(0);
+			
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time2.charAt(3);
+			 TempInt=TempChar-'1';
+			TempChar=Time2.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule1(ShangkeTime);
+			ShangkeTime=0;
+			}
+			if (!Time3.equalsIgnoreCase("null"))
+			{
+			TempChar=Time3.charAt(0);
+			
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time3.charAt(3);
+ TempInt=TempChar-'1';
+			TempChar=Time3.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule2(ShangkeTime);
+			ShangkeTime=0;
+			}
+			
+			if (!Time4.equalsIgnoreCase("null"))
+			{
+			TempChar=Time4.charAt(0);
+			
+			
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time4.charAt(3);
+			 TempInt=TempChar-'1';
+			TempChar=Time4.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule3(ShangkeTime);
+			ShangkeTime=0;
+	
+			}
+			CoursesDAO TempDAO=new CoursesDAO();
+			TempDAO.save(TempCourse);			
+		}
+		else if (Way.equalsIgnoreCase("delete"))
+		{
+			
+			Courses TempCourse=new Courses();
+			CoursesDAO MyCoursesDAO=new CoursesDAO();
+			String CourseID=request.getParameter("id");
+			TempCourse=MyCoursesDAO.findById(CourseID);
+			
+			MyCoursesDAO.delete(TempCourse);
+		
+			
+			
+			List<StudentCourse> StudentCourseList=MyStudentCourseDAO.findByCourseId(CourseID);
+			for (int i = 0; i < StudentCourseList.size(); i++) {
+				StudentCourse temp = (StudentCourse) StudentCourseList.get(i);
+				MyStudentCourseDAO.delete(temp);
+			}
+			
 		}
 		else if (Way.equalsIgnoreCase("add1"))
 		{
@@ -254,13 +386,14 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 		} finally {
 				s.close();
 				List<StudentCourse> StudentList = MyStudentCourseDAO.findAll();
-				
+				CoursesDAO TempDAO=new CoursesDAO();
+				List<Courses> CoursesList = TempDAO.findAll();
 				
 				request.setAttribute("pageNumber", 1);
 				request.setAttribute("Jump", 3);
 				HttpSession hs = request.getSession();
 	
-			
+				hs.setAttribute("MyCourseList", CoursesList);
 				hs.setAttribute("CourseStudentList", StudentList);
 				
 				request.getRequestDispatcher("admin.jsp").forward(request, response);
