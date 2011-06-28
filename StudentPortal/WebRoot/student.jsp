@@ -715,18 +715,12 @@ function blura(){
 												%>
 												<a
 													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"
-													target="_blank"> <%=temp.getName()%> </a>
+													target="_blank" style="font-size:16px"> 
+														&nbsp;&nbsp;&nbsp;<%=temp.getName()%> <br/>
+												</a>
 												<%
 													}
 												%>
-											</div>
-										</li>
-										<li id="tab4">
-											<h3>
-												<a href="####" onclick="javascript:toggleTo(4)">备用</a>
-											</h3>
-											<div id="oDIV4" style="display: none;">
-												<a href="http://www.ijavascript.cn">JavaScript教程网</a>
 											</div>
 										</li>
 									</ul>

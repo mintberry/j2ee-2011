@@ -259,7 +259,7 @@ h5 {
 											</div>
 
 											<div id="LiuYan">
-												<font face="方正姚体"><strong><font size="5">课件</font>
+												<font face="方正姚体" size="6"><strong>课件
 												</strong> </font>
 													<form method="post"
 													action="/StudentPortal/TeacherMessage
@@ -352,12 +352,8 @@ h5 {
 								</div>
 								<br>
 								<div align="right">
-									###author###
-									<br>
 								</div>
 								<div align="right">
-									###time###
-									<br>
 								</div>
 							</div>
 

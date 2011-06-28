@@ -30,6 +30,8 @@
   			Files file = (Files) request.getAttribute("file");
   		%>
   		<font face="隶书" size="4"><strong><%=file.getName()%></strong></font>
+  		<br/> 
+  			<font color="#0080ff">老师评价</font> 
   		<br/>
 			<textarea readonly name="grade" style="height: 150px; width: 270px; overflow: auto">
 				<%

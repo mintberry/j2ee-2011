@@ -223,9 +223,9 @@ h5 {
 											</div>
 
 											<div id="LiuYan">
-												<div align="center">
+												<div align="center" style="font-size:20px">
 													<br />
-													<strong><font size="5">留言</font> </strong>
+													<strong>留言</strong>
 												</div>
 												<strong> </strong>
 												<br />
@@ -261,7 +261,7 @@ h5 {
 											</div>
 
 											<div id="KeJian">
-												<font face="方正姚体"><strong><font size="5">课件</font>
+												<font face="方正姚体"><strong>课件
 												</strong> </font>
 												<div class="filename" id="filename">
 													<%
@@ -318,10 +318,10 @@ h5 {
 																<br>
 																<input type="file" name="file1" size="40">
 																<br>
-																<br/>
-																<div align="center"><input type="submit" value="上传"> 
-																<br></div>
-																<br>
+																
+																<div align="center"> 
+																</div>
+																
 															</td>
 														</tr>
 													</form>
@@ -330,24 +330,14 @@ h5 {
 
 
 
-											<div align="left">
-
-												<br>
-											</div>
+											
 
 
 										</div>
-									</div>
-									&nbsp;
-								</div>
-								<br>
+									</div></div>
 								<div align="right">
-									###author###
-									<br>
 								</div>
 								<div align="right">
-									###time###
-									<br>
 								</div>
 							</div>
 
