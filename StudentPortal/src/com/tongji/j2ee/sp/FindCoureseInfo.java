@@ -100,7 +100,7 @@ public class FindCoureseInfo extends HttpServlet {
 		{
 			int Time=MyCourses.getSchedule0();
 			String OutString;
-			int TempNumber=Time%5+1;
+			int TempNumber=(Time-1)%5*2+1;
 			int TempNumber1=Time/5+1;
 			
 			if (TempNumber1>=7)
@@ -122,7 +122,7 @@ public class FindCoureseInfo extends HttpServlet {
 		{
 			int Time=MyCourses.getSchedule1();
 			String OutString;
-			int TempNumber=Time%5+1;
+			int TempNumber=(Time-1)%5*2+1;
 			int TempNumber1=Time/5+1;
 			
 			if (TempNumber1>=7)
@@ -143,7 +143,7 @@ public class FindCoureseInfo extends HttpServlet {
 		{
 			int Time=MyCourses.getSchedule2();
 			String OutString;
-			int TempNumber=Time%5+1;
+			int TempNumber=(Time-1)%5*2+1;
 			int TempNumber1=Time/5+1;
 			
 			if (TempNumber1>=7)
@@ -164,7 +164,7 @@ public class FindCoureseInfo extends HttpServlet {
 		{
 			int Time=MyCourses.getSchedule3();
 			String OutString;
-			int TempNumber=Time%5+1;
+			int TempNumber=(Time-1)%5*2+1;
 			int TempNumber1=Time/5+1;
 			
 			if (TempNumber1>=7)

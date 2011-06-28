@@ -123,6 +123,115 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 		//MyStudentInfo.setBirthday(MyDate);
 
 		}
+		else if (Way.equalsIgnoreCase("edit"))
+		{
+			String CourseID=request.getParameter("id");
+			String CourseName=request.getParameter("name");
+
+			String teacherID = request.getParameter("teacherID");
+			//String Birthday = request.getParameter("birthday");
+			String teacherName = request.getParameter("teacherName");
+			String Time1 = request.getParameter("Time1");
+			String Time2 = request.getParameter("Time2");
+			String Time3 = request.getParameter("Time3");
+			String Time4 = request.getParameter("Time4");
+			String Credit = request.getParameter("Credit");
+			String MaxStudent = request.getParameter("MaxStudent");
+			String CoursePlace=request.getParameter("CoursePlace");
+			
+			
+			Courses TempCourse;
+			CoursesDAO TempDAO=new CoursesDAO();
+			TempCourse=TempDAO.findById(CourseID);
+			TempCourse.setName(CourseName);
+			TempCourse.setTId(teacherID);
+			TempCourse.setPlace(CoursePlace);
+			TempCourse.setTName(teacherName);
+			int i=Integer.parseInt(MaxStudent);
+			TempCourse.setMaxstudent(i);
+			i=Integer.parseInt(Credit);
+			TempCourse.setCredit(i);
+			
+			int ShangkeTime=0;
+			int TempInt;
+			int TempInt1;
+			char TempChar;
+			if (!Time1.equalsIgnoreCase("null"))
+			{
+			TempChar=Time1.charAt(0);
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time1.charAt(3);
+			 TempInt=TempChar-'1';
+			TempChar=Time1.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule0(ShangkeTime);
+			ShangkeTime=0;
+			}
+			if (!Time2.equalsIgnoreCase("null"))
+			{
+			TempChar=Time2.charAt(0);
+			
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time2.charAt(3);
+			 TempInt=TempChar-'1';
+			TempChar=Time2.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule1(ShangkeTime);
+			ShangkeTime=0;
+			}
+			if (!Time3.equalsIgnoreCase("null"))
+			{
+			TempChar=Time3.charAt(0);
+			
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time3.charAt(3);
+ TempInt=TempChar-'1';
+			TempChar=Time3.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule2(ShangkeTime);
+			ShangkeTime=0;
+			}
+			
+			if (!Time4.equalsIgnoreCase("null"))
+			{
+			TempChar=Time4.charAt(0);
+			
+			
+			if (TempChar=='双')
+			{
+				ShangkeTime=35;
+			}
+			
+			TempChar=Time4.charAt(3);
+			 TempInt=TempChar-'1';
+			TempChar=Time4.charAt(5);
+			TempInt1=(TempChar-'1')/2+1;
+			
+			ShangkeTime=ShangkeTime+5*TempInt+TempInt1;
+			TempCourse.setSchedule3(ShangkeTime);
+			ShangkeTime=0;
+	
+			}
+
+		}
 		else if (Way.equalsIgnoreCase("add1"))
 		{
 			String StudentID=request.getParameter("CourseStudentID");

@@ -208,6 +208,12 @@ function DeleteStudent()
   document.getElementById("editCourse").submit();
         
 }
+
+function EditCourse()
+{
+	  document.getElementById("act4").value="edit";
+  document.getElementById("editCourse").submit();
+}
 function selectRes() {
   document.getElementById("act").value="edit";
   document.getElementById("editPerson").submit();
@@ -1106,10 +1112,10 @@ table#tnotes {
 															
 															String CourseMaxStudent = (String) session.getAttribute("CourseMaxStudent");
 															
-																		String CourseSchedule1 = (String) session.getAttribute("CourseSchedule1");
-																									String CourseSchedule2 = (String) session.getAttribute("CourseSchedule2");
-																						String CourseSchedule3 = (String) session.getAttribute("CourseSchedule3");
-																String CourseSchedule4 = (String) session.getAttribute("CourseSchedule4");
+																		String CourseSchedule1 = (String) session.getAttribute("CourseSchedule0");
+																									String CourseSchedule2 = (String) session.getAttribute("CourseSchedule1");
+																						String CourseSchedule3 = (String) session.getAttribute("CourseSchedule2");
+																String CourseSchedule4 = (String) session.getAttribute("CourseSchedule3");
 														%>
 
 														<p>
@@ -1130,61 +1136,67 @@ table#tnotes {
 															&nbsp;
 																		<label>教师ID</label> &nbsp; &nbsp;
 															<input id="CourseTeacherID" value=<%out.print(CourseTeacherID);%>
-																type="text" maxlength="45" name="name" />
+																type="text" maxlength="45" name="teacherID" />
 
 									
 
 														<label style="padding-left:102px">教师名</label>
 															<input id="CourseTeacherName" type="text" maxlength="10"
-																name="birthday" value=<%out.print(CourseTeacherName);%> style="margin-left:15px"/>
+																name="teacherName" value=<%out.print(CourseTeacherName);%> style="margin-left:15px"/>
 														</p>
 														<p>
 																	<label>最大人数</label> 
 															<input id="CourseMaxStudent" type="text" maxlength="45"
-																name="nation" value=<%out.print(CourseMaxStudent);%> />
+																name="MaxStudent" value=<%out.print(CourseMaxStudent);%> />
 											
 																	<label>学分</label> 
 															<input id="CourseCreditCourseCredit" type="text" maxlength="45"
-																name="address" value=<%out.print(CourseCredit);%> />
+																name="Credit" value=<%out.print(CourseCredit);%> />
 														</p>
 
 														<p>
 																	<label>上课时间1</label> 
 															<input id="CourseSchedule1" type="text" maxlength="200"
-																name="mail" value=<%out.print(CourseSchedule1);%> />
+																name="Time1" value=<%out.print(CourseSchedule1);%> />
 											
 																	<label>上课时间2</label> 
 															<input id="CourseSchedule2" type="text" maxlength="200"
-																name="phone" value=<%out.print(CourseSchedule2);%> />
+																name="Time2" value=<%out.print(CourseSchedule2);%> />
 														</p>
 														
 																<p>
 																	<label>上课时间3</label>
 															<input id="CourseSchedule3" type="text" maxlength="200"
-																name="mail" value=<%out.print(CourseSchedule3);%> />
+																name="Time3" value=<%out.print(CourseSchedule3);%> />
 																
 																			<label>上课时间4</label>
 															<input id="CourseSchedule4" type="text" maxlength="200"
-																name="mail" value=<%out.print(CourseSchedule4);%> />
+																name="Time4" value=<%out.print(CourseSchedule4);%> />
 											
 											<input type="hidden" id="act" name="act" value="select">
 														
 														</p>
 						</p>
 														
-		
-									
-																<label>上课学生</label> 
-																	<input type="button" value="修改" onclick="selectRes()"
+			<p>
+																	<label>上课地点</label> 
+															<input id="CoursePlace" type="text" maxlength="45"
+																name="CoursePlace" value=<%out.print(CoursePlace);%> />
+											<input type="button" value="修改" onclick="EditCourse()"
 																id="EditingButton" style="margin-left:100px">
 															<input type="hidden" name="act4"  id="act4" value="edit">
-															<input type="button" value="添加" onClick="AddingRes()"
+															<input type="button" value="添加" onClick="AddCourse()"
 																id="AddingButton">
 
 													
-															<input type="button" value="删除" onClick="DeleteRes()"
+															<input type="button" value="删除" onClick="DeleteCourese()"
 																id="DeletingButton">
 						
+															
+														</p>
+									
+																<label>上课学生</label> 
+																	
 															<p>
 															
 																						<%	List myCourseStudent = (List) session.getAttribute("CourseStudentList");  %>
