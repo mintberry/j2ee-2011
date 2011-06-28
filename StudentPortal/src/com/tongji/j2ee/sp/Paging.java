@@ -45,6 +45,7 @@ public class Paging extends HttpServlet {
 		switch(lns.iSymbol){
 		case 0:
 			LoginServlet.setUpAdmin(request, response, hs, iCurPage);
+			request.setAttribute("Jump", 1);
 			request.getRequestDispatcher("admin.jsp").forward(
 					request, response);
 			break;
