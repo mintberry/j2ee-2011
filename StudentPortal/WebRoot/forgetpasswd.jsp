@@ -85,7 +85,7 @@ response.setDateHeader("Expires", 0);
 					<div class="doc-title clearfix">
 
 						<h3 class="doc-caption">
-							登录
+							找回密码
 						</h3>
 
 					</div>
@@ -93,7 +93,7 @@ response.setDateHeader("Expires", 0);
 					<div class="doc-content clearfix">
 
 						<div id="login-form" class="form">
-							<form name="loginform" action="/StudentPortal/LoginServlet"
+							<form name="loginform" action="/StudentPortal/ForgetPasswd"
 								method="post">
 
 								<div id="row-email" class="row clearfix">
@@ -101,7 +101,7 @@ response.setDateHeader("Expires", 0);
 									<div class="clearfix">
 
 										<label for="acc_email" class="label">
-											用户:
+											账号:
 
 										</label>
 										<span id="NameError" style="display: none"
@@ -117,24 +117,7 @@ response.setDateHeader("Expires", 0);
 
 								</div>
 
-								<div id="row-pass" class="row clearfix">
-
-									<div class="clearfix">
-
-										<label for="acc_pass" class="label">
-											密码:
-
-										</label>
-										<span id="PwdError" style="display: none"
-											style="font-size:10px"><font color=red>密码不能为空</font> </span>
-										<input type="password" id="acc_pass" name="password"
-											class="text bd" tabindex="2" />
-
-										<a id="link_forgot" class="fn-s" href="forgetpasswd.jsp"
-											tabindex="5">忘记密码?</a>
-
-									</div>
-								</div>
+								
 								<div id="row-summary" class="row clearfix">
 
 
@@ -334,7 +317,7 @@ function trim(value) {
 //form是个表单元素的引用
 function validateForm(form) {
 	document.getElementById("NameError").style.display = "none";
-	document.getElementById("PwdError").style.display = "none";
+	//document.getElementById("PwdError").style.display = "none";
 	//alert(form.elements.length);
 	//form.submit();
 	var valid = true;
@@ -352,7 +335,7 @@ function validateForm(form) {
 	var regID2 = /^\d{10}$/;
 
 	var userID = form.elements[0].value;
-	var passwd = form.elements[1].value;
+	//var passwd = form.elements[1].value;
 	//alert(userID + ":" + passwd.length);
 	if (!regID.exec(userID) && !regID2.exec(userID)) {
 		//alert("IDerror");
@@ -360,12 +343,7 @@ function validateForm(form) {
 		
 		valid = false;
 	}
-	if (passwd.length == 0) {
-		//alert("pwerror");
-		document.getElementById("PwdError").style.display = "inline";
-		
-		valid = false;
-	}
+	
 
 	if (valid) {
 		form.submit();
