@@ -165,6 +165,27 @@
     <servlet-name>FileSelect1</servlet-name>
     <servlet-class>com.tongji.j2ee.sp.FileSelect1</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>EditTeacherInfo</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.EditTeacherInfo</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FindTeacherInfo</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.FindTeacherInfo</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FindCoureseInfo</servlet-name>
+    <servlet-class>com.tongji.j2ee.sp.FindCoureseInfo</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -274,6 +295,18 @@
   <servlet-mapping>
     <servlet-name>FileSelect1</servlet-name>
     <url-pattern>/FileSelect1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EditTeacherInfo</servlet-name>
+    <url-pattern>/EditTeacherInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindTeacherInfo</servlet-name>
+    <url-pattern>/FindTeacherInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindCoureseInfo</servlet-name>
+    <url-pattern>/FindCoureseInfo</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

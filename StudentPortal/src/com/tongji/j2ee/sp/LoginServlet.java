@@ -136,6 +136,21 @@ public class LoginServlet extends HttpServlet {
 						hs.setAttribute("StudentEmail", null);
 						hs.setAttribute("StudentPhone", null);
 
+						
+						List<Teacherinfo> TeacherList = teacherinfoDAO
+						.findAll();
+
+				hs.setAttribute("MyTeacherList", TeacherList);
+				hs.setAttribute("TeacherID", null);
+				hs.setAttribute("TeacherName", null);
+				hs.setAttribute("TeacherTitle", null);
+				hs.setAttribute("TeacherBirthday", null);
+				hs.setAttribute("TeacherNation", null);
+				hs.setAttribute("TeacherAddress", null);
+				hs.setAttribute("TeacherEmail", null);
+				hs.setAttribute("TeacherPhone", null);
+				
+				
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;
