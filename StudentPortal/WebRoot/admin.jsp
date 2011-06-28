@@ -866,6 +866,7 @@ table#tnotes {
 学生列表
 												<%
 													List myStudent = (List) session.getAttribute("MyStudentList");
+													String myID = (String) session.getAttribute("StudentID");
 												%>
 
 
@@ -880,7 +881,7 @@ table#tnotes {
 															for (int i = 0; i < myStudent.size(); i++) {
 																Studentinfo temp = (Studentinfo) myStudent.get(i);
 														%>
-														<OPTION VALUE=<%out.print(temp.getSId());%>>
+														<OPTION VALUE=<%out.print(temp.getSId());%> <%if   (temp.getSId().equals(myID)){ out.print("selected");} %>  >
 															<%
 																out.print(temp.getName());
 															%>
@@ -898,10 +899,10 @@ table#tnotes {
 
 
 														<%
-															String myID = (String) session.getAttribute("StudentID");
+														
 															String myName = (String) session.getAttribute("StudentName");
 															String mySex = (String) session.getAttribute("Sex");
-
+															String myBirthday=(String) session.getAttribute("StudentBirthday");
 															String myNation = (String) session.getAttribute("StudentNation");
 															String myAddress = (String) session.getAttribute("StudentAddress");
 															String myEmail = (String) session.getAttribute("StudentEmail");
@@ -927,11 +928,11 @@ table#tnotes {
 															<label>性别</label> &nbsp; &nbsp;
 
 															<select name="sex" id="Sex2"
-																accesskey=<%out.print(mySex);%> tabindex="0">
-																<option value="男">
+																 tabindex="0">
+																<option value="男"   <% if   (mySex.equalsIgnoreCase("男")){ out.print("selected");} %>>
 																	男
 																</option>
-																<option value="女">
+																<option value="女"  <%if   (mySex.equalsIgnoreCase("女")){ out.print("selected");} %>>
 																	女
 																</option>
 															</select>
@@ -939,8 +940,8 @@ table#tnotes {
 									
 
 														<label style="padding-left:102px">生日</label>
-															<input id="StudentBirthday" type="text" maxlength="10"
-																name="birthday" value=""  style="margin-left:15px"/>
+															<input id="StudentBirthday" type="text" maxlength="20"
+																name="birthday" value=<%out.print(myBirthday);%>  style="margin-left:15px"/>
 														</p>
 														<p>
 															&nbsp; 国籍&nbsp; &nbsp;&nbsp;
@@ -990,6 +991,8 @@ table#tnotes {
 
 									<%
 													List myTeacher = (List) session.getAttribute("MyTeacherList");
+											
+																							String teacherID = (String) session.getAttribute("TeacherID");
 												%>
 
 教师列表
@@ -1003,7 +1006,7 @@ table#tnotes {
 															for (int i = 0; i < myTeacher.size(); i++) {
 																Teacherinfo temp = (Teacherinfo) myTeacher.get(i);
 														%>
-														<OPTION VALUE=<%out.print(temp.getTId());%>>
+														<OPTION VALUE=<%out.print(temp.getTId());%>  <%if   (temp.getTId().equals(teacherID)){ out.print("selected");} %>>
 															<%
 																out.print(temp.getName());
 															%>
@@ -1015,10 +1018,10 @@ table#tnotes {
 												</form>
 												<div id="TeacherInfo">
 											<%
-															String teacherID = (String) session.getAttribute("TeacherID");
+			
 															String teacherName = (String) session.getAttribute("TeacherName");
 															String teacherTitle = (String) session.getAttribute("TeacherTitle");
-
+	String teacherBirthday = (String) session.getAttribute("TeacherBirthday");
 															String teacherNation = (String) session.getAttribute("TeacherNation");
 															String teacherAddress = (String) session.getAttribute("TeacherAddress");
 															String teacherEmail = (String) session.getAttribute("TeacherEmail");
@@ -1048,14 +1051,14 @@ table#tnotes {
 															<label>职称</label> &nbsp; &nbsp;
 
 															<select name="sex" id="Sex3"
-																accesskey=<%out.print(mySex);%> tabindex="0">
-																<option value="讲师">
+																 tabindex="0">
+																<option value="讲师"   <%if   (teacherTitle.equalsIgnoreCase("讲师")){ out.print("selected");} %>>
 																	讲师
 																</option>
-																<option value="副教授">
+																<option value="副教授"   <%if   (teacherTitle.equalsIgnoreCase("副教授")){ out.print("selected");} %>>
 																	副教授
 																</option>
-																	<option value="教授">
+																	<option value="教授"  <%if   (teacherTitle.equalsIgnoreCase("教授")){ out.print("selected");} %>>
 																	教授
 																</option>
 															</select>
@@ -1063,8 +1066,8 @@ table#tnotes {
 									
 
 														<label style="padding-left:77px">生日</label>
-															<input id="TeacherBirthday" type="text" maxlength="10"
-																name="birthday" value=""  style="margin-left:15px"/>
+															<input id="TeacherBirthday" type="text" maxlength="20"
+																name="birthday" value=<%out.print(teacherBirthday);%>  style="margin-left:15px"/>
 														</p>
 														<p>
 															&nbsp; 国籍&nbsp; &nbsp;&nbsp;
@@ -1123,6 +1126,7 @@ table#tnotes {
 课程列表
 												<%
 													List myCourse = (List) session.getAttribute("MyCourseList");
+														String CourseID = (String) session.getAttribute("CourseID");
 												%>
 
 
@@ -1137,7 +1141,7 @@ table#tnotes {
 															for (int i = 0; i < myCourse.size(); i++) {
 																Courses temp = (Courses) myCourse.get(i);
 														%>
-														<OPTION VALUE=<%out.print(temp.getCourseId());%>>
+														<OPTION VALUE=<%out.print(temp.getCourseId());%>  <%if   (temp.getCourseId().equals(CourseID)){ out.print("selected");} %>>
 															<%
 																out.print(temp.getName());
 															%>
@@ -1155,7 +1159,7 @@ table#tnotes {
 
 
 														<%
-															String CourseID = (String) session.getAttribute("CourseID");
+														
 															String CourseName = (String) session.getAttribute("CourseName");
 															String CourseTeacherName = (String) session.getAttribute("CourseTeacherName");
 

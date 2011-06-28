@@ -129,13 +129,13 @@ public class LoginServlet extends HttpServlet {
 						hs.setAttribute("MyStudentList", StudentList);
 						hs.setAttribute("StudentID", null);
 						hs.setAttribute("StudentName", null);
-						hs.setAttribute("Sex", null);
+						hs.setAttribute("Sex", "男");
 						hs.setAttribute("StudentBirthday", null);
 						hs.setAttribute("StudentNation", null);
 						hs.setAttribute("StudentAddress", null);
 						hs.setAttribute("StudentEmail", null);
 						hs.setAttribute("StudentPhone", null);
-
+							
 						
 						List<Teacherinfo> TeacherList = teacherinfoDAO
 						.findAll();
@@ -143,7 +143,7 @@ public class LoginServlet extends HttpServlet {
 				hs.setAttribute("MyTeacherList", TeacherList);
 				hs.setAttribute("TeacherID", null);
 				hs.setAttribute("TeacherName", null);
-				hs.setAttribute("TeacherTitle", null);
+				hs.setAttribute("TeacherTitle", "教授");
 				hs.setAttribute("TeacherBirthday", null);
 				hs.setAttribute("TeacherNation", null);
 				hs.setAttribute("TeacherAddress", null);

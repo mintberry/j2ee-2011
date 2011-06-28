@@ -77,7 +77,7 @@ public class EditPersonalInfo extends HttpServlet {
 		String ID=request.getParameter("id");
 		String Name = request.getParameter("name");
 		String Sex = request.getParameter("sex");
-		//String Birthday = request.getParameter("birthday");
+		String Birthday = request.getParameter("birthday");
 		String Nation = request.getParameter("nation");
 		String Mail = request.getParameter("mail");
 		String Address = request.getParameter("address");
@@ -100,13 +100,29 @@ public class EditPersonalInfo extends HttpServlet {
 		MyStudentInfo.setNation(Nation);
 		MyStudentInfo.setEmail(Mail);
 		MyStudentInfo.setAddress(Address);
-	//	Date MyDate=new Date();
-		//MyDate.setDate(20);
-		//MyDate.setHours(12);
-		//MyDate.setYear(1990);
-		//MyDate.setMonth(11);
+		
+		String TempString[]=Birthday.split("年");
+		int Year=Integer.parseInt(TempString[0]);
+		System.out.println(Year);
+		
+		String TempString1[]=TempString[1].split("月");
+		int Month=Integer.parseInt(TempString1[0]);
+		System.out.println(Month);
+		String TempString2[]=TempString1[1].split("日");
+		int Day=Integer.parseInt(TempString2[0]);
+		
+		System.out.println(Day);
+		
+		
+		Date MyDate=new Date();
+		MyDate.setDate(Day);
+		MyDate.setYear(Year);
+		MyDate.setMonth(Month-1);
+		
 
-		//MyStudentInfo.setBirthday(MyDate);
+		
+		//System.out.println(MyDate.getYear());
+		MyStudentInfo.setBirthday(MyDate);
 		MyStudentInfo.setPhoneNumber(Phone);
 		System.out.println(Name);
 		System.out.println(Sex);
@@ -125,11 +141,25 @@ public class EditPersonalInfo extends HttpServlet {
 			MyStudentInfo.setNation(Nation);
 			MyStudentInfo.setEmail(Mail);
 			MyStudentInfo.setAddress(Address);
+			String TempString[]=Birthday.split("年");
+			int Year=Integer.parseInt(TempString[0]);
+			
+			System.out.println(Year);
+			String TempString1[]=TempString[1].split("月");
+			int Month=Integer.parseInt(TempString1[0]);
+			String TempString2[]=TempString1[1].split("日");
+			int Day=Integer.parseInt(TempString2[0]);
+			
+			
 			Date MyDate=new Date();
-			MyDate.setDate(20);
-			MyDate.setHours(12);
-			MyDate.setYear(1990);
-			MyDate.setMonth(11);
+
+			
+			
+			MyDate.setDate(Day);
+			MyDate.setYear(Year);
+			MyDate.setMonth(Month-1);
+			
+
 
 			MyStudentInfo.setBirthday(MyDate);
 			MyStudentInfo.setPhoneNumber(Phone);
@@ -167,6 +197,23 @@ public class EditPersonalInfo extends HttpServlet {
 				request.setAttribute("Jump", 2);
 				HttpSession hs = request.getSession();
 	
+				 if (!Way.equalsIgnoreCase("delete"))
+				 {
+				hs.setAttribute("StudentID", ID);
+				MyStudentInfo=MyStudentDAO.findById(ID);
+				hs.setAttribute("StudentName", MyStudentInfo.getName());
+				hs.setAttribute("Sex", MyStudentInfo.getSex());
+
+				Date TempDate=MyStudentInfo.getBirthday();
+				String TempString;
+				TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
+				hs.setAttribute("StudentBirthday", TempString);
+				hs.setAttribute("StudentNation", MyStudentInfo.getNation());
+				hs.setAttribute("StudentAddress", MyStudentInfo.getAddress());
+				hs.setAttribute("StudentEmail", MyStudentInfo.getEmail());
+				hs.setAttribute("StudentPhone", MyStudentInfo.getPhoneNumber());
+				
+				 }
 			
 				hs.setAttribute("MyStudentList", StudentList);
 				

@@ -4,6 +4,7 @@ import hibernate.HibernateSessionFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -93,8 +94,13 @@ public class FindTeacherInfo extends HttpServlet {
 		HttpSession hs = request.getSession();
 		hs.setAttribute("TeacherID", ID);
 		hs.setAttribute("TeacherName", MyStudentInfo.getName());
-		hs.setAttribute("TeacherTitle", MyStudentInfo.getSex());
-		hs.setAttribute("TeacherBirthday", MyStudentInfo.getBirthday());
+		hs.setAttribute("TeacherTitle", MyStudentInfo.getTitle());
+		
+		Date TempDate=MyStudentInfo.getBirthday();
+		String TempString;
+		TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
+		hs.setAttribute("TeacherBirthday", TempString);
+		
 		hs.setAttribute("TeacherNation", MyStudentInfo.getNation());
 		hs.setAttribute("TeacherAddress", MyStudentInfo.getAddress());
 		hs.setAttribute("TeacherEmail", MyStudentInfo.getEmail());

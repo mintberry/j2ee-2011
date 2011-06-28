@@ -390,6 +390,115 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 				request.setAttribute("Jump", 3);
 				HttpSession hs = request.getSession();
 	
+				
+			if (!Way.equalsIgnoreCase("delete"))
+			{
+				String CourseID=request.getParameter("id");
+				
+				Courses MyCourses=TempDAO.findById(CourseID);
+				{
+					int Time=MyCourses.getSchedule0();
+					String OutString;
+					int TempNumber=(Time-1)%5*2+1;
+					int TempNumber1=Time/5+1;
+					
+					if (TempNumber1>=7)
+					{
+						TempNumber1=TempNumber1-7;
+					}
+					if (Time<=35)
+					{
+						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					else
+					{
+						OutString=String.format("双周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					System.out.println(OutString);
+					hs.setAttribute("CourseSchedule0",OutString);
+				}
+				
+				{
+					int Time=MyCourses.getSchedule1();
+					String OutString;
+					int TempNumber=(Time-1)%5*2+1;
+					int TempNumber1=Time/5+1;
+					
+					if (TempNumber1>=7)
+					{
+						TempNumber1=TempNumber1-7;
+					}
+					if (Time<=35)
+					{
+						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					else
+					{
+						OutString=String.format("双周周%d第%d第%d节课课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					hs.setAttribute("CourseSchedule1",OutString);
+				}
+				
+				{
+					int Time=MyCourses.getSchedule2();
+					String OutString;
+					int TempNumber=(Time-1)%5*2+1;
+					int TempNumber1=Time/5+1;
+					
+					if (TempNumber1>=7)
+					{
+						TempNumber1=TempNumber1-7;
+					}
+					if (Time<=35)
+					{
+						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					else
+					{
+						OutString=String.format("双周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					hs.setAttribute("CourseSchedule2",OutString);
+				}
+				
+				{
+					int Time=MyCourses.getSchedule3();
+					String OutString;
+					int TempNumber=(Time-1)%5*2+1;
+					int TempNumber1=Time/5+1;
+					
+					if (TempNumber1>=7)
+					{
+						TempNumber1=TempNumber1-7;
+					}
+					if (Time<=35)
+					{
+						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					else
+					{
+						OutString=String.format("双周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+					}
+					hs.setAttribute("CourseSchedule3",OutString);
+				}
+
+				hs.setAttribute("CourseID", CourseID);
+				hs.setAttribute("CourseName", MyCourses.getName());
+				String TempStringInt;
+				TempStringInt=String.format("%d",MyCourses.getCredit());
+				hs.setAttribute("CourseCredit", TempStringInt);
+				hs.setAttribute("CourseTeacherName", MyCourses.getTName());
+				hs.setAttribute("CourseTeacherID", MyCourses.getTId());
+				//hs.setAttribute("CourseClass", MyCourses.getClass());
+				hs.setAttribute("CoursePlace", MyCourses.getPlace());
+				
+				String TempStringInt1;
+				TempStringInt1=String.format("%d",MyCourses.getMaxstudent());
+				hs.setAttribute("CourseMaxStudent", TempStringInt1);
+
+
+			}
+				
+				
 				hs.setAttribute("MyCourseList", CoursesList);
 				hs.setAttribute("CourseStudentList", StudentList);
 				

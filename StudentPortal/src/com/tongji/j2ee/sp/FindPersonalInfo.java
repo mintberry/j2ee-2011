@@ -96,7 +96,11 @@ HttpSession hs = request.getSession();
 hs.setAttribute("StudentID", ID);
 hs.setAttribute("StudentName", MyStudentInfo.getName());
 hs.setAttribute("Sex", MyStudentInfo.getSex());
-hs.setAttribute("StudentBirthday", MyStudentInfo.getBirthday());
+
+Date TempDate=MyStudentInfo.getBirthday();
+String TempString;
+TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
+hs.setAttribute("StudentBirthday", TempString);
 hs.setAttribute("StudentNation", MyStudentInfo.getNation());
 hs.setAttribute("StudentAddress", MyStudentInfo.getAddress());
 hs.setAttribute("StudentEmail", MyStudentInfo.getEmail());
