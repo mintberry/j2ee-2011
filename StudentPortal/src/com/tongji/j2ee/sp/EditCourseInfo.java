@@ -373,10 +373,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			temp.setSId(StudentID);
 			MyStudentCourseDAO.attachDirty(temp);
 		}
-		else if (Way.equalsIgnoreCase("delete"))
-		{
-		
-		}
+
 		
 			try {
 				Transaction ts = s.beginTransaction();
