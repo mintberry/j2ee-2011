@@ -19,7 +19,8 @@ import javax.servlet.http.HttpSession;
 import model.Studentinfo;
 import model.StudentinfoDAO;
 
-
+import model.StudentCourse;
+import model.StudentCourseDAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -140,6 +141,15 @@ public class EditPersonalInfo extends HttpServlet {
 		else if (Way.equalsIgnoreCase("delete"))
 		{
 			MyStudentInfo=MyStudentDAO.findById(ID);
+			StudentCourseDAO MyStudentCourseDAO=new StudentCourseDAO();
+			
+			
+			List<StudentCourse> StudentCourseList=MyStudentCourseDAO.findBySId(ID);
+			for (int i = 0; i < StudentCourseList.size(); i++) {
+				StudentCourse temp = (StudentCourse) StudentCourseList.get(i);
+				MyStudentCourseDAO.delete(temp);
+			}
+			
 			MyStudentDAO.delete(MyStudentInfo);
 		}
 		

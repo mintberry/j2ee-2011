@@ -77,6 +77,8 @@
 			rel="stylesheet" type="text/css" /-->
 
 		<!--script src="http://res.gurudigger.com/js/main.js"
+		
+		
 			type="text/javascript"-->
 		<script src="js/htmldialog.js" type="text/javascript">
 </script>
@@ -165,7 +167,47 @@ function openedit(servletarg) {
 			.showModalDialog(servletarg, document,
 					"status:no;scroll:no;dialogWidth:650px;dialogHeight:500px;resizable:yes");
 }
+function AddStudent()
+{
+var str=prompt("请输入添加学生的学号");
+if (str!=null)
+{
+ document.getElementById("act4").value="add1";
+ 
+var k=document.getElementById("StudentSelectCourseID").options.length;
+var x=false;
+for (var j = 0; j <k; j++) {
+	
+	if (str==document.getElementById("StudentSelectCourseID").options[j].value)
+	{
+	alert("该同学已选该课程");
+	x=true;
+	break;
+	}
+}  
+if (x==true)
+{
+alert("添加失败");
+}
+else
+{
+document.getElementById("CourseStudentID").value=str;
+  document.getElementById("editCourse").submit();
+}
 
+
+}
+
+}
+function DeleteStudent()
+{
+  document.getElementById("act4").value="delete1";
+  
+  
+ document.getElementById("CourseStudentID").value=document.getElementById("StudentSelectCourseID").options[document.getElementById("StudentSelectCourseID").selectedIndex].value;
+  document.getElementById("editCourse").submit();
+        
+}
 function selectRes() {
   document.getElementById("act").value="edit";
   document.getElementById("editPerson").submit();
@@ -1049,7 +1091,7 @@ table#tnotes {
 												<div id="PersonalInfo">
 
 													<form method="post"
-														action="/StudentPortal/EditPersonalInfo" id="editPerson">
+														action="/StudentPortal/EditCourseInfo" id="editCourse">
 
 
 														<%
@@ -1135,11 +1177,11 @@ table#tnotes {
 																<label>上课学生</label> 
 																	<input type="button" value="修改" onclick="selectRes()"
 																id="EditingButton" style="margin-left:100px">
-															<input type="hidden" name="act" value="edit">
+															<input type="hidden" name="act4"  id="act4" value="edit">
 															<input type="button" value="添加" onClick="AddingRes()"
 																id="AddingButton">
 
-															<input type="hidden" name="act" value="delete">
+													
 															<input type="button" value="删除" onClick="DeleteRes()"
 																id="DeletingButton">
 						
@@ -1167,12 +1209,15 @@ table#tnotes {
 														</p>
 													
 														<p>
-										<input type="hidden" id="act" name="act" value="select">
-															<input type="button" value=“添加学生" onclick="selectRes()"
-																id="EditingButton">
-																		<input type="hidden" id="act" name="act" value="select">
-															<input type="button" value="删除学生" onclick="selectRes()"
-																id="EditingButton">
+									
+										
+										<input type="hidden" id="CourseStudentID" name="CourseStudentID" value="select">
+															<input type="button" value="添加学生" onclick="AddStudent()"
+
+																id="AddingStudentButton">
+															
+															<input type="button" value="删除学生" onclick="DeleteStudent()"
+																id="DeleteStudentButton">
 
 										
 
