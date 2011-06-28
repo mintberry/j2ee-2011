@@ -95,20 +95,108 @@ public class FindCoureseInfo extends HttpServlet {
 		Courses MyCourses;
 
 		MyCourses=MyCoursesDAO.findById(ID);
-	
 		HttpSession hs = request.getSession();
+
+		{
+			int Time=MyCourses.getSchedule0();
+			String OutString;
+			int TempNumber=Time%5+1;
+			int TempNumber1=Time/5+1;
+			
+			if (TempNumber1>=7)
+			{
+				TempNumber1=TempNumber1-7;
+			}
+			if (Time<=35)
+			{
+				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			else
+			{
+				OutString=String.format("双周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			System.out.println(OutString);
+			hs.setAttribute("CourseSchedule0",OutString);
+		}
+		
+		{
+			int Time=MyCourses.getSchedule1();
+			String OutString;
+			int TempNumber=Time%5+1;
+			int TempNumber1=Time/5+1;
+			
+			if (TempNumber1>=7)
+			{
+				TempNumber1=TempNumber1-7;
+			}
+			if (Time<=35)
+			{
+				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			else
+			{
+				OutString=String.format("双周周%d第%d第%d节课课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			hs.setAttribute("CourseSchedule1",OutString);
+		}
+		
+		{
+			int Time=MyCourses.getSchedule2();
+			String OutString;
+			int TempNumber=Time%5+1;
+			int TempNumber1=Time/5+1;
+			
+			if (TempNumber1>=7)
+			{
+				TempNumber1=TempNumber1-7;
+			}
+			if (Time<=35)
+			{
+				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			else
+			{
+				OutString=String.format("双周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			hs.setAttribute("CourseSchedule2",OutString);
+		}
+		
+		{
+			int Time=MyCourses.getSchedule3();
+			String OutString;
+			int TempNumber=Time%5+1;
+			int TempNumber1=Time/5+1;
+			
+			if (TempNumber1>=7)
+			{
+				TempNumber1=TempNumber1-7;
+			}
+			if (Time<=35)
+			{
+				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			else
+			{
+				OutString=String.format("双周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
+			}
+			hs.setAttribute("CourseSchedule3",OutString);
+		}
+
 		hs.setAttribute("CourseID", ID);
 		hs.setAttribute("CourseName", MyCourses.getName());
-		hs.setAttribute("CourseCredit",  MyCourses.getCredit());
+		String TempStringInt;
+		TempStringInt=String.format("%d",MyCourses.getCredit());
+		hs.setAttribute("CourseCredit", TempStringInt);
 		hs.setAttribute("CourseTeacherName", MyCourses.getTName());
 		hs.setAttribute("CourseTeacherID", MyCourses.getTId());
-		hs.setAttribute("CourseClass", MyCourses.getClass());
+		//hs.setAttribute("CourseClass", MyCourses.getClass());
 		hs.setAttribute("CoursePlace", MyCourses.getPlace());
-		hs.setAttribute("CourseMaxStudent", MyCourses.getMaxstudent());
-		hs.setAttribute("CourseSchedule0", MyCourses.getSchedule0());
-		hs.setAttribute("CourseSchedule1", MyCourses.getSchedule1());
-		hs.setAttribute("CourseSchedule2", MyCourses.getSchedule2());
-		hs.setAttribute("CourseSchedule3", MyCourses.getSchedule3());
+		
+		String TempStringInt1;
+		TempStringInt1=String.format("%d",MyCourses.getMaxstudent());
+		hs.setAttribute("CourseMaxStudent", TempStringInt1);
+
+
 	
 		
 	

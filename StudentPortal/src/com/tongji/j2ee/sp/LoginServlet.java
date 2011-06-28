@@ -151,6 +151,31 @@ public class LoginServlet extends HttpServlet {
 				hs.setAttribute("TeacherPhone", null);
 				
 				
+				CoursesDAO studentCourseDAO = new CoursesDAO();
+				List<Courses> CourseList=studentCourseDAO.findAll();
+				
+				
+				StudentCourseDAO abc=new StudentCourseDAO(); 
+				List<StudentCourse> StudentCourseList =abc.findAll();
+
+				
+				hs.setAttribute("MyCourseList", CourseList);
+				hs.setAttribute("CourseStudentList",StudentCourseList);
+				hs.setAttribute("CourseID", null);
+				hs.setAttribute("CourseName", null);
+				hs.setAttribute("CourseCredit",  null);
+				hs.setAttribute("CourseTeacherName", null);
+				hs.setAttribute("CourseTeacherID", null);
+				hs.setAttribute("CourseClass",null);
+				hs.setAttribute("CoursePlace", null);
+				hs.setAttribute("CourseMaxStudent", null);
+
+				hs.setAttribute("CourseSchedule1", null);
+				hs.setAttribute("CourseSchedule2",null);
+				hs.setAttribute("CourseSchedule3", null);
+				hs.setAttribute("CourseSchedule4", null);
+				
+				
 						request.getRequestDispatcher("admin.jsp").forward(
 								request, response);
 						return;
