@@ -318,8 +318,8 @@ h5 {
 																<br>
 																<input type="file" name="file1" size="40">
 																<br>
-																
-																<div align="center"> 
+																<br/>
+																<div align="center"> <input type="submit" value="上传">
 																</div>
 																
 															</td>

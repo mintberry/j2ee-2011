@@ -316,7 +316,7 @@ h5 {
 
 												<div id="ShangChuan">
 													<form
-														action="/StudentPortal/Upload?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>"
+														action="/StudentPortal/Upload1?courseId=<%=course.getCourseId()%>&filedir=<%=(String)session.getAttribute("userId")%>"
 														enctype="multipart/form-data" name="uploadform"
 														method="post">
 
