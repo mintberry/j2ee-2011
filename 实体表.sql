@@ -69,3 +69,17 @@ create table comments
 	updateDate Date,
 	primary key(comment_id)
 )CHARSET=gbk;
+
+drop table if exists notify;
+create table notify
+(  
+	`NId` INT NOT NULL ,  
+	`datetime` DATETIME NOT NULL ,  
+	`author` VARCHAR(20) NOT NULL ,  
+	`content` LONGTEXT NOT NULL ,  
+	`accessory` VARCHAR(255) NULL ,  
+	`title` VARCHAR(45) NOT NULL ,  
+	PRIMARY KEY (`NId`) 
+)CHARSET=gbk;
+
+ALTER TABLE `portal`.`notify` CHANGE COLUMN `NId` `NId` INT(11) NOT NULL AUTO_INCREMENT;
