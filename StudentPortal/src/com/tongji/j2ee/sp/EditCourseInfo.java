@@ -499,7 +499,9 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 
 		} finally {
 				s.close();
-				List<StudentCourse> StudentList = MyStudentCourseDAO.findAll();
+				String CourseID=request.getParameter("id");
+				
+				List<StudentCourse> StudentList = MyStudentCourseDAO.findByCourseId(CourseID);
 				CoursesDAO TempDAO=new CoursesDAO();
 				List<Courses> CoursesList = TempDAO.findAll();
 				
@@ -510,8 +512,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 				
 			if (!Way.equalsIgnoreCase("delete"))
 			{
-				String CourseID=request.getParameter("id");
-				
+		
 				Courses MyCourses=TempDAO.findById(CourseID);
 				{
 					int Time=MyCourses.getSchedule0();
