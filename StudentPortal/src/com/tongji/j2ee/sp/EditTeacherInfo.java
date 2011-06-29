@@ -184,16 +184,7 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherDAO.save(MyTeacherInfo);	
 			
 			
-			ServletContext sc = request.getSession().getServletContext();
-			String filePath = "";
-			
-			filePath = sc.getRealPath("/") + "file/"+ID+"/";
-
-			
-			
-			File file = new File(filePath);
-			file.mkdirs(); 
-			
+		
 			
 			
 		}

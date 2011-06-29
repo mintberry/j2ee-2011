@@ -927,7 +927,7 @@ table#tnotes {
 															</label>
 															&nbsp; &nbsp;
 															<input readonly="true" id="StudentNumber"
-																value=<%out.print(myID);%> type="" maxlength="45"
+																value="<%out.print(myID);%>" type="" maxlength="45"
 																name="id" />
 
 															&nbsp;
@@ -935,7 +935,7 @@ table#tnotes {
 																姓名
 															</label>
 															&nbsp; &nbsp;
-															<input id="StudentName" value=<%out.print(myName);%>
+															<input id="StudentName" value="<%out.print(myName);%>"
 																type="text" maxlength="45" name="name" />
 														</p>
 
@@ -967,17 +967,17 @@ table#tnotes {
 																生日
 															</label>
 															<input id="StudentBirthday" type="text" maxlength="20"
-																name="birthday" value=<%out.print(myBirthday);%>
+																name="birthday" value="<%out.print(myBirthday);%>"
 																style="margin-left: 15px" />
 														</p>
 														<p>
 															&nbsp; 国籍&nbsp; &nbsp;&nbsp;
 															<input id="StudentNation" type="text" maxlength="45"
-																name="nation" value=<%out.print(myNation);%> />
+																name="nation" value="<%out.print(myNation);%>" />
 
 															&nbsp; 地址&nbsp; &nbsp;&nbsp;
 															<input id="StudentAddress" type="text" maxlength="45"
-																name="address" value=<%out.print(myAddress);%> />
+																name="address" value="<%out.print(myAddress);%>" />
 														</p>
 
 														<p>
@@ -1072,7 +1072,7 @@ table#tnotes {
 															</label>
 															&nbsp; &nbsp;
 															<input readonly="true" id="TeacherNumber"
-																value=<%out.print(teacherID);%> type="" maxlength="45"
+																value="<%out.print(teacherID);%>" type="" maxlength="45"
 																name="id" />
 
 															&nbsp;
@@ -1080,7 +1080,7 @@ table#tnotes {
 																姓名
 															</label>
 															&nbsp; &nbsp;
-															<input id="TeacherName" value=<%out.print(teacherName);%>
+															<input id="TeacherName" value="<%out.print(teacherName);%>"
 																type="text" maxlength="45" name="name" />
 														</p>
 
@@ -1121,7 +1121,7 @@ table#tnotes {
 																生日
 															</label>
 															<input id="TeacherBirthday" type="text" maxlength="20"
-																name="birthday" value=<%out.print(teacherBirthday);%>
+																name="birthday" value="<%out.print(teacherBirthday);%>"
 																style="margin-left: 15px" />
 
 
@@ -1152,11 +1152,11 @@ table#tnotes {
 														<p>
 														&nbsp; 国籍&nbsp; &nbsp;&nbsp;
 															<input id="TeacherNation" type="text" maxlength="45"
-																name="nation" value=<%out.print(teacherNation);%> />
+																name="nation" value="<%out.print(teacherNation);%>" />
 
 															&nbsp; 电话&nbsp; &nbsp;&nbsp;
 															<input id="TeacherPhone" type="text" maxlength="45"
-																name="phone" value=<%out.print(teacherPhone);%> />
+																name="phone" value="<%out.print(teacherPhone);%>" />
 														</p>
 
 														<p>
@@ -1263,7 +1263,7 @@ table#tnotes {
 															</label>
 															&nbsp; &nbsp;
 															<input readonly="true" id="CourseNumber"
-																value=<%out.print(CourseID);%> type="" maxlength="45"
+																value="<%out.print(CourseID);%>" type="" maxlength="45"
 																name="id" />
 
 															&nbsp;
@@ -1271,7 +1271,7 @@ table#tnotes {
 																课程名
 															</label>
 															&nbsp; &nbsp;
-															<input id="CourseName" value=<%out.print(CourseName);%>
+															<input id="CourseName" value="<%out.print(CourseName);%>"
 																	type="text" maxlength="45" name="name" />
 														</p>
 
@@ -1282,7 +1282,7 @@ table#tnotes {
 															</label>
 															&nbsp; &nbsp;
 															<input id="CourseTeacherID"
-																value=<%out.print(CourseTeacherID);%> type="text"
+																value="<%out.print(CourseTeacherID);%>" type="text"
 																maxlength="45" name="teacherID" />
 
 
@@ -1290,7 +1290,7 @@ table#tnotes {
 																学分
 															</label>
 															<input id="CourseCredit" type="text" maxlength="45"
-																style="margin-left:20px"   name="Credit" value=<%out.print(CourseCredit);%> />
+																style="margin-left:20px"   name="Credit" value="<%out.print(CourseCredit);%>" />
 							
 														</p>
 														<p>
@@ -1298,12 +1298,12 @@ table#tnotes {
 																最大人数
 															</label>
 															<input id="CourseMaxStudent" type="text" maxlength="45"
-																name="MaxStudent" value=<%out.print(CourseMaxStudent);%> />
+																name="MaxStudent" value="<%out.print(CourseMaxStudent);%>" />
 <label style="margin-left: 70px">
 																上课地点
 															</label>
 															<input id="CoursePlace" type="text" maxlength="45"
-																name="CoursePlace" value=<%out.print(CoursePlace);%> />
+																name="CoursePlace" value="<%out.print(CoursePlace);%> "/>
 																
 																
 														
@@ -1320,7 +1320,7 @@ table#tnotes {
 																上课时间2
 															</label>
 															<input id="CourseSchedule2" type="text" maxlength="200"
-																name="Time2" value=<%out.print(CourseSchedule2);%> />
+																name="Time2" value="<%out.print(CourseSchedule2);%>" />
 														</p>
 
 														<p>
@@ -1328,18 +1328,18 @@ table#tnotes {
 																上课时间3
 															</label>
 															<input id="CourseSchedule3" type="text" maxlength="200"
-																name="Time3" value=<%out.print(CourseSchedule3);%> />
+																name="Time3" value="<%out.print(CourseSchedule3);%>" />
 
 															<label style="margin-left: 50px" >
 																上课时间4
 															</label>
 															<input id="CourseSchedule4" type="text" maxlength="200"
-																name="Time4" value=<%out.print(CourseSchedule4);%> />
+																name="Time4" value="<%out.print(CourseSchedule4);%>" />
 
 															<input type="hidden" id="act" name="act" value="select">
 
 														</p>
-														</p>
+												
 
 														<p>
 															

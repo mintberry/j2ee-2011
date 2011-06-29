@@ -2,11 +2,13 @@ package com.tongji.j2ee.sp;
 
 import hibernate.HibernateSessionFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -284,6 +286,11 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			String CourseID=request.getParameter("id");
 			String CourseName=request.getParameter("name");
 
+			
+	
+			
+			
+			
 			String teacherID = request.getParameter("teacherID");
 			//String Birthday = request.getParameter("birthday");
 		
@@ -304,6 +311,17 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 
 			else
 			{
+				
+				ServletContext sc = request.getSession().getServletContext();
+				String filePath = "";
+				
+				filePath = sc.getRealPath("/") + "file/"+CourseID+"/";
+
+				
+				
+				File file = new File(filePath);
+				file.mkdirs(); 
+				
 				teacherName=TempTeacherinfo.getName();
 			
 			String Time1 = request.getParameter("Time1");
