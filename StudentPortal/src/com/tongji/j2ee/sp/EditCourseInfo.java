@@ -158,6 +158,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			
 			
 			String Time1 = request.getParameter("Time1");
+			System.out.println(Time1);
 			String Time2 = request.getParameter("Time2");
 			String Time3 = request.getParameter("Time3");
 			String Time4 = request.getParameter("Time4");
@@ -182,7 +183,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			int TempInt;
 			int TempInt1;
 			char TempChar;
-			if (!Time1.equalsIgnoreCase("null"))
+			if (!Time1.equalsIgnoreCase(""))
 			{
 			TempChar=Time1.charAt(0);
 			if (TempChar=='双')
@@ -199,7 +200,11 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule0(ShangkeTime);
 			ShangkeTime=0;
 			}
-			if (!Time2.equalsIgnoreCase("null"))
+			else 
+			{
+				TempCourse.setSchedule0(0);
+			}
+			if (!Time2.equalsIgnoreCase(""))
 			{
 			TempChar=Time2.charAt(0);
 			
@@ -217,7 +222,12 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule1(ShangkeTime);
 			ShangkeTime=0;
 			}
-			if (!Time3.equalsIgnoreCase("null"))
+			
+			else 
+			{
+				TempCourse.setSchedule1(0);
+			}
+			if (!Time3.equalsIgnoreCase(""))
 			{
 			TempChar=Time3.charAt(0);
 			
@@ -235,8 +245,11 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule2(ShangkeTime);
 			ShangkeTime=0;
 			}
-			
-			if (!Time4.equalsIgnoreCase("null"))
+			else 
+			{
+				TempCourse.setSchedule2(0);
+			}
+			if (!Time4.equalsIgnoreCase(""))
 			{
 			TempChar=Time4.charAt(0);
 			
@@ -256,9 +269,14 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			ShangkeTime=0;
 	
 			}
+			else 
+			{
+				TempCourse.setSchedule3(0);
+			}
 
 			TempDAO.save(TempCourse);
 			}
+			
 		}
 		else if (Way.equalsIgnoreCase("add"))
 		{
@@ -314,7 +332,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			int TempInt;
 			int TempInt1;
 			char TempChar;
-			if (!Time1.equalsIgnoreCase("null"))
+			if (!Time1.equalsIgnoreCase(""))
 			{
 			TempChar=Time1.charAt(0);
 			if (TempChar=='双')
@@ -331,7 +349,14 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule0(ShangkeTime);
 			ShangkeTime=0;
 			}
-			if (!Time2.equalsIgnoreCase("null"))
+			
+			else 
+			{
+				TempCourse.setSchedule0(0);
+			}
+			
+			
+			if (!Time2.equalsIgnoreCase(""))
 			{
 			TempChar=Time2.charAt(0);
 			
@@ -349,7 +374,14 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule1(ShangkeTime);
 			ShangkeTime=0;
 			}
-			if (!Time3.equalsIgnoreCase("null"))
+			
+			else 
+			{
+				TempCourse.setSchedule1(0);
+			}
+			
+			
+			if (!Time3.equalsIgnoreCase(""))
 			{
 			TempChar=Time3.charAt(0);
 			
@@ -367,8 +399,11 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule2(ShangkeTime);
 			ShangkeTime=0;
 			}
-			
-			if (!Time4.equalsIgnoreCase("null"))
+			else 
+			{
+				TempCourse.setSchedule2(0);
+			}
+			if (!Time4.equalsIgnoreCase(""))
 			{
 			TempChar=Time4.charAt(0);
 			
@@ -387,6 +422,10 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			TempCourse.setSchedule3(ShangkeTime);
 			ShangkeTime=0;
 	
+			}
+			else 
+			{
+				TempCourse.setSchedule3(0);
 			}
 			CoursesDAO TempDAO=new CoursesDAO();
 			TempDAO.save(TempCourse);	
@@ -466,7 +505,12 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 					{
 						TempNumber1=TempNumber1-7;
 					}
-					if (Time<=35)
+					if (Time==0)
+					{
+						OutString=String.format("");
+					}
+					
+					else if (Time<=35)
 					{
 						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 					}
@@ -488,7 +532,12 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 					{
 						TempNumber1=TempNumber1-7;
 					}
-					if (Time<=35)
+					if (Time==0)
+					{
+						OutString=String.format("");
+					}
+					
+					else if (Time<=35)
 					{
 						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 					}
@@ -509,7 +558,12 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 					{
 						TempNumber1=TempNumber1-7;
 					}
-					if (Time<=35)
+					if (Time==0)
+					{
+						OutString=String.format("");
+					}
+					
+					else if (Time<=35)
 					{
 						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 					}
@@ -530,7 +584,13 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 					{
 						TempNumber1=TempNumber1-7;
 					}
-					if (Time<=35)
+					
+					if (Time==0)
+					{
+						OutString=String.format("");
+					}
+					
+					else if (Time<=35)
 					{
 						OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 					}

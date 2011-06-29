@@ -99,6 +99,7 @@ public class FindCoureseInfo extends HttpServlet {
 
 		{
 			int Time=MyCourses.getSchedule0();
+			System.out.println(Time);
 			String OutString;
 			int TempNumber=(Time-1)%5*2+1;
 			int TempNumber1=Time/5+1;
@@ -107,7 +108,12 @@ public class FindCoureseInfo extends HttpServlet {
 			{
 				TempNumber1=TempNumber1-7;
 			}
-			if (Time<=35)
+			if (Time==0)
+			{
+
+				OutString=String.format("");
+			}
+			else if (Time<=35)
 			{
 				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 			}
@@ -129,7 +135,12 @@ public class FindCoureseInfo extends HttpServlet {
 			{
 				TempNumber1=TempNumber1-7;
 			}
-			if (Time<=35)
+			if (Time==0)
+			{
+				
+				OutString=String.format("");
+			}
+			else if (Time<=35)
 			{
 				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 			}
@@ -150,7 +161,11 @@ public class FindCoureseInfo extends HttpServlet {
 			{
 				TempNumber1=TempNumber1-7;
 			}
-			if (Time<=35)
+			if (Time==0)
+			{
+				OutString=String.format("");
+			}
+			else if (Time<=35)
 			{
 				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 			}
@@ -171,7 +186,11 @@ public class FindCoureseInfo extends HttpServlet {
 			{
 				TempNumber1=TempNumber1-7;
 			}
-			if (Time<=35)
+			if (Time==0)
+			{
+				OutString=String.format("");
+			}
+			else if (Time<=35)
 			{
 				OutString=String.format("单周周%d第%d第%d节课",TempNumber1,TempNumber,TempNumber+1);
 			}
