@@ -155,7 +155,7 @@
 }  /* 设置总宽度[width] */
 #tab {
 	height: 400px;
-	background: #ccc;
+	background: #0BdfFE;
 	overflow: hidden;
 }  /* 设置总高度[height]、标题背景颜色[background] */
 #tab ul li h3 a {
@@ -172,14 +172,14 @@
 	border-color: #fff;
 }  /* 鼠标经过状态 */
 #tab ul li.up h3 a {
-	background: #999;
+	background: #2356ef;
 	border-color: #fff #999 #999 #fff;
 	color: #fff;
 }  /* 当前窗口状态 */
 #tab ul li div {
 	border: solid #999;
 	border-width: 1px 0;
-	background: #f7f7f7;
+	background: #FAFEFF;
 	height: 367px;
 }  /* 设置内容高度[height]、背景颜色[background]、上下分割线[border] */ /*TAB1效果[ol/li]*/
 #tab ul li #oDIV1 ol {
@@ -290,13 +290,10 @@ function blura(){
 						&nbsp;
 
 						<br>
-						<div id="nav-prof">
+						<div id="nav-prof" style="top: 76px; left: 934px;">
 
-							<a class="nav-prof-itm" id="nav-prof-setting" href="/settings"
-								title="设置"><img src="imgs/setting.png"
-									style="left: 2px; width: 16px;" /> </a><a class="nav-prof-itm"
-								id="nav-prof-logout" title="退出" href="/StudentPortal/logout"><img
-									src="imgs/exit.png" /> </a>
+							<a class="nav-prof-itm" id="nav-prof-logout" title="退出"
+								href="/StudentPortal/logout"><img src="imgs/exit.png" /> </a>
 
 
 						</div>
@@ -513,7 +510,7 @@ function blura(){
 															if ((i % 2) == 1) {
 																out.println("<tr align=\"center\">");
 															} else {
-																out.println("<tr align=\"center\" bgcolor=\"#00f2a0\">");
+																out.println("<tr align=\"center\" bgcolor=\"#f7f7f7\">");
 															}
 															out.println("<td>" + date.substring(0, date.indexOf(' '))
 																	+ "</td><td><a href=\"/StudentPortal/html/"
@@ -538,163 +535,163 @@ function blura(){
 											%>
 											<div id="oDIV2" style="display: none;">
 												<br />
-												<table height="90%" width="90%" border="1" bgcolor="#80ffff"
+												<table height="90%" width="90%" border="1" bgcolor="#f0f1ff"
 													align="center">
 													<tbody>
 														<tr class="tablerow" id="row1">
 															<td>
 																&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期一&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期二&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期三&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期四&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期五&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期六&nbsp;
 															</td>
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																星期日&nbsp;
 															</td>
 														</tr>
 														<tr class="tablerow" id="row2">
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																1,2&nbsp;
 															</td>
-															<td id="1">
+															<td id="1" style="text-align:center;">
 																<%=courseSchedule.get(0).getName()%>
 																&nbsp;
 															</td>
-															<td id="6"><%=courseSchedule.get(5).getName()%>
+															<td id="6" style="text-align:center;"><%=courseSchedule.get(5).getName()%>
 																&nbsp;
 															</td>
-															<td id="11"><%=courseSchedule.get(10).getName()%>
+															<td id="11" style="text-align:center;"><%=courseSchedule.get(10).getName()%>
 																&nbsp;
 															</td>
-															<td id="16"><%=courseSchedule.get(15).getName()%>
+															<td id="16" style="text-align:center;"><%=courseSchedule.get(15).getName()%>
 																&nbsp;
 															</td>
-															<td id="21"><%=courseSchedule.get(20).getName()%>
+															<td id="21" style="text-align:center;"><%=courseSchedule.get(20).getName()%>
 																&nbsp;
 															</td>
-															<td id="26"><%=courseSchedule.get(25).getName()%>
+															<td id="26" style="text-align:center;"><%=courseSchedule.get(25).getName()%>
 																&nbsp;
 															</td>
-															<td id="31"><%=courseSchedule.get(30).getName()%>
+															<td id="31" style="text-align:center;"><%=courseSchedule.get(30).getName()%>
 																&nbsp;
 															</td>
 														</tr>
 														<tr class="tablerow" id="row3">
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																3,4&nbsp;
 															</td>
-															<td id="2"><%=courseSchedule.get(1).getName()%>
+															<td id="2" style="text-align:center;"><%=courseSchedule.get(1).getName()%>
 																&nbsp;
 															</td>
-															<td id="7"><%=courseSchedule.get(6).getName()%>
+															<td id="7" style="text-align:center;"><%=courseSchedule.get(6).getName()%>
 																&nbsp;
 															</td>
-															<td id="12"><%=courseSchedule.get(11).getName()%>
+															<td id="12" style="text-align:center;"><%=courseSchedule.get(11).getName()%>
 																&nbsp;
 															</td>
-															<td id="17"><%=courseSchedule.get(16).getName()%>
+															<td id="17" style="text-align:center;"><%=courseSchedule.get(16).getName()%>
 																&nbsp;
 															</td>
-															<td id="22"><%=courseSchedule.get(21).getName()%>
+															<td id="22" style="text-align:center;"><%=courseSchedule.get(21).getName()%>
 																&nbsp;
 															</td>
-															<td id="27"><%=courseSchedule.get(26).getName()%>
+															<td id="27" style="text-align:center;"><%=courseSchedule.get(26).getName()%>
 																&nbsp;
 															</td>
-															<td id="32"><%=courseSchedule.get(31).getName()%>
+															<td id="32" style="text-align:center;"><%=courseSchedule.get(31).getName()%>
 																&nbsp;
 															</td>
 														</tr>
 														<tr class="tablerow" id="row4">
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																5,6&nbsp;
 															</td>
-															<td id="3"><%=courseSchedule.get(2).getName()%>
+															<td id="3" style="text-align:center;"><%=courseSchedule.get(2).getName()%>
 																&nbsp;
 															</td>
-															<td id="8"><%=courseSchedule.get(7).getName()%>
+															<td id="8" style="text-align:center;"><%=courseSchedule.get(7).getName()%>
 																&nbsp;
 															</td>
-															<td id="13"><%=courseSchedule.get(12).getName()%>
+															<td id="13" style="text-align:center;"><%=courseSchedule.get(12).getName()%>
 																&nbsp;
 															</td>
-															<td id="18"><%=courseSchedule.get(17).getName()%>
+															<td id="18" style="text-align:center;"><%=courseSchedule.get(17).getName()%>
 																&nbsp;
 															</td>
-															<td id="23"><%=courseSchedule.get(22).getName()%>
+															<td id="23" style="text-align:center;"><%=courseSchedule.get(22).getName()%>
 																&nbsp;
 															</td>
-															<td id="28"><%=courseSchedule.get(27).getName()%>
+															<td id="28" style="text-align:center;"><%=courseSchedule.get(27).getName()%>
 																&nbsp;
 															</td>
-															<td id="33"><%=courseSchedule.get(32).getName()%>
+															<td id="33" style="text-align:center;"><%=courseSchedule.get(32).getName()%>
 																&nbsp;
 															</td>
 														</tr>
 														<tr class="tablerow" id="row5">
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																7,8&nbsp;
 															</td>
-															<td id="4"><%=courseSchedule.get(3).getName()%>
+															<td id="4" style="text-align:center;"><%=courseSchedule.get(3).getName()%>
 																&nbsp;
 															</td>
-															<td id="9"><%=courseSchedule.get(8).getName()%>
+															<td id="9" style="text-align:center;"><%=courseSchedule.get(8).getName()%>
 																&nbsp;
 															</td>
-															<td id="14"><%=courseSchedule.get(13).getName()%>
+															<td id="14" style="text-align:center;"><%=courseSchedule.get(13).getName()%>
 																&nbsp;
 															</td>
-															<td id="19"><%=courseSchedule.get(18).getName()%>
+															<td id="19" style="text-align:center;"><%=courseSchedule.get(18).getName()%>
 																&nbsp;
 															</td>
-															<td id="24"><%=courseSchedule.get(23).getName()%>
+															<td id="24" style="text-align:center;"><%=courseSchedule.get(23).getName()%>
 																&nbsp;
 															</td>
-															<td id="29"><%=courseSchedule.get(28).getName()%>
+															<td id="29" style="text-align:center;"><%=courseSchedule.get(28).getName()%>
 																&nbsp;
 															</td>
-															<td id="34"><%=courseSchedule.get(33).getName()%>
+															<td id="34" style="text-align:center;"><%=courseSchedule.get(33).getName()%>
 																&nbsp;
 															</td>
 														</tr>
 														<tr class="tablerow" id="row6">
-															<td align="center">
+															<td align="center" style="text-align:center;">
 																9,10&nbsp;
 															</td>
-															<td id="5"><%=courseSchedule.get(4).getName()%>
+															<td id="5" style="text-align:center;"><%=courseSchedule.get(4).getName()%>
 																&nbsp;
 															</td>
-															<td id="10"><%=courseSchedule.get(9).getName()%>
+															<td id="10" style="text-align:center;"><%=courseSchedule.get(9).getName()%>
 																&nbsp;
 															</td>
-															<td id="15"><%=courseSchedule.get(14).getName()%>
+															<td id="15" style="text-align:center;"><%=courseSchedule.get(14).getName()%>
 																&nbsp;
 															</td>
-															<td id="20"><%=courseSchedule.get(19).getName()%>
+															<td id="20" style="text-align:center;"><%=courseSchedule.get(19).getName()%>
 																&nbsp;
 															</td>
-															<td id="25"><%=courseSchedule.get(24).getName()%>
+															<td id="25" style="text-align:center;"><%=courseSchedule.get(24).getName()%>
 																&nbsp;
 															</td>
-															<td id="30"><%=courseSchedule.get(29).getName()%>
+															<td id="30" style="text-align:center;"><%=courseSchedule.get(29).getName()%>
 																&nbsp;
 															</td>
-															<td id="35"><%=courseSchedule.get(34).getName()%>
+															<td id="35" style="text-align:center;"><%=courseSchedule.get(34).getName()%>
 																&nbsp;
 															</td>
 														</tr>
@@ -715,9 +712,8 @@ function blura(){
 												%>
 												<a
 													href="/StudentPortal/CourseInfo?id=<%out.print(temp.getCourseId());%>"
-													target="_blank" style="font-size:16px"> 
-														&nbsp;&nbsp;&nbsp;<%=temp.getName()%> <br/>
-												</a>
+													target="_blank" style="font-size: 16px">
+													&nbsp;&nbsp;&nbsp;<%=temp.getName()%> <br /> </a>
 												<%
 													}
 												%>
