@@ -19,6 +19,13 @@ import model.StudentCourse;
 import model.StudentCourseDAO;
 
 
+import model.Teacherinfo;
+import model.TeacherinfoDAO;
+
+import model.Studentinfo;
+import model.StudentinfoDAO;
+
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -130,7 +137,26 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 
 			String teacherID = request.getParameter("teacherID");
 			//String Birthday = request.getParameter("birthday");
-			String teacherName = request.getParameter("teacherName");
+			String teacherName;
+			
+			Teacherinfo  TempTeacherinfo;
+			
+			TeacherinfoDAO TempTeacherinfoDAO=new TeacherinfoDAO();
+			
+			TempTeacherinfo=TempTeacherinfoDAO.findById(teacherID);
+			
+			if (TempTeacherinfo==null)
+			{
+				request.setAttribute("pageNumber", 1);
+				request.setAttribute("Jump", 5);
+				request.getRequestDispatcher("admin.jsp").forward(request, response);
+			}
+
+			else
+			{
+			teacherName=TempTeacherinfo.getName();
+			
+			
 			String Time1 = request.getParameter("Time1");
 			String Time2 = request.getParameter("Time2");
 			String Time3 = request.getParameter("Time3");
@@ -232,6 +258,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 			}
 
 			TempDAO.save(TempCourse);
+			}
 		}
 		else if (Way.equalsIgnoreCase("add"))
 		{
@@ -241,7 +268,26 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 
 			String teacherID = request.getParameter("teacherID");
 			//String Birthday = request.getParameter("birthday");
-			String teacherName = request.getParameter("teacherName");
+		
+			String teacherName;
+			
+			Teacherinfo  TempTeacherinfo;
+			
+			TeacherinfoDAO TempTeacherinfoDAO=new TeacherinfoDAO();
+			
+			TempTeacherinfo=TempTeacherinfoDAO.findById(teacherID);
+			
+			if (TempTeacherinfo==null)
+			{
+				request.setAttribute("pageNumber", 1);
+				request.setAttribute("Jump", 5);
+				request.getRequestDispatcher("admin.jsp").forward(request, response);
+			}
+
+			else
+			{
+				teacherName=TempTeacherinfo.getName();
+			
 			String Time1 = request.getParameter("Time1");
 			String Time2 = request.getParameter("Time2");
 			String Time3 = request.getParameter("Time3");
@@ -343,7 +389,8 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 	
 			}
 			CoursesDAO TempDAO=new CoursesDAO();
-			TempDAO.save(TempCourse);			
+			TempDAO.save(TempCourse);	
+			}
 		}
 		else if (Way.equalsIgnoreCase("delete"))
 		{
@@ -367,11 +414,24 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 		else if (Way.equalsIgnoreCase("add1"))
 		{
 			String StudentID=request.getParameter("CourseStudentID");
+			
+			Studentinfo TempStudent;
+			StudentinfoDAO TempStudentDAO=new StudentinfoDAO();
+			TempStudent=TempStudentDAO.findById(StudentID);
+			if (TempStudent==null)
+			{
+				request.setAttribute("pageNumber", 1);
+				request.setAttribute("Jump", 6);
+				request.getRequestDispatcher("admin.jsp").forward(request, response);
+			}
+			else
+			{
 			String CourseID=request.getParameter("id");
 			StudentCourse temp =new StudentCourse();
 			temp.setCourseId(CourseID);
 			temp.setSId(StudentID);
 			MyStudentCourseDAO.attachDirty(temp);
+			}
 		}
 
 		
@@ -501,7 +561,7 @@ System.out.println("EditCourse!!!!!!!!!!!!!!!!!");
 				
 				hs.setAttribute("MyCourseList", CoursesList);
 				hs.setAttribute("CourseStudentList", StudentList);
-				
+			
 				request.getRequestDispatcher("admin.jsp").forward(request, response);
 			}
 	}

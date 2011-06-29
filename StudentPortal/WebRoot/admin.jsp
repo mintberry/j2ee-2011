@@ -129,8 +129,19 @@ toggleTo(2);
 
 toggleTo(3);
 
+<%} else if (myJump == 5) {%>
+alert("修改失败,不存在该老师")
+toggleTo(3);
+
+
+<%} else if (myJump == 6) {%>
+alert("修改失败,不存在该同学")
+toggleTo(3);
+
+
 
 <%}
+
 			;%>
 }
 function openwindow() {
@@ -1257,14 +1268,12 @@ table#tnotes {
 																maxlength="45" name="teacherID" />
 
 
-
-															<label style="margin-left: 55px" >
-																教师名
+	<label style="margin-left: 70px" >
+																学分
 															</label>
-															<input id="CourseTeacherName" type="text" maxlength="10"
-																name="teacherName"
-																value=<%out.print(CourseTeacherName);%>
-																style="margin-left: 15px" />
+															<input id="CourseCredit" type="text" maxlength="45"
+																style="margin-left:20px"   name="Credit" value=<%out.print(CourseCredit);%> />
+							
 														</p>
 														<p>
 															<label>
@@ -1272,12 +1281,14 @@ table#tnotes {
 															</label>
 															<input id="CourseMaxStudent" type="text" maxlength="45"
 																name="MaxStudent" value=<%out.print(CourseMaxStudent);%> />
-
-															<label style="margin-left: 70px" >
-																学分
+<label style="margin-left: 70px">
+																上课地点
 															</label>
-															<input id="CourseCredit" type="text" maxlength="45"
-																style="margin-left:20px"   name="Credit" value=<%out.print(CourseCredit);%> />
+															<input id="CoursePlace" type="text" maxlength="45"
+																name="CoursePlace" value=<%out.print(CoursePlace);%> />
+																
+																
+														
 														</p>
 
 														<p>
@@ -1313,11 +1324,7 @@ table#tnotes {
 														</p>
 
 														<p>
-															<label>
-																上课地点
-															</label>
-															<input id="CoursePlace" type="text" maxlength="45"
-																name="CoursePlace" value=<%out.print(CoursePlace);%> />
+															
 															<input type="button" value="修改" onclick="EditCourse()"
 																id="EditingButton4" style="margin-left: 100px">
 															<input type="hidden" name="act4" id="act4" value="edit">
