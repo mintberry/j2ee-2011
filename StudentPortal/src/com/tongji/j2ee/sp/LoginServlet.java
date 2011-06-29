@@ -143,6 +143,7 @@ public class LoginServlet extends HttpServlet {
 						hs.setAttribute("TeacherID", null);
 						hs.setAttribute("TeacherName", null);
 						hs.setAttribute("TeacherTitle", "教授");
+						hs.setAttribute("TeacherSex", "男");
 						hs.setAttribute("TeacherBirthday", null);
 						hs.setAttribute("TeacherNation", null);
 						hs.setAttribute("TeacherAddress", null);

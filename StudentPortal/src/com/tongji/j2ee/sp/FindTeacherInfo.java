@@ -100,7 +100,7 @@ public class FindTeacherInfo extends HttpServlet {
 		String TempString;
 		TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
 		hs.setAttribute("TeacherBirthday", TempString);
-		
+		hs.setAttribute("TeacherSex", MyStudentInfo.getSex());
 		hs.setAttribute("TeacherNation", MyStudentInfo.getNation());
 		hs.setAttribute("TeacherAddress", MyStudentInfo.getAddress());
 		hs.setAttribute("TeacherEmail", MyStudentInfo.getEmail());

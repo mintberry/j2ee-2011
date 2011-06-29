@@ -103,7 +103,7 @@ TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth
 hs.setAttribute("StudentBirthday", TempString);
 hs.setAttribute("StudentNation", MyStudentInfo.getNation());
 hs.setAttribute("StudentAddress", MyStudentInfo.getAddress());
-hs.setAttribute("StudentEmail", MyStudentInfo.getEmail());
+
 hs.setAttribute("StudentPhone", MyStudentInfo.getPhoneNumber());
 Session s = (Session) HibernateSessionFactory.getSession();
 MyStudentDAO.save(MyStudentInfo);	

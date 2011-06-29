@@ -981,9 +981,7 @@ table#tnotes {
 														</p>
 
 														<p>
-															&nbsp; 邮箱&nbsp; &nbsp;&nbsp;
-															<input id="StudentEmail" type="text" maxlength="45"
-																name="mail" value=<%out.print(myEmail);%> />
+														
 
 															&nbsp; 电话&nbsp; &nbsp;&nbsp;
 															<input id="StudentPhone" type="text" maxlength="45"
@@ -1058,6 +1056,8 @@ table#tnotes {
 																.getAttribute("TeacherAddress");
 														String teacherEmail = (String) session.getAttribute("TeacherEmail");
 														String teacherPhone = (String) session.getAttribute("TeacherPhone");
+														String teacherSex=(String) session.getAttribute("TeacherSex");
+												
 													%>
 													<form method="post" action="/StudentPortal/EditTeacherInfo"
 														id="editTeacher">
@@ -1113,28 +1113,46 @@ table#tnotes {
 															</select>
 
 
+														
 
-															<label style="padding-left: 77px">
+									
+	
+	<label style="padding-left: 77px" >
 																生日
 															</label>
 															<input id="TeacherBirthday" type="text" maxlength="20"
 																name="birthday" value=<%out.print(teacherBirthday);%>
 																style="margin-left: 15px" />
+
+
+														
 														</p>
 														<p>
-															&nbsp; 国籍&nbsp; &nbsp;&nbsp;
-															<input id="TeacherNation" type="text" maxlength="45"
-																name="nation" value=<%out.print(teacherNation);%> />
-
-															&nbsp; 地址&nbsp; &nbsp;&nbsp;
+															&nbsp; 性别&nbsp; &nbsp;&nbsp;
+														
+																				<select name="sex1" id="Sex2" tabindex="0">
+																<option value="男"
+																	<%if (teacherSex.equalsIgnoreCase("男")) { out.print("selected");}%>>
+																	男
+																</option>
+																<option value="女"
+																	<%if (teacherSex.equalsIgnoreCase("女")) {out.print("selected");}%>>
+																	女
+																</option>
+															</select>
+														
+														
+														
+															
+															<label style="padding-left: 100px"> 地址</label >
 															<input id="TeacherAddress" type="text" maxlength="45"
 																name="address" value=<%out.print(teacherAddress);%> />
 														</p>
 
 														<p>
-															&nbsp; 邮箱&nbsp; &nbsp;&nbsp;
-															<input id="TeacherEmail" type="text" maxlength="45"
-																name="mail" value=<%out.print(teacherEmail);%> />
+														&nbsp; 国籍&nbsp; &nbsp;&nbsp;
+															<input id="TeacherNation" type="text" maxlength="45"
+																name="nation" value=<%out.print(teacherNation);%> />
 
 															&nbsp; 电话&nbsp; &nbsp;&nbsp;
 															<input id="TeacherPhone" type="text" maxlength="45"

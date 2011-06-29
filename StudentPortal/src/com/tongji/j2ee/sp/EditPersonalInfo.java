@@ -85,7 +85,7 @@ public class EditPersonalInfo extends HttpServlet {
 		String Sex = request.getParameter("sex");
 		String Birthday = request.getParameter("birthday");
 		String Nation = request.getParameter("nation");
-		String Mail = request.getParameter("mail");
+		//String Mail = request.getParameter("mail");
 		String Address = request.getParameter("address");
 		String Phone = request.getParameter("phone");
 
@@ -104,7 +104,7 @@ public class EditPersonalInfo extends HttpServlet {
 		MyStudentInfo.setName(Name);
 		MyStudentInfo.setSex(Sex);
 		MyStudentInfo.setNation(Nation);
-		MyStudentInfo.setEmail(Mail);
+		MyStudentInfo.setEmail("");
 		MyStudentInfo.setAddress(Address);
 		
 		String TempString[]=Birthday.split("年");
@@ -145,7 +145,7 @@ public class EditPersonalInfo extends HttpServlet {
 			MyStudentInfo.setName(Name);
 			MyStudentInfo.setSex(Sex);
 			MyStudentInfo.setNation(Nation);
-			MyStudentInfo.setEmail(Mail);
+			MyStudentInfo.setEmail("");
 			MyStudentInfo.setAddress(Address);
 			String TempString[]=Birthday.split("年");
 			int Year=Integer.parseInt(TempString[0]);

@@ -88,10 +88,11 @@ public class EditTeacherInfo extends HttpServlet {
 		String ID=request.getParameter("id");
 		String Name = request.getParameter("name");
 		String Sex = request.getParameter("sex");
+		String Sex1=request.getParameter("sex1");
 		//System.out.println(Sex);
 		String Birthday = request.getParameter("birthday");
 		String Nation = request.getParameter("nation");
-		String Mail = request.getParameter("mail");
+		//String Mail = request.getParameter("mail");
 		String Address = request.getParameter("address");
 		String Phone = request.getParameter("phone");
 
@@ -110,8 +111,10 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherInfo.setName(Name);
 			MyTeacherInfo.setTitle(Sex);
 			System.out.println(Sex);
+			MyTeacherInfo.setSex(Sex1);
+			System.out.println(Sex1);
 			MyTeacherInfo.setNation(Nation);
-			MyTeacherInfo.setEmail(Mail);
+			MyTeacherInfo.setEmail("");
 			MyTeacherInfo.setAddress(Address);
 			String TempString[]=Birthday.split("年");
 			int Year=Integer.parseInt(TempString[0]);
@@ -149,9 +152,9 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherInfo.setPinCode("1234");
 			MyTeacherInfo.setTitle(Sex);
 			MyTeacherInfo.setName(Name);
-			MyTeacherInfo.setSex("男");
+			MyTeacherInfo.setSex(Sex1);
 			MyTeacherInfo.setNation(Nation);
-			MyTeacherInfo.setEmail(Mail);
+			MyTeacherInfo.setEmail("");
 			MyTeacherInfo.setAddress(Address);
 			String TempString[]=Birthday.split("年");
 			int Year=Integer.parseInt(TempString[0]);
@@ -221,7 +224,7 @@ public class EditTeacherInfo extends HttpServlet {
 				MyTeacherInfo=MyTeacherDAO.findById(ID);
 				hs.setAttribute("TeacherName", MyTeacherInfo.getName());
 				hs.setAttribute("TeacherTitle", MyTeacherInfo.getTitle());
-				
+				hs.setAttribute("TeacherSex", MyTeacherInfo.getSex());
 				Date TempDate=MyTeacherInfo.getBirthday();
 				String TempString;
 				TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
