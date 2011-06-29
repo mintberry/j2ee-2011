@@ -1314,7 +1314,7 @@ table#tnotes {
 																上课时间1
 															</label>
 															<input id="CourseSchedule1" type="text" maxlength="200"
-																name="Time1" value=<%out.print(CourseSchedule1);%> />
+																name="Time1" value="<%out.print(CourseSchedule1);%>" />
 
 															<label style="margin-left: 50px" >
 																上课时间2
