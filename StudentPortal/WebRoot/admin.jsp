@@ -238,7 +238,7 @@ document.getElementById("act4").value="add";
    document.getElementById("CourseNumber").value="";
    document.getElementById("CourseName").value="";
      document.getElementById("CourseTeacherID").value="";
-      document.getElementById("CourseTeacherName").value="";
+   //   document.getElementById("CourseTeacherName").value="";
     document.getElementById("CourseMaxStudent").value="";
     document.getElementById("CourseCredit").value="";
  document.getElementById("CoursePlace").value="";
@@ -263,9 +263,9 @@ function AddingRes() {
    document.getElementById("StudentNumber").readOnly="";
    document.getElementById("StudentNumber").value="";
    document.getElementById("StudentName").value="";
-     document.getElementById("Sex2").value="";
+    
       document.getElementById("StudentBirthday").value="";
-    document.getElementById("StudentEmail").value="";
+    //document.getElementById("StudentEmail").value="";
     document.getElementById("StudentPhone").value="";
  document.getElementById("StudentAddress").value="";
  document.getElementById("StudentNation").value="";
@@ -351,9 +351,10 @@ function AddingRes1() {
    document.getElementById("TeacherName").value="";
      document.getElementById("Sex3").value="";
       document.getElementById("TeacherBirthday").value="";
-    document.getElementById("TeacherEmail").value="";
+   // document.getElementById("TeacherEmail").value="";
     document.getElementById("TeacherPhone").value="";
  document.getElementById("TeacherAddress").value="";
+  document.getElementById("TeacherNation").value="";
 
  
 }
