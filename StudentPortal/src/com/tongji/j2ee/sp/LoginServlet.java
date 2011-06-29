@@ -20,6 +20,8 @@ import model.Teacherinfo;
 import model.TeacherinfoDAO;
 
 public class LoginServlet extends HttpServlet {
+	
+	
 
 	// when to initialize the DAO is a problem
 	private StudentinfoDAO studentinfoDAO = new StudentinfoDAO();

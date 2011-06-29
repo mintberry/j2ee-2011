@@ -258,9 +258,9 @@ h5 {
 
 											</div>
 
-											<div id="LiuYan">
-												<font face="方正姚体" size="6"><strong>课件
-												</strong> </font>
+											<div id="LiuYan"><div align="center"> 
+												<font face="方正姚体" size="6"><strong>留言
+												</strong></font></div><font face="方正姚体" size="6"> </font>
 													<form method="post"
 													action="/StudentPortal/TeacherMessage
 														?course_id=<%out.print(course.getCourseId());%>"

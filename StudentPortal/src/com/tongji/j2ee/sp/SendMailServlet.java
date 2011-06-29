@@ -56,7 +56,7 @@ public class SendMailServlet extends HttpServlet {
 			message.setFrom(mail_from);
 			InternetAddress[] mail_to = {new InternetAddress(to)};
 			message.setRecipients(Message.RecipientType.TO, mail_to);
-			message.setSubject(subject);
+			message.setSubject(subject,"utf-8");
 			message.setSentDate(new Date());
 
 			Multipart mul = new MimeMultipart(); 
@@ -92,7 +92,7 @@ public class SendMailServlet extends HttpServlet {
 				InternetAddress mail_to = new InternetAddress(to.get(i));
 				message.addRecipient(Message.RecipientType.TO, mail_to);
 			}
-			message.setSubject(subject);
+			message.setSubject(subject,"utf-8");
 			message.setSentDate(new Date());
 
 			Multipart mul = new MimeMultipart(); 
