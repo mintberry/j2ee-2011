@@ -86,6 +86,7 @@ public class EditNote extends HttpServlet {
 				hs.setAttribute("noteli", lns);
 				
 				request.setAttribute("pageNumber", 1);
+				request.setAttribute("Jump", 1);
 				request.getRequestDispatcher("admin.jsp")
 						.forward(request, response);
 			}
@@ -123,6 +124,7 @@ public class EditNote extends HttpServlet {
 				hs.setAttribute("noteli", lns);
 				
 				request.setAttribute("pageNumber", 1);
+				request.setAttribute("Jump", 1);
 				request.getRequestDispatcher("admin.jsp")
 						.forward(request, response);
 			}
