@@ -4,6 +4,8 @@ import hibernate.HibernateSessionFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -98,7 +100,9 @@ public class FindTeacherInfo extends HttpServlet {
 		
 		Date TempDate=MyStudentInfo.getBirthday();
 		String TempString;
-		TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
+		DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+		TempString=formater.format(TempDate);
+		
 		hs.setAttribute("TeacherBirthday", TempString);
 		hs.setAttribute("TeacherSex", MyStudentInfo.getSex());
 		hs.setAttribute("TeacherNation", MyStudentInfo.getNation());

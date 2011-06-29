@@ -5,6 +5,9 @@ import hibernate.HibernateSessionFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -116,24 +119,22 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherInfo.setNation(Nation);
 			MyTeacherInfo.setEmail("");
 			MyTeacherInfo.setAddress(Address);
-			String TempString[]=Birthday.split("年");
-			int Year=Integer.parseInt(TempString[0]);
+			  DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+			  Date d=null;
+			  Date MyDate=null;
 			
-			System.out.println(Year);
-			String TempString1[]=TempString[1].split("月");
-			int Month=Integer.parseInt(TempString1[0]);
-			String TempString2[]=TempString1[1].split("日");
-			int Day=Integer.parseInt(TempString2[0]);
-			
-			
-			Date MyDate=new Date();
+				try {
+					d =formater.parse(Birthday);
+				}
+				  catch (ParseException e)
+				  {
+				  
+				  }
+				     finally
+				        {
+				    	 MyDate = d;
+				        }
 
-			
-			
-			MyDate.setDate(Day);
-			MyDate.setYear(Year);
-			MyDate.setMonth(Month-1);
-			
 
 
 			MyTeacherInfo.setBirthday(MyDate);
@@ -156,24 +157,21 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherInfo.setNation(Nation);
 			MyTeacherInfo.setEmail("");
 			MyTeacherInfo.setAddress(Address);
-			String TempString[]=Birthday.split("年");
-			int Year=Integer.parseInt(TempString[0]);
+			  DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+			  Date d=null;
+			  Date MyDate=null;
 			
-			System.out.println(Year);
-			String TempString1[]=TempString[1].split("月");
-			int Month=Integer.parseInt(TempString1[0]);
-			String TempString2[]=TempString1[1].split("日");
-			int Day=Integer.parseInt(TempString2[0]);
-			
-			
-			Date MyDate=new Date();
-
-			
-			
-			MyDate.setDate(Day);
-			MyDate.setYear(Year);
-			MyDate.setMonth(Month-1);
-			
+				try {
+					d =formater.parse(Birthday);
+				}
+				  catch (ParseException e)
+				  {
+				  
+				  }
+				     finally
+				        {
+				    	 MyDate = d;
+				        }
 
 
 			MyTeacherInfo.setBirthday(MyDate);
@@ -218,7 +216,9 @@ public class EditTeacherInfo extends HttpServlet {
 				hs.setAttribute("TeacherSex", MyTeacherInfo.getSex());
 				Date TempDate=MyTeacherInfo.getBirthday();
 				String TempString;
-				TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
+				DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+				TempString=formater.format(TempDate);
+				
 				hs.setAttribute("TeacherBirthday", TempString);
 				
 				hs.setAttribute("TeacherNation", MyTeacherInfo.getNation());

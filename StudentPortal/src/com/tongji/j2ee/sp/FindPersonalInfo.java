@@ -4,6 +4,8 @@ import hibernate.HibernateSessionFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -99,7 +101,10 @@ hs.setAttribute("Sex", MyStudentInfo.getSex());
 
 Date TempDate=MyStudentInfo.getBirthday();
 String TempString;
-TempString=String.format("%d年%d月%d日", TempDate.getYear(),TempDate.getMonth()+1,TempDate.getDate());
+
+DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+TempString=formater.format(TempDate);
+
 hs.setAttribute("StudentBirthday", TempString);
 hs.setAttribute("StudentNation", MyStudentInfo.getNation());
 hs.setAttribute("StudentAddress", MyStudentInfo.getAddress());
