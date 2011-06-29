@@ -2,11 +2,13 @@ package com.tongji.j2ee.sp;
 
 import hibernate.HibernateSessionFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -177,6 +179,20 @@ public class EditTeacherInfo extends HttpServlet {
 			System.out.println(Sex);
 			
 			MyTeacherDAO.save(MyTeacherInfo);	
+			
+			
+			ServletContext sc = request.getSession().getServletContext();
+			String filePath = "";
+			
+			filePath = sc.getRealPath("/") + "file/"+ID+"/";
+
+			
+			
+			File file = new File(filePath);
+			file.mkdirs(); 
+			
+			
+			
 		}
 		else if (Way.equalsIgnoreCase("delete"))
 		{

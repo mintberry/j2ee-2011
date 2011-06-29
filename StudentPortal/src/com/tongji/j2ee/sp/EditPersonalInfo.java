@@ -2,6 +2,7 @@ package com.tongji.j2ee.sp;
 
 import hibernate.HibernateSessionFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,7 @@ import model.StudentCourseDAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+ 
 public class EditPersonalInfo extends HttpServlet {
 
 	/**
@@ -166,7 +169,18 @@ public class EditPersonalInfo extends HttpServlet {
 			System.out.println(Name);
 			System.out.println(Sex);
 			
-			MyStudentDAO.save(MyStudentInfo);	
+			MyStudentDAO.save(MyStudentInfo);
+			
+			ServletContext sc = request.getSession().getServletContext();
+			String filePath = "";
+			
+			filePath = sc.getRealPath("/") + "file/"+ID+"/";
+
+			
+			
+			File file = new File(filePath);
+			file.mkdirs(); 
+			
 		}
 		else if (Way.equalsIgnoreCase("delete"))
 		{
