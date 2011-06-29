@@ -119,7 +119,7 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherInfo.setNation(Nation);
 			MyTeacherInfo.setEmail("");
 			MyTeacherInfo.setAddress(Address);
-			  DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+			  DateFormat formater = new SimpleDateFormat("yyyy年MM月dd日");
 			  Date d=null;
 			  Date MyDate=null;
 			
@@ -157,7 +157,7 @@ public class EditTeacherInfo extends HttpServlet {
 			MyTeacherInfo.setNation(Nation);
 			MyTeacherInfo.setEmail("");
 			MyTeacherInfo.setAddress(Address);
-			  DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+			  DateFormat formater = new SimpleDateFormat("yyyy年MM月dd日");
 			  Date d=null;
 			  Date MyDate=null;
 			
@@ -216,7 +216,7 @@ public class EditTeacherInfo extends HttpServlet {
 				hs.setAttribute("TeacherSex", MyTeacherInfo.getSex());
 				Date TempDate=MyTeacherInfo.getBirthday();
 				String TempString;
-				DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+				DateFormat formater = new SimpleDateFormat("yyyy年MM月dd日");
 				TempString=formater.format(TempDate);
 				
 				hs.setAttribute("TeacherBirthday", TempString);

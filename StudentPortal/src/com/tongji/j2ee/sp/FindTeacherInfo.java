@@ -100,7 +100,7 @@ public class FindTeacherInfo extends HttpServlet {
 		
 		Date TempDate=MyStudentInfo.getBirthday();
 		String TempString;
-		DateFormat formater = new SimpleDateFormat("yyyy年mm月dd日");
+		DateFormat formater = new SimpleDateFormat("yyyy年MM月dd日");
 		TempString=formater.format(TempDate);
 		
 		hs.setAttribute("TeacherBirthday", TempString);

@@ -268,6 +268,7 @@ function AddingRes() {
     document.getElementById("StudentEmail").value="";
     document.getElementById("StudentPhone").value="";
  document.getElementById("StudentAddress").value="";
+ document.getElementById("StudentNation").value="";
 
  
 }
