@@ -1238,12 +1238,12 @@ table#tnotes {
 																name="id" />
 
 															&nbsp;
-															<label>
+															<label style="margin-left: 50px" >
 																课程名
 															</label>
 															&nbsp; &nbsp;
 															<input id="CourseName" value=<%out.print(CourseName);%>
-																type="text" maxlength="45" name="name" />
+																	type="text" maxlength="45" name="name" />
 														</p>
 
 														<p>
@@ -1258,7 +1258,7 @@ table#tnotes {
 
 
 
-															<label style="padding-left: 5px">
+															<label style="margin-left: 55px" >
 																教师名
 															</label>
 															<input id="CourseTeacherName" type="text" maxlength="10"
@@ -1273,11 +1273,11 @@ table#tnotes {
 															<input id="CourseMaxStudent" type="text" maxlength="45"
 																name="MaxStudent" value=<%out.print(CourseMaxStudent);%> />
 
-															<label>
+															<label style="margin-left: 70px" >
 																学分
 															</label>
 															<input id="CourseCredit" type="text" maxlength="45"
-																name="Credit" value=<%out.print(CourseCredit);%> />
+																style="margin-left:20px"   name="Credit" value=<%out.print(CourseCredit);%> />
 														</p>
 
 														<p>
@@ -1287,7 +1287,7 @@ table#tnotes {
 															<input id="CourseSchedule1" type="text" maxlength="200"
 																name="Time1" value=<%out.print(CourseSchedule1);%> />
 
-															<label>
+															<label style="margin-left: 50px" >
 																上课时间2
 															</label>
 															<input id="CourseSchedule2" type="text" maxlength="200"
@@ -1301,7 +1301,7 @@ table#tnotes {
 															<input id="CourseSchedule3" type="text" maxlength="200"
 																name="Time3" value=<%out.print(CourseSchedule3);%> />
 
-															<label>
+															<label style="margin-left: 50px" >
 																上课时间4
 															</label>
 															<input id="CourseSchedule4" type="text" maxlength="200"
