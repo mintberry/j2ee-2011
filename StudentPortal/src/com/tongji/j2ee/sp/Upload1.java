@@ -88,7 +88,7 @@ public class Upload1 extends HttpServlet {
 				filebean.setName(filename);
 				filebean.setLocation(location);
 				filebean.setFilesize(filesize);
-				//filebean.setDescription(fileinfo);
+				filebean.setDescription("");
 				filebean.setUpdateDate(updatetime);
 				fileDao.save(filebean);
 
